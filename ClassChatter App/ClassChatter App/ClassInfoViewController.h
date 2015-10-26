@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface ClassInfoViewController : UIViewController
+@interface ClassInfoViewController : UIViewController 
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 
 @end

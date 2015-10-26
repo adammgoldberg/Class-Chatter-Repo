@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ClassRoomViewController.h"
+#import "ClassInfoViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UITabBarController *tabBarController = (UITabBarController*) self.window.rootViewController;
+    ClassRoomViewController *crvc = (ClassRoomViewController*)tabBarController.viewControllers[0];
+    ClassInfoViewController *civc = (ClassInfoViewController*)tabBarController.viewControllers[1];
+    crvc.managedObjectContext = self.managedObjectContext;
+    civc.managedObjectContext = self.managedObjectContext;
+    
+    
     return YES;
 }
 

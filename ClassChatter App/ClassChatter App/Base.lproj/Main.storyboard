@@ -269,13 +269,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="108" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVT-Oh-jlO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="106"/>
-                                                    <color key="backgroundColor" red="0.27663461955372814" green="1" blue="0.17698733368610531" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Student"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UN-vl-Msh">
                                                     <rect key="frame" x="77" y="77" width="23" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ha-bF-jr2">
+                                                    <rect key="frame" x="24" y="42" width="61" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -283,18 +284,19 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.27663461960000002" green="1" blue="0.1769873337" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="EVT-Oh-jlO" secondAttribute="bottom" id="5kF-u4-maL"/>
+                                            <constraint firstItem="1ha-bF-jr2" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" constant="24" id="2cH-6G-unb"/>
                                             <constraint firstItem="5UN-vl-Msh" firstAttribute="trailing" secondItem="m5p-vz-K0L" secondAttribute="trailingMargin" id="Byn-DS-Mpr"/>
-                                            <constraint firstAttribute="trailing" secondItem="EVT-Oh-jlO" secondAttribute="trailing" id="VUt-6d-k6d"/>
-                                            <constraint firstItem="EVT-Oh-jlO" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" id="bjB-3e-FL6"/>
-                                            <constraint firstItem="EVT-Oh-jlO" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" id="fux-jV-GeX"/>
+                                            <constraint firstItem="1ha-bF-jr2" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" constant="42" id="Udn-Hs-RYN"/>
+                                            <constraint firstAttribute="trailing" secondItem="1ha-bF-jr2" secondAttribute="trailing" constant="23" id="jra-Lo-LnG"/>
                                             <constraint firstItem="5UN-vl-Msh" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leadingMargin" constant="69" id="vwF-vB-Vcz"/>
+                                            <constraint firstAttribute="bottom" secondItem="1ha-bF-jr2" secondAttribute="bottom" constant="43" id="wMQ-Pe-piz"/>
                                             <constraint firstItem="5UN-vl-Msh" firstAttribute="bottom" secondItem="m5p-vz-K0L" secondAttribute="bottomMargin" id="z1X-ni-SOd"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="numberOfDisruptionsLabel" destination="5UN-vl-Msh" id="w4u-Ot-QeD"/>
-                                            <outlet property="studentNameButton" destination="EVT-Oh-jlO" id="dqG-Wc-ha4"/>
+                                            <outlet property="studentNameLabel" destination="1ha-bF-jr2" id="Y6W-fK-PG8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

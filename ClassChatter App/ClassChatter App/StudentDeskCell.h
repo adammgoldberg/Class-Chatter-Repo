@@ -12,7 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *numberOfDisruptionsLabel;
 
-@property (strong, nonatomic) IBOutlet UIButton *studentNameButton;
+@property (strong, nonatomic) IBOutlet UILabel *studentNameLabel;
+
 
 
 

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface ClassRoomViewController : UIViewController
+
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

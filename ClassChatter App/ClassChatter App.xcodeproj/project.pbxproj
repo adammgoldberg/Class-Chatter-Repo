@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		065DBCDA1BDE8DB100CCAF94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBCD91BDE8DB100CCAF94 /* main.m */; };
 		065DBCDD1BDE8DB100CCAF94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBCDC1BDE8DB100CCAF94 /* AppDelegate.m */; };
-		065DBCE01BDE8DB100CCAF94 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBCDF1BDE8DB100CCAF94 /* ViewController.m */; };
 		065DBCE31BDE8DB100CCAF94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 065DBCE11BDE8DB100CCAF94 /* Main.storyboard */; };
 		065DBCE61BDE8DB200CCAF94 /* ClassChatter_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 065DBCE41BDE8DB200CCAF94 /* ClassChatter_App.xcdatamodeld */; };
 		065DBCE81BDE8DB200CCAF94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065DBCE71BDE8DB200CCAF94 /* Assets.xcassets */; };
@@ -52,8 +51,6 @@
 		065DBCD91BDE8DB100CCAF94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		065DBCDB1BDE8DB100CCAF94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		065DBCDC1BDE8DB100CCAF94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		065DBCDE1BDE8DB100CCAF94 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		065DBCDF1BDE8DB100CCAF94 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		065DBCE21BDE8DB100CCAF94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		065DBCE51BDE8DB200CCAF94 /* ClassChatter_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClassChatter_App.xcdatamodel; sourceTree = "<group>"; };
 		065DBCE71BDE8DB200CCAF94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,8 +154,6 @@
 				065DBD1D1BDE936400CCAF94 /* Student.m */,
 				065DBCDB1BDE8DB100CCAF94 /* AppDelegate.h */,
 				065DBCDC1BDE8DB100CCAF94 /* AppDelegate.m */,
-				065DBCDE1BDE8DB100CCAF94 /* ViewController.h */,
-				065DBCDF1BDE8DB100CCAF94 /* ViewController.m */,
 				065DBCE11BDE8DB100CCAF94 /* Main.storyboard */,
 				065DBD291BDE95B600CCAF94 /* StudentDeskCell.h */,
 				065DBD2A1BDE95B600CCAF94 /* StudentDeskCell.m */,
@@ -336,7 +331,6 @@
 				065DBD241BDE936400CCAF94 /* Student+CoreDataProperties.m in Sources */,
 				065DBD231BDE936400CCAF94 /* SchoolClass.m in Sources */,
 				065DBD1F1BDE936400CCAF94 /* Teacher.m in Sources */,
-				065DBCE01BDE8DB100CCAF94 /* ViewController.m in Sources */,
 				065DBD2B1BDE95B600CCAF94 /* StudentDeskCell.m in Sources */,
 				065DBCDD1BDE8DB100CCAF94 /* AppDelegate.m in Sources */,
 				065DBD281BDE958000CCAF94 /* ClassRoomViewController.m in Sources */,
