@@ -27,6 +27,7 @@
 		065DBD2B1BDE95B600CCAF94 /* StudentDeskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBD2A1BDE95B600CCAF94 /* StudentDeskCell.m */; settings = {ASSET_TAGS = (); }; };
 		065DBD2E1BDE9BA800CCAF94 /* ClassInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBD2D1BDE9BA800CCAF94 /* ClassInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		065DBD311BDE9F4900CCAF94 /* ClassInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBD301BDE9F4900CCAF94 /* ClassInfoCell.m */; settings = {ASSET_TAGS = (); }; };
+		065DBD341BDEEF8700CCAF94 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBD331BDEEF8700CCAF94 /* ModalViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		065DBD2D1BDE9BA800CCAF94 /* ClassInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInfoViewController.m; sourceTree = "<group>"; };
 		065DBD2F1BDE9F4900CCAF94 /* ClassInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassInfoCell.h; sourceTree = "<group>"; };
 		065DBD301BDE9F4900CCAF94 /* ClassInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInfoCell.m; sourceTree = "<group>"; };
+		065DBD321BDEEF8700CCAF94 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		065DBD331BDEEF8700CCAF94 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 				065DBD301BDE9F4900CCAF94 /* ClassInfoCell.m */,
 				065DBD2C1BDE9BA800CCAF94 /* ClassInfoViewController.h */,
 				065DBD2D1BDE9BA800CCAF94 /* ClassInfoViewController.m */,
+				065DBD321BDEEF8700CCAF94 /* ModalViewController.h */,
+				065DBD331BDEEF8700CCAF94 /* ModalViewController.m */,
 				065DBCE71BDE8DB200CCAF94 /* Assets.xcassets */,
 				065DBCE91BDE8DB200CCAF94 /* LaunchScreen.storyboard */,
 				065DBCEC1BDE8DB200CCAF94 /* Info.plist */,
@@ -340,6 +345,7 @@
 				065DBCE61BDE8DB200CCAF94 /* ClassChatter_App.xcdatamodeld in Sources */,
 				065DBD211BDE936400CCAF94 /* Parent.m in Sources */,
 				065DBD311BDE9F4900CCAF94 /* ClassInfoCell.m in Sources */,
+				065DBD341BDEEF8700CCAF94 /* ModalViewController.m in Sources */,
 				065DBCDA1BDE8DB100CCAF94 /* main.m in Sources */,
 				065DBD1E1BDE936400CCAF94 /* Teacher+CoreDataProperties.m in Sources */,
 				065DBD251BDE936400CCAF94 /* Student.m in Sources */,

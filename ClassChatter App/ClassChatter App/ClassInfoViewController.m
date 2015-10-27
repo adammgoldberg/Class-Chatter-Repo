@@ -10,22 +10,16 @@
 #import "ClassInfoCell.h"
 #import "Student.h"
 #import "Parent.h"
+#import "ModalViewController.h"
 
-@interface ClassInfoViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface ClassInfoViewController () <UITableViewDataSource, UITableViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UITableView *classInfoTableView;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *classInfoSeg;
 
-@property (strong, nonatomic) IBOutlet UITextField *firstNameText;
 
-
-@property (strong, nonatomic) IBOutlet UITextField *lastNameText;
-
-@property (strong, nonatomic) IBOutlet UITextField *parentTitleText;
-
-@property (strong, nonatomic) IBOutlet UITextField *emailAddressText;
 
 @property (strong, nonatomic) NSMutableArray *listOfStudents;
 
@@ -36,29 +30,19 @@
 
 @implementation ClassInfoViewController
 
-- (IBAction)addStudent:(id)sender {
-    Student *student = [NSEntityDescription insertNewObjectForEntityForName:@"Student" inManagedObjectContext:self.managedObjectContext];
-    student.firstName = self.firstNameText.text;
-    student.lastName = self.lastNameText.text;
+
+
     
-    Parent *parent = [NSEntityDescription insertNewObjectForEntityForName:@"Parent" inManagedObjectContext:self.managedObjectContext];
-    parent.title = self.parentTitleText.text;
-    parent.emailAddress = self.emailAddressText.text;
-    
-    [student addParentsObject:parent];
-    
-    NSError *error;
-    [self.managedObjectContext save:&error];
-    
-    self.firstNameText.text = @"";
-    self.lastNameText.text = @"";
-    self.parentTitleText.text = @"";
-    self.emailAddressText.text = @"";
-    
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showModal"]) {
+        ModalViewController *modalvc = (ModalViewController*)[segue destinationViewController];
+        modalvc.managedObjectContext = self.managedObjectContext;
+    }
 }
 
-
-   
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
