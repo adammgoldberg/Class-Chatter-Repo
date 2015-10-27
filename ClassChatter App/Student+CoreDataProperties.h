@@ -2,7 +2,7 @@
 //  Student+CoreDataProperties.h
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-26.
+//  Created by Adam Goldberg on 2015-10-27.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<Parent *> *parents;
 @property (nullable, nonatomic, retain) SchoolClass *schoolClass;
 @property (nullable, nonatomic, retain) Teacher *teacher;
+@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *misbehaviour;
 
 @end
 
@@ -31,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeParentsObject:(Parent *)value;
 - (void)addParents:(NSSet<Parent *> *)values;
 - (void)removeParents:(NSSet<Parent *> *)values;
+
+- (void)addMisbehaviourObject:(NSManagedObject *)value;
+- (void)removeMisbehaviourObject:(NSManagedObject *)value;
+- (void)addMisbehaviour:(NSSet<NSManagedObject *> *)values;
+- (void)removeMisbehaviour:(NSSet<NSManagedObject *> *)values;
 
 @end
 

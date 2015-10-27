@@ -1,5 +1,5 @@
 //
-//  Student+CoreDataProperties.m
+//  Misbehaviour+CoreDataProperties.m
 //  ClassChatter App
 //
 //  Created by Adam Goldberg on 2015-10-27.
@@ -9,17 +9,12 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Student+CoreDataProperties.h"
+#import "Misbehaviour+CoreDataProperties.h"
 
-@implementation Student (CoreDataProperties)
+@implementation Misbehaviour (CoreDataProperties)
 
-@dynamic firstName;
-@dynamic lastName;
-@dynamic numberOfDisruptions;
-@dynamic numberOfEmails;
-@dynamic parents;
+@dynamic time;
+@dynamic student;
 @dynamic schoolClass;
-@dynamic teacher;
-@dynamic misbehaviour;
 
 @end
