@@ -45,10 +45,6 @@
 
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    return YES;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

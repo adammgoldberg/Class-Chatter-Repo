@@ -10,14 +10,19 @@
 #import "StudentDeskCell.h"
 #import "ClassInfoViewController.h"
 #import "Student.h"
+#import "Parent.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface ClassRoomViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ClassRoomViewController () <UICollectionViewDataSource, UICollectionViewDelegate, MFMailComposeViewControllerDelegate> 
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *classSeg;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *studentCollectionView;
 
 @property (strong, nonatomic) NSMutableArray *listOfStudents;
+
+@property (strong, nonatomic) NSMutableArray *listOfParents;
 
 
 @end
@@ -26,14 +31,52 @@
 
 
 
+- (IBAction)actionEmailComposer
+{
+    
+}
+
+
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     Student *theStudent = self.listOfStudents[indexPath.row];
+    Parent *theParent = [theStudent.parents anyObject];
     NSInteger numberOfTaps = [theStudent.numberOfDisruptions integerValue];
     numberOfTaps = numberOfTaps + 1;
     NSNumber *newNumber = [NSNumber numberWithInteger:numberOfTaps];
     theStudent.numberOfDisruptions = newNumber;
     
+    
+    [self fetchStudentAndParents];
+    
+    if (numberOfTaps == 3) {
+        if ([MFMailComposeViewController canSendMail]) {
+            
+            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+            mailViewController.mailComposeDelegate = self;
+            [mailViewController setSubject:@"Misbehaviour in class."];
+            [mailViewController setMessageBody:[NSString stringWithFormat:@"Dear %@ %@, I wanted to inform you that your %@ disrupted class 3 times today. It would be greatly appreciated if you could please remind %@ the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help. Sincerely, Mr. Goldberg", theParent.title, theStudent.lastName, theStudent.firstName, theStudent.firstName] isHTML:NO];
+            
+            [self presentViewController:mailViewController animated:YES completion:nil];
+    
+        }
+        
+        else {
+            
+            NSLog(@"Device can't send emails");
+    }
+    
+    [self.managedObjectContext save:NULL];
+    
+    }
+}
+    
 
+-(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult: (MFMailComposeResult)result error:(NSError*)error
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+        
 }
 
 
@@ -57,7 +100,7 @@
 {
     Student *student = self.listOfStudents[indexPath.row];
     cell.studentNameLabel.text = student.firstName;
-    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%lu", [student.numberOfDisruptions integerValue]];
+    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%d", [student.numberOfDisruptions integerValue]];
     NSInteger numberOfTaps = [student.numberOfDisruptions integerValue];
     
     if (numberOfTaps == 1) {
@@ -72,27 +115,41 @@
 
 }
      
-     
 
--(void)fetchStudents
+
+
+-(void)fetchStudentAndParents
 {
     self.listOfStudents = [[NSMutableArray alloc] init];
-        
-        
+    
+    
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"numberOfDisruptions" ascending:NO]];
-        
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
+    
     NSError *error;
-        
+    
     [self.listOfStudents addObjectsFromArray:[self.managedObjectContext executeFetchRequest:fetchRequest error:&error]];
-        
+    
+    
+    
+    self.listOfParents = [[NSMutableArray alloc] init];
+    
+    NSFetchRequest *parentFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Parent"];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"emailAddress" ascending:YES]];
+    
+    NSError *parentError;
+    
+    [self.listOfParents addObjectsFromArray:[self.managedObjectContext executeFetchRequest:parentFetchRequest error:&parentError]];
 }
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self fetchStudents];
+    [self fetchStudentAndParents];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
@@ -104,7 +161,7 @@
 - (void)handleDataModelChange:(NSNotification *)note
 {
         
-    [self fetchStudents];
+    [self fetchStudentAndParents];
         
     [self.studentCollectionView reloadData];
 }

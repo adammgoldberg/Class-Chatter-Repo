@@ -56,19 +56,30 @@
     self.lastNameText.text = @"";
     self.parentTitleText.text = @"";
     self.emailAddressText.text = @"";
+    self.studentClassText.text = @"";
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
-
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.firstNameText.delegate = self;
+    self.lastNameText.delegate = self;
+    self.parentTitleText.delegate = self;
+    self.emailAddressText.delegate = self;
+    self.studentClassText.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {

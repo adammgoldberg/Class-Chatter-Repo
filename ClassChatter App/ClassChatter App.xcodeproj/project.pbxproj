@@ -139,22 +139,7 @@
 		065DBCD71BDE8DB100CCAF94 /* ClassChatter App */ = {
 			isa = PBXGroup;
 			children = (
-				065DBD0E1BDE936400CCAF94 /* Teacher+CoreDataProperties.h */,
-				065DBD0F1BDE936400CCAF94 /* Teacher+CoreDataProperties.m */,
-				065DBD101BDE936400CCAF94 /* Teacher.h */,
-				065DBD111BDE936400CCAF94 /* Teacher.m */,
-				065DBD121BDE936400CCAF94 /* Parent+CoreDataProperties.h */,
-				065DBD131BDE936400CCAF94 /* Parent+CoreDataProperties.m */,
-				065DBD141BDE936400CCAF94 /* Parent.h */,
-				065DBD151BDE936400CCAF94 /* Parent.m */,
-				065DBD161BDE936400CCAF94 /* SchoolClass+CoreDataProperties.h */,
-				065DBD171BDE936400CCAF94 /* SchoolClass+CoreDataProperties.m */,
-				065DBD181BDE936400CCAF94 /* SchoolClass.h */,
-				065DBD191BDE936400CCAF94 /* SchoolClass.m */,
-				065DBD1A1BDE936400CCAF94 /* Student+CoreDataProperties.h */,
-				065DBD1B1BDE936400CCAF94 /* Student+CoreDataProperties.m */,
-				065DBD1C1BDE936400CCAF94 /* Student.h */,
-				065DBD1D1BDE936400CCAF94 /* Student.m */,
+				065DBD351BDEFD7600CCAF94 /* Entities */,
 				065DBCDB1BDE8DB100CCAF94 /* AppDelegate.h */,
 				065DBCDC1BDE8DB100CCAF94 /* AppDelegate.m */,
 				065DBCE11BDE8DB100CCAF94 /* Main.storyboard */,
@@ -201,6 +186,29 @@
 				065DBD021BDE8DB200CCAF94 /* Info.plist */,
 			);
 			path = "ClassChatter AppUITests";
+			sourceTree = "<group>";
+		};
+		065DBD351BDEFD7600CCAF94 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				065DBD0E1BDE936400CCAF94 /* Teacher+CoreDataProperties.h */,
+				065DBD0F1BDE936400CCAF94 /* Teacher+CoreDataProperties.m */,
+				065DBD101BDE936400CCAF94 /* Teacher.h */,
+				065DBD111BDE936400CCAF94 /* Teacher.m */,
+				065DBD121BDE936400CCAF94 /* Parent+CoreDataProperties.h */,
+				065DBD131BDE936400CCAF94 /* Parent+CoreDataProperties.m */,
+				065DBD141BDE936400CCAF94 /* Parent.h */,
+				065DBD151BDE936400CCAF94 /* Parent.m */,
+				065DBD161BDE936400CCAF94 /* SchoolClass+CoreDataProperties.h */,
+				065DBD171BDE936400CCAF94 /* SchoolClass+CoreDataProperties.m */,
+				065DBD181BDE936400CCAF94 /* SchoolClass.h */,
+				065DBD191BDE936400CCAF94 /* SchoolClass.m */,
+				065DBD1A1BDE936400CCAF94 /* Student+CoreDataProperties.h */,
+				065DBD1B1BDE936400CCAF94 /* Student+CoreDataProperties.m */,
+				065DBD1C1BDE936400CCAF94 /* Student.h */,
+				065DBD1D1BDE936400CCAF94 /* Student.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -572,6 +580,7 @@
 				065DBD071BDE8DB200CCAF94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		065DBD081BDE8DB200CCAF94 /* Build configuration list for PBXNativeTarget "ClassChatter AppTests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +589,7 @@
 				065DBD0A1BDE8DB200CCAF94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		065DBD0B1BDE8DB200CCAF94 /* Build configuration list for PBXNativeTarget "ClassChatter AppUITests" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +598,7 @@
 				065DBD0D1BDE8DB200CCAF94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

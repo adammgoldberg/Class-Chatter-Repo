@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Students-->
         <scene sceneID="TSQ-AL-YOi">
             <objects>
                 <viewController id="Edq-lz-hBt" customClass="ClassInfoViewController" sceneMemberID="viewController">
@@ -124,7 +124,7 @@
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="tqZ-4b-qo7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="yYa-iB-WNe"/>
+                    <tabBarItem key="tabBarItem" title="Students" image="Person" id="yYa-iB-WNe"/>
                     <connections>
                         <outlet property="classInfoSeg" destination="ZVZ-2d-emb" id="kWm-pQ-dBc"/>
                         <outlet property="classInfoTableView" destination="XJV-vS-zKm" id="tgZ-Eg-rnU"/>
@@ -133,6 +133,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOH-lW-kYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="542" y="587"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qd1-Ng-WLy">
+            <objects>
+                <viewController id="2Zy-DY-ZMG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yll-r5-tXV"/>
+                        <viewControllerLayoutGuide type="bottom" id="rQI-u7-SC9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2xs-c8-bdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="ScN-Er-ocp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KnZ-NO-qOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-208" y="1055"/>
         </scene>
         <!--Modal View Controller-->
         <scene sceneID="251-Ud-u0r">
@@ -214,7 +233,7 @@
             </objects>
             <point key="canvasLocation" x="1206" y="595"/>
         </scene>
-        <!--Item 1-->
+        <!--Classroom-->
         <scene sceneID="tgv-JX-ueS">
             <objects>
                 <viewController id="WYa-IU-QcO" customClass="ClassRoomViewController" sceneMemberID="viewController">
@@ -297,7 +316,7 @@
                             <constraint firstItem="CyU-Wj-q5I" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="8" id="sJl-33-Q0t"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Keh-zM-Yo9"/>
+                    <tabBarItem key="tabBarItem" title="Classroom" image="750-home-selected" id="Keh-zM-Yo9"/>
                     <connections>
                         <outlet property="classSeg" destination="CyU-Wj-q5I" id="Foa-Iw-HKp"/>
                         <outlet property="studentCollectionView" destination="gcz-FJ-VFL" id="xai-uU-d5G"/>
@@ -311,14 +330,18 @@
         <scene sceneID="w6W-hB-Kqu">
             <objects>
                 <tabBarController id="DJX-Bj-dMy" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="cFq-f7-7bV">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="cFq-f7-7bV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.1807895091" green="0.53088185170000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.47310889169999998" green="1" blue="0.9937707791" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.687074721" blue="0.1017020528" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.47310889169999998" green="1" blue="0.9937707791" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="WYa-IU-QcO" kind="relationship" relationship="viewControllers" id="yAT-bJ-k81"/>
                         <segue destination="Edq-lz-hBt" kind="relationship" relationship="viewControllers" id="0c9-R1-CRU"/>
+                        <segue destination="2Zy-DY-ZMG" kind="relationship" relationship="viewControllers" id="J8J-ID-cKZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i99-dr-TyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,4 +349,8 @@
             <point key="canvasLocation" x="-278" y="257"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="750-home-selected" width="28" height="28"/>
+        <image name="Person" width="26" height="24"/>
+    </resources>
 </document>
