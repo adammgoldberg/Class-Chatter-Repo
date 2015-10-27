@@ -11,6 +11,7 @@
 #import "ClassInfoViewController.h"
 #import "Student.h"
 #import "Parent.h"
+#import "Misbehaviour.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
@@ -24,6 +25,8 @@
 
 @property (strong, nonatomic) NSMutableArray *listOfParents;
 
+@property (strong, nonatomic) NSMutableArray *listOfMisbehaviour;
+
 
 @end
 
@@ -31,23 +34,24 @@
 
 
 
-- (IBAction)actionEmailComposer
-{
-    
-}
-
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Misbehaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Misbehaviour" inManagedObjectContext:self.managedObjectContext];
+    misbehaviour.time = [NSDate date];
     Student *theStudent = self.listOfStudents[indexPath.row];
     Parent *theParent = [theStudent.parents anyObject];
+    [theStudent addMisbehaviourObject:misbehaviour];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
     NSInteger numberOfTaps = [theStudent.numberOfDisruptions integerValue];
     numberOfTaps = numberOfTaps + 1;
     NSNumber *newNumber = [NSNumber numberWithInteger:numberOfTaps];
     theStudent.numberOfDisruptions = newNumber;
     
     
-    [self fetchStudentAndParents];
+    [self fetchStudentAndParentsAndMisBehaviour];
     
     if (numberOfTaps == 7) {
         if ([MFMailComposeViewController canSendMail]) {
@@ -119,7 +123,7 @@
 
 
 
--(void)fetchStudentAndParents
+-(void)fetchStudentAndParentsAndMisBehaviour
 {
     self.listOfStudents = [[NSMutableArray alloc] init];
     
@@ -141,6 +145,18 @@
     NSError *parentError;
     
     [self.listOfParents addObjectsFromArray:[self.managedObjectContext executeFetchRequest:parentFetchRequest error:&parentError]];
+    
+    
+    
+    self.listOfMisbehaviour = [[NSMutableArray alloc] init];
+    
+    NSFetchRequest *misbehaviourFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Misbehaviour"];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
+    
+    NSError *misbehaviourError;
+    
+    [self.listOfMisbehaviour addObjectsFromArray:[self.managedObjectContext executeFetchRequest:misbehaviourFetchRequest error:&misbehaviourError]];
+    
 }
 
 
@@ -150,7 +166,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self fetchStudentAndParents];
+    [self fetchStudentAndParentsAndMisBehaviour];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
@@ -162,11 +178,16 @@
 - (void)handleDataModelChange:(NSNotification *)note
 {
         
-    [self fetchStudentAndParents];
+    [self fetchStudentAndParentsAndMisBehaviour];
         
     [self.studentCollectionView reloadData];
 }
-     
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

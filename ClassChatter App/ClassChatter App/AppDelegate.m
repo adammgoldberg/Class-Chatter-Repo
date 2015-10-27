@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ClassRoomViewController.h"
 #import "ClassInfoViewController.h"
+#import "HistoryViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +23,10 @@
     UITabBarController *tabBarController = (UITabBarController*) self.window.rootViewController;
     ClassRoomViewController *crvc = (ClassRoomViewController*)tabBarController.viewControllers[0];
     ClassInfoViewController *civc = (ClassInfoViewController*)tabBarController.viewControllers[1];
+    HistoryViewController *hvc = (HistoryViewController*)tabBarController.viewControllers[2];
     crvc.managedObjectContext = self.managedObjectContext;
     civc.managedObjectContext = self.managedObjectContext;
+    hvc.managedObjectContext = self.managedObjectContext;
     
     
     return YES;

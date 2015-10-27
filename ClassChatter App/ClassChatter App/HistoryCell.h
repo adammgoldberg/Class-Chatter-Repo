@@ -10,4 +10,14 @@
 
 @interface HistoryCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *historyFirstLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *historyLastLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *historyTimeLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *historyGradeLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *historyDisruptionLabel;
+
 @end
