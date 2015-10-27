@@ -32,6 +32,18 @@
 
 @implementation ClassRoomViewController
 
+- (IBAction)resetNumbers:(id)sender
+{
+    for (Student *aStudent in self.listOfStudents) {
+        aStudent.numberOfDisruptions = 0;
+    }
+    [self.studentCollectionView reloadData];
+    
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    
+}
 
 
 
@@ -53,13 +65,13 @@
     
     [self fetchStudentAndParentsAndMisBehaviour];
     
-    if (numberOfTaps == 7) {
+    if (numberOfTaps == 3) {
         if ([MFMailComposeViewController canSendMail]) {
             
             MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
             [mailViewController setSubject:@"Misbehaviour in class."];
-            [mailViewController setMessageBody:[NSString stringWithFormat:@"Dear %@ %@,\n\nI wanted to inform you that %@ disrupted class 3 times today. It would be greatly appreciated if you could please remind %@ the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely, Mr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service", theParent.title, theStudent.lastName, theStudent.firstName, theStudent.firstName] isHTML:NO];
+            [mailViewController setMessageBody:[NSString stringWithFormat:@"Dear %@ %@,\n\nI wanted to inform you that %@ disrupted class 3 times today. It would be greatly appreciated if you could please remind %@ the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nMr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service", theParent.title, theStudent.lastName, theStudent.firstName, theStudent.firstName] isHTML:NO];
             [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
             
             [self presentViewController:mailViewController animated:YES completion:nil];

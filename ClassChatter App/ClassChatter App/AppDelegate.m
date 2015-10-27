@@ -24,6 +24,8 @@
     ClassRoomViewController *crvc = (ClassRoomViewController*)tabBarController.viewControllers[0];
     ClassInfoViewController *civc = (ClassInfoViewController*)tabBarController.viewControllers[1];
     HistoryViewController *hvc = (HistoryViewController*)tabBarController.viewControllers[2];
+//    UINavigationController *navc = tabBarController.viewControllers[2];
+//    HistoryViewController *nhvc = [navc.viewControllers firstObject];
     crvc.managedObjectContext = self.managedObjectContext;
     civc.managedObjectContext = self.managedObjectContext;
     hvc.managedObjectContext = self.managedObjectContext;

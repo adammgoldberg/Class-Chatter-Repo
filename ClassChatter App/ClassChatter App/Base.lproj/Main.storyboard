@@ -105,7 +105,7 @@
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3W-0G-2Oq">
-                                <rect key="frame" x="452" y="76" width="86" height="30"/>
+                                <rect key="frame" x="257" y="77" width="86" height="30"/>
                                 <state key="normal" title="Add Student"/>
                                 <connections>
                                     <segue destination="6nv-Cu-I0w" kind="presentation" identifier="showModal" id="9sv-sL-S4G"/>
@@ -114,15 +114,25 @@
                         </subviews>
                         <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="62" id="1hX-8e-a87"/>
-                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="27" id="5TA-Dp-WTQ"/>
+                            <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="257" id="1hX-8e-a87"/>
+                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="25" id="5TA-Dp-WTQ"/>
                             <constraint firstAttribute="trailing" secondItem="XJV-vS-zKm" secondAttribute="trailing" id="NCI-gE-Mmx"/>
+                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="26" id="NHP-AH-SP7"/>
                             <constraint firstItem="pET-nN-FTS" firstAttribute="top" secondItem="XJV-vS-zKm" secondAttribute="bottom" constant="17" id="XuA-1B-LmF"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="i4V-N8-S2f"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="kJO-X0-Dez"/>
-                            <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="56" id="rGs-Of-dMM"/>
+                            <constraint firstItem="S3W-0G-2Oq" firstAttribute="centerX" secondItem="ZVZ-2d-emb" secondAttribute="centerX" id="kVw-5p-514"/>
+                            <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="21" id="r8b-Fz-fA3"/>
+                            <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="58" id="rGs-Of-dMM"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="tqZ-4b-qo7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5TA-Dp-WTQ"/>
+                                <exclude reference="1hX-8e-a87"/>
+                                <exclude reference="rGs-Of-dMM"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Students" image="Person" id="yYa-iB-WNe"/>
                     <connections>
@@ -147,11 +157,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8uM-8i-VSf">
-                                <rect key="frame" x="0.0" y="30" width="600" height="511"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="61" width="600" height="480"/>
+                                <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="l2i-cc-OV6">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="2Zy-DY-ZMG" id="SBs-c9-Gda"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" id="9EL-YQ-lDr" customClass="HistoryCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9EL-YQ-lDr" id="VDd-N8-jjM">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -215,21 +233,41 @@
                                     <outlet property="delegate" destination="2Zy-DY-ZMG" id="j65-JK-lCa"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Behaviour History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52Y-PP-AV3">
+                                <rect key="frame" x="200" y="28" width="201" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8uM-8i-VSf" firstAttribute="leading" secondItem="2xs-c8-bdC" secondAttribute="leading" id="2GD-e5-Pxc"/>
+                            <constraint firstItem="52Y-PP-AV3" firstAttribute="centerX" secondItem="2xs-c8-bdC" secondAttribute="centerX" id="AIv-4m-UyP"/>
                             <constraint firstItem="rQI-u7-SC9" firstAttribute="top" secondItem="8uM-8i-VSf" secondAttribute="bottom" constant="10" id="Ei9-FW-izd"/>
                             <constraint firstAttribute="trailing" secondItem="8uM-8i-VSf" secondAttribute="trailing" id="e0u-zN-JD0"/>
-                            <constraint firstItem="8uM-8i-VSf" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" constant="10" id="wsS-hx-7n2"/>
+                            <constraint firstItem="52Y-PP-AV3" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" constant="8" id="wDC-88-Zjg"/>
+                            <constraint firstItem="8uM-8i-VSf" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" constant="41" id="wsS-hx-7n2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="history" id="ScN-Er-ocp"/>
                     <connections>
+                        <outlet property="searchBar" destination="l2i-cc-OV6" id="vZY-hG-tw5"/>
+                        <outlet property="searchDisplay" destination="XVD-LE-FRy" id="Ojd-jN-glM"/>
+                        <outlet property="searchDisplayController" destination="XVD-LE-FRy" id="Ct2-16-XVM"/>
                         <outlet property="tableViewHistory" destination="8uM-8i-VSf" id="j1s-z2-ejr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnZ-NO-qOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="XVD-LE-FRy">
+                    <connections>
+                        <outlet property="delegate" destination="2Zy-DY-ZMG" id="MJb-pT-i3Y"/>
+                        <outlet property="searchBar" destination="l2i-cc-OV6" id="eL8-bd-Lz4"/>
+                        <outlet property="searchContentsController" destination="2Zy-DY-ZMG" id="KCz-Gi-aBI"/>
+                        <outlet property="searchResultsDataSource" destination="2Zy-DY-ZMG" id="0EL-kq-f7N"/>
+                        <outlet property="searchResultsDelegate" destination="2Zy-DY-ZMG" id="O3O-AX-8ky"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-208" y="1055"/>
         </scene>
@@ -277,8 +315,8 @@
                                     <action selector="cancelAdd:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="RcX-hG-NA8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbA-dh-u67">
-                                <rect key="frame" x="256" y="459" width="86" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbA-dh-u67">
+                                <rect key="frame" x="257" y="435" width="86" height="30"/>
                                 <state key="normal" title="Add Student"/>
                                 <connections>
                                     <action selector="addAStudent:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="ufs-ui-J5Q"/>
@@ -288,10 +326,12 @@
                         <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="v0B-HA-zlx" firstAttribute="centerX" secondItem="7fX-KN-HH8" secondAttribute="centerX" id="BDu-sx-tGZ"/>
+                            <constraint firstItem="dbA-dh-u67" firstAttribute="top" secondItem="zsf-eP-7Fx" secondAttribute="bottom" constant="34" id="C3O-py-vTF"/>
                             <constraint firstItem="c0l-ZP-sW6" firstAttribute="top" secondItem="AK9-Ng-duJ" secondAttribute="bottom" constant="35" id="K3d-Et-AZq"/>
                             <constraint firstItem="zsf-eP-7Fx" firstAttribute="centerX" secondItem="c0l-ZP-sW6" secondAttribute="centerX" id="QsR-ou-8cU"/>
                             <constraint firstItem="AK9-Ng-duJ" firstAttribute="top" secondItem="v0B-HA-zlx" secondAttribute="bottom" constant="30" id="ThD-Wm-gxU"/>
                             <constraint firstItem="AK9-Ng-duJ" firstAttribute="centerX" secondItem="v0B-HA-zlx" secondAttribute="centerX" id="TiG-3Z-Bpz"/>
+                            <constraint firstItem="dbA-dh-u67" firstAttribute="centerX" secondItem="zsf-eP-7Fx" secondAttribute="centerX" id="ZOB-8l-Bqi"/>
                             <constraint firstItem="c0l-ZP-sW6" firstAttribute="centerX" secondItem="AK9-Ng-duJ" secondAttribute="centerX" id="a34-mZ-z4o"/>
                             <constraint firstItem="zsf-eP-7Fx" firstAttribute="top" secondItem="c0l-ZP-sW6" secondAttribute="bottom" constant="34" id="b18-W6-C82"/>
                             <constraint firstItem="7fX-KN-HH8" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="99" id="fxZ-NX-EPh"/>
@@ -327,7 +367,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gcz-FJ-VFL">
                                 <rect key="frame" x="20" y="95" width="560" height="425"/>
-                                <color key="backgroundColor" red="0.88570299240000006" green="1" blue="0.47886434049999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dp8-vR-42v">
                                     <size key="itemSize" width="108" height="106"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -378,8 +418,15 @@
                                     <outlet property="delegate" destination="WYa-IU-QcO" id="sXO-CB-QQ3"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TX7-cq-edh">
+                                <rect key="frame" x="474" y="28" width="106" height="30"/>
+                                <state key="normal" title="Reset Numbers"/>
+                                <connections>
+                                    <action selector="resetNumbers:" destination="WYa-IU-QcO" eventType="touchUpInside" id="MyT-dh-T1Q"/>
+                                </connections>
+                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CyU-Wj-q5I">
-                                <rect key="frame" x="241" y="28" width="119" height="29"/>
+                                <rect key="frame" x="34" y="28" width="119" height="29"/>
                                 <segments>
                                     <segment title="Class 1"/>
                                     <segment title="Class 2"/>
@@ -390,11 +437,21 @@
                         <constraints>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="75" id="Btm-53-Enn"/>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="centerX" secondItem="Xw1-Fa-dgt" secondAttribute="centerX" id="F9d-zT-hag"/>
+                            <constraint firstItem="CyU-Wj-q5I" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="8" id="LgT-p5-GMl"/>
+                            <constraint firstAttribute="trailing" secondItem="TX7-cq-edh" secondAttribute="trailing" constant="20" id="NNO-7S-CEy"/>
+                            <constraint firstItem="TX7-cq-edh" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="8" id="bgx-l5-V0f"/>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="trailing" secondItem="Xw1-Fa-dgt" secondAttribute="trailingMargin" id="fcQ-L6-d93"/>
                             <constraint firstItem="CyU-Wj-q5I" firstAttribute="centerX" secondItem="Xw1-Fa-dgt" secondAttribute="centerX" id="gYe-Xu-dSj"/>
                             <constraint firstItem="I99-YZ-Nb6" firstAttribute="top" secondItem="gcz-FJ-VFL" secondAttribute="bottom" constant="31" id="ksu-dW-RLF"/>
                             <constraint firstItem="CyU-Wj-q5I" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="8" id="sJl-33-Q0t"/>
+                            <constraint firstItem="CyU-Wj-q5I" firstAttribute="leading" secondItem="Xw1-Fa-dgt" secondAttribute="leading" constant="34" id="wKh-9B-ufM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gYe-Xu-dSj"/>
+                                <exclude reference="sJl-33-Q0t"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Classroom" image="750-home-selected" id="Keh-zM-Yo9"/>
                     <connections>
@@ -410,12 +467,11 @@
         <scene sceneID="w6W-hB-Kqu">
             <objects>
                 <tabBarController id="DJX-Bj-dMy" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="cFq-f7-7bV">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="cFq-f7-7bV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.47310889169999998" green="1" blue="0.9937707791" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="1" green="0.687074721" blue="0.1017020528" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" red="0.47310889169999998" green="1" blue="0.9937707791" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>

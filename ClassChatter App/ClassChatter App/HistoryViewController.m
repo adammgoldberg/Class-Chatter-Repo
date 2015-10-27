@@ -11,14 +11,27 @@
 #import "Student.h"
 #import "Misbehaviour.h"
 
-@interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
+
+
+
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchDisplay;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableViewHistory;
 
 @property (strong, nonatomic) NSMutableArray *listOfStudents;
 
 @property (strong, nonatomic) NSMutableArray *listOfMisbehaviour;
+
+
+@property (strong, nonatomic) NSMutableArray *filteredMisbehaviour;
+
+@property (assign, nonatomic) BOOL isSearching;
+
+
 
 
 @end
@@ -30,20 +43,85 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.listOfMisbehaviour.count;
+    if (self.isSearching) {
+        return self.filteredMisbehaviour.count;
+    }
+    else {
+        return self.listOfMisbehaviour.count;
+    }
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryCell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
+    
+    HistoryCell *cell = [self.tableViewHistory dequeueReusableCellWithIdentifier:@"HistoryCell" forIndexPath:indexPath];
+
+    if (self.isSearching) {
+        [self configureCell:cell withMisbehaviour:[self.filteredMisbehaviour objectAtIndex:indexPath.row]];
+         }
+    else {
+             [self configureCell:cell withMisbehaviour:[self.listOfMisbehaviour objectAtIndex:indexPath.row]];
+         }
+    
     return cell;
+    
 }
 
--(void)configureCell:(HistoryCell*)cell atIndexPath:(NSIndexPath*)indexPath
+- (void)searchTableList {
+    NSString *searchString = self.searchBar.text;
+    
+    for (Misbehaviour *aMisbehaviour in self.listOfMisbehaviour) {
+        NSComparisonResult result = [aMisbehaviour.student.firstName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+        
+        NSComparisonResult result2 = [aMisbehaviour.student.lastName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+        
+        if (result == NSOrderedSame || result2 == NSOrderedSame) {
+            [self.filteredMisbehaviour addObject:aMisbehaviour];
+        }
+    }
+}
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"Text change - %d",self.isSearching);
+    
+    //Remove all objects first.
+    [self.filteredMisbehaviour removeAllObjects];
+    
+    if([searchText length] != 0) {
+        self.isSearching = YES;
+        [self searchTableList];
+    }
+    else {
+        self.isSearching = NO;
+    }
+     [self.tableViewHistory reloadData];
+    
+    // There is still an issue that one of the search results is hidden...
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Cancel clicked");
+    self.isSearching = NO;
+    [self.tableViewHistory reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [self searchTableList];
+}
+
+
+
+
+-(void)configureCell:(HistoryCell*)cell withMisbehaviour:(Misbehaviour*)misbehaviour
 {
-    Misbehaviour *misbehaviour = self.listOfMisbehaviour[indexPath.row];
     Student *student = misbehaviour.student;
     cell.historyFirstLabel.text = student.firstName;
     cell.historyLastLabel.text = student.lastName;
@@ -56,10 +134,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+// Ken added this code, but it wasn't necessary in the end
+// self.searchDisplayController.searchResultsTableView = self.tableViewHistory;
+// [self.searchDisplayController.searchResultsTableView registerClass:[HistoryCell class]forCellReuseIdentifier:@"HistoryCell"];
     
     [self fetchStudentAndMisbehaviour];
     
+    self.filteredMisbehaviour = [[NSMutableArray alloc] init];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
+    
+
 }
 
 
