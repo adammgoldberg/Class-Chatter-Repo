@@ -36,15 +36,82 @@
 
 
 
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.classInfoTableView.delegate = self;
+    
+    [self fetchStudentAndParentsAndClasses];
+    
+    [self rebuildInfoSegControl];
+    
+    [self.classInfoSeg setSelectedSegmentIndex:0];
+    [self classInfoSelected:self.classInfoSeg];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
+    
+}
+
+
+
+//-(void)viewDidAppear:(BOOL)animated
 //{
-//    [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
-//    [self.currentInfoClass removeObjectAtIndex:indexPath.row];
+//    [super viewDidAppear:animated];
+//    
 //    [self.classInfoTableView reloadData];
-//    NSError *error;
-//    [self.managedObjectContext save:&error];
 //}
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSInteger selectedIndex = [self.classInfoSeg selectedSegmentIndex];
+    if (selectedIndex == -1) {
+        [self.classInfoSeg setSelectedSegmentIndex:0];
+        selectedIndex = 0;
+    }
+    NSString *titleString = [self.classInfoSeg titleForSegmentAtIndex:selectedIndex];
+    NSInteger titleAsInt = [titleString integerValue];
+    self.currentInfoClass = [[NSMutableArray alloc] init];
+    for (Student *student in self.listOfStudents) {
+        if (student.schoolClass.grade.integerValue == titleAsInt) { [self.currentInfoClass addObject:student]; }
+    }
+    [self.classInfoTableView reloadData];
+}
+
+
+
+- (void)handleDataModelChange:(NSNotification *)note
+{
+
+    [self fetchStudentAndParentsAndClasses];
+    
+    [self.classInfoTableView reloadData];
+    
+    [self rebuildInfoSegControl];
+}
+
+
+
+
+
+#pragma mark - buttons
+
+
+- (IBAction)classInfoSelected:(UISegmentedControl *)sender
+{
+    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+    self.currentInfoClass = [[NSMutableArray alloc] init];
+    for (Student *student in self.listOfStudents) {
+        if (student.schoolClass.grade.integerValue == grade) {
+            [self.currentInfoClass addObject:student];
+        }
+    }
+    [self.classInfoTableView reloadData];
+}
 
 
 
@@ -61,6 +128,11 @@
 }
 
 
+
+
+
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showModal"]) {
@@ -71,6 +143,8 @@
 
 
 
+
+#pragma mark - tableview and swipe
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -115,7 +189,7 @@
     }
     
     
-
+    
     NSError *error;
     [self.managedObjectContext save:&error];
     
@@ -127,57 +201,6 @@
 
 
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.classInfoTableView.delegate = self;
-    
-    [self fetchStudentAndParentsAndClasses];
-    
-    [self rebuildInfoSegControl];
-    
-    [self.classInfoSeg setSelectedSegmentIndex:0];
-    [self classInfoSelected:self.classInfoSeg];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
-    
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self.classInfoTableView reloadData];
-}
-
-- (IBAction)classInfoSelected:(UISegmentedControl *)sender
-{
-    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
-    self.currentInfoClass = [[NSMutableArray alloc] init];
-    for (Student *student in self.listOfStudents) {
-        if (student.schoolClass.grade.integerValue == grade) {
-            [self.currentInfoClass addObject:student];
-        }
-    }
-    [self.classInfoTableView reloadData];
-}
-
-
-
-
-
-- (void)handleDataModelChange:(NSNotification *)note
-{
-
-    [self fetchStudentAndParentsAndClasses];
-    
-    [self.classInfoTableView reloadData];
-    
-    [self rebuildInfoSegControl];
-}
 
 
 #pragma mark - fetches

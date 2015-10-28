@@ -39,129 +39,6 @@
 
 @implementation ClassRoomViewController
 
-- (IBAction)resetNumbers:(id)sender
-{
-    for (Student *aStudent in self.currentClass) {
-        aStudent.numberOfDisruptions = 0;
-    }
-    [self.studentCollectionView reloadData];
-    
-    NSError *error;
-    [self.managedObjectContext save:&error];
-
-}
-
-
-- (IBAction)classSelected:(UISegmentedControl *)sender {
-//    [self createCurrentClassSegIndex:[[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue]];
-    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
-    self.currentClass = [[NSMutableArray alloc] init];
-    for (Student *student in self.listOfStudents) {
-        if (student.schoolClass.grade.integerValue == grade) {
-            [self.currentClass addObject:student];
-        }
-    }
-    [self.studentCollectionView reloadData];
-}
-
-//- (void)createCurrentClassSegIndex:(NSInteger)index {
-//    self.currentClass = [[NSMutableArray alloc] init];
-//    for (Student *student in self.listOfStudents) {
-//        if (student.schoolClass.grade.integerValue == index+1) {
-//            [self.currentClass addObject:student];
-//        }
-//    }
-//    [self.studentCollectionView reloadData];
-//}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    Misbehaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Misbehaviour" inManagedObjectContext:self.managedObjectContext];
-    misbehaviour.time = [NSDate date];
-    Student *theStudent = self.currentClass[indexPath.row];
-    Parent *theParent = [theStudent.parents anyObject];
-    [theStudent addMisbehaviourObject:misbehaviour];
-    NSError *error;
-    [self.managedObjectContext save:&error];
-    
-    NSInteger numberOfTaps = [theStudent.numberOfDisruptions integerValue];
-    numberOfTaps = numberOfTaps + 1;
-    NSNumber *newNumber = [NSNumber numberWithInteger:numberOfTaps];
-    theStudent.numberOfDisruptions = newNumber;
-    
-    
-    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
-    
-    if (numberOfTaps == 3) {
-        if ([MFMailComposeViewController canSendMail]) {
-            
-            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-            mailViewController.mailComposeDelegate = self;
-            [mailViewController setSubject:@"Misbehaviour in class."];
-            [mailViewController setMessageBody:[NSString stringWithFormat:@"Dear %@ %@,\n\nI wanted to inform you that %@ disrupted class 3 times today. It would be greatly appreciated if you could please remind %@ the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nMr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service", theParent.title, theStudent.lastName, theStudent.firstName, theStudent.firstName] isHTML:NO];
-            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
-            
-            [self presentViewController:mailViewController animated:YES completion:nil];
-    
-        }
-        
-        else {
-            NSLog(@"Device can't send emails");
-        }
-    
-        [self.managedObjectContext save:&error];
-    
-    }
-}
-    
-
--(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult: (MFMailComposeResult)result error:(NSError*)error
-{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-        
-}
-
-
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.currentClass.count;
-}
-
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    StudentDeskCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StudentDeskCell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-
--(void)configureCell:(StudentDeskCell*)cell atIndexPath:(NSIndexPath*)indexPath
-{
-    Student *student = self.currentClass[indexPath.row];
-    cell.studentNameLabel.text = student.firstName;
-    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%d", [student.numberOfDisruptions integerValue]];
-    NSInteger numberOfTaps = [student.numberOfDisruptions integerValue];
-    
-    if (numberOfTaps == 1) {
-        cell.backgroundColor = [UIColor yellowColor];
-    } else if (numberOfTaps == 2) {
-        cell.backgroundColor = [UIColor orangeColor];
-    } else if (numberOfTaps >= 3) {
-        cell.backgroundColor = [UIColor redColor];
-    } else {
-        cell.backgroundColor = [UIColor greenColor];
-    }
-    
-    
-
-}
-     
-
-
 
 
 - (void)viewDidLoad {
@@ -200,18 +77,7 @@
 }
 
 
-- (void) rebuildSegControl;
-{
-    [self.classSeg removeAllSegments];
-    
-    if (self.listOfSchoolClasses.count > 0) {
-        for (SchoolClass *schoolClass in self.listOfSchoolClasses) {
-            [self.classSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
-        }
-    } else {
-        [self.classSeg insertSegmentWithTitle:@"Class" atIndex:0 animated:true];
-    }
-}
+
 
 - (void)handleDataModelChange:(NSNotification *)note
 {
@@ -227,6 +93,141 @@
     
     [self rebuildSegControl];
 }
+
+#pragma mark - buttons and segs
+
+- (IBAction)resetNumbers:(id)sender
+{
+    for (Student *aStudent in self.currentClass) {
+        aStudent.numberOfDisruptions = 0;
+    }
+    [self.studentCollectionView reloadData];
+    
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+}
+
+
+- (IBAction)classSelected:(UISegmentedControl *)sender {
+
+    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+    self.currentClass = [[NSMutableArray alloc] init];
+    for (Student *student in self.listOfStudents) {
+        if (student.schoolClass.grade.integerValue == grade) {
+            [self.currentClass addObject:student];
+        }
+    }
+    [self.studentCollectionView reloadData];
+}
+
+- (void) rebuildSegControl;
+{
+    [self.classSeg removeAllSegments];
+    
+    if (self.listOfSchoolClasses.count > 0) {
+        for (SchoolClass *schoolClass in self.listOfSchoolClasses) {
+            [self.classSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
+        }
+    } else {
+        [self.classSeg insertSegmentWithTitle:@"Class" atIndex:0 animated:true];
+    }
+}
+
+
+
+
+#pragma mark - collectionview
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Misbehaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Misbehaviour" inManagedObjectContext:self.managedObjectContext];
+    misbehaviour.time = [NSDate date];
+    Student *theStudent = self.currentClass[indexPath.row];
+    Parent *theParent = [theStudent.parents anyObject];
+    [theStudent addMisbehaviourObject:misbehaviour];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    NSInteger numberOfTaps = [theStudent.numberOfDisruptions integerValue];
+    numberOfTaps = numberOfTaps + 1;
+    NSNumber *newNumber = [NSNumber numberWithInteger:numberOfTaps];
+    theStudent.numberOfDisruptions = newNumber;
+    
+    
+    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
+    
+    if (numberOfTaps == 3) {
+        if ([MFMailComposeViewController canSendMail]) {
+            
+            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+            mailViewController.mailComposeDelegate = self;
+            [mailViewController setSubject:@"Misbehaviour in class."];
+            [mailViewController setMessageBody:[NSString stringWithFormat:@"Dear %@ %@,\n\nI wanted to inform you that %@ disrupted class 3 times today. It would be greatly appreciated if you could please remind %@ the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nMr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service", theParent.title, theStudent.lastName, theStudent.firstName, theStudent.firstName] isHTML:NO];
+            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
+            
+            [self presentViewController:mailViewController animated:YES completion:nil];
+            
+        }
+        
+        else {
+            NSLog(@"Device can't send emails");
+        }
+        
+        [self.managedObjectContext save:&error];
+        
+    }
+}
+
+
+-(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult: (MFMailComposeResult)result error:(NSError*)error
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.currentClass.count;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    StudentDeskCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StudentDeskCell" forIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+
+-(void)configureCell:(StudentDeskCell*)cell atIndexPath:(NSIndexPath*)indexPath
+{
+    Student *student = self.currentClass[indexPath.row];
+    cell.studentNameLabel.text = student.firstName;
+    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%d", [student.numberOfDisruptions integerValue]];
+    NSInteger numberOfTaps = [student.numberOfDisruptions integerValue];
+    
+    if (numberOfTaps == 1) {
+        cell.backgroundColor = [UIColor yellowColor];
+    } else if (numberOfTaps == 2) {
+        cell.backgroundColor = [UIColor orangeColor];
+    } else if (numberOfTaps >= 3) {
+        cell.backgroundColor = [UIColor redColor];
+    } else {
+        cell.backgroundColor = [UIColor greenColor];
+    }
+    
+    
+    
+}
+
+
+
+
 
 #pragma mark - fetches
 

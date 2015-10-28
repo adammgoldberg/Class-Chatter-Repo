@@ -39,7 +39,34 @@
 @implementation HistoryViewController
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
 
+// Ken added this code, but it wasn't necessary in the end
+// self.searchDisplayController.searchResultsTableView = self.tableViewHistory;
+// [self.searchDisplayController.searchResultsTableView registerClass:[HistoryCell class]forCellReuseIdentifier:@"HistoryCell"];
+    
+    [self fetchStudentAndMisbehaviour];
+    
+    self.filteredMisbehaviour = [[NSMutableArray alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
+    
+
+}
+
+
+- (void)handleDataModelChange:(NSNotification *)note
+{
+    
+    [self fetchStudentAndMisbehaviour];
+    
+    [self.tableViewHistory reloadData];
+}
+
+
+#pragma mark - tableview and search
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -57,13 +84,13 @@
 {
     
     HistoryCell *cell = [self.tableViewHistory dequeueReusableCellWithIdentifier:@"HistoryCell" forIndexPath:indexPath];
-
+    
     if (self.isSearching) {
         [self configureCell:cell withMisbehaviour:[self.filteredMisbehaviour objectAtIndex:indexPath.row]];
-         }
+    }
     else {
-             [self configureCell:cell withMisbehaviour:[self.listOfMisbehaviour objectAtIndex:indexPath.row]];
-         }
+        [self configureCell:cell withMisbehaviour:[self.listOfMisbehaviour objectAtIndex:indexPath.row]];
+    }
     
     return cell;
     
@@ -101,7 +128,7 @@
     else {
         self.isSearching = NO;
     }
-     [self.tableViewHistory reloadData];
+    [self.tableViewHistory reloadData];
     
     // There is still an issue that one of the search results is hidden...
 }
@@ -128,44 +155,6 @@
     cell.historyDisruptionLabel.text = [NSString stringWithFormat:@"%@",student.numberOfDisruptions];
     cell.historyTimeLabel.text = [NSString stringWithFormat:@"%@",misbehaviour.time];
 }
-
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
-// Ken added this code, but it wasn't necessary in the end
-// self.searchDisplayController.searchResultsTableView = self.tableViewHistory;
-// [self.searchDisplayController.searchResultsTableView registerClass:[HistoryCell class]forCellReuseIdentifier:@"HistoryCell"];
-    
-    [self fetchStudentAndMisbehaviour];
-    
-    self.filteredMisbehaviour = [[NSMutableArray alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
-    
-
-}
-
-
-- (void)handleDataModelChange:(NSNotification *)note
-{
-    
-    [self fetchStudentAndMisbehaviour];
-    
-    [self.tableViewHistory reloadData];
-}
-
-
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 
 #pragma mark - fetches
@@ -197,14 +186,6 @@
 
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
