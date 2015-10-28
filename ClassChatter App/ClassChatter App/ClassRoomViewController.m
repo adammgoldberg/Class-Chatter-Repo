@@ -30,6 +30,10 @@
 
 @property (strong, nonatomic) NSMutableArray *listOfSchoolClasses;
 
+@property (strong, nonatomic) NSMutableArray *currentClass;
+
+@property (strong, nonatomic) NSArray *sortClass;
+
 
 @end
 
@@ -37,7 +41,7 @@
 
 - (IBAction)resetNumbers:(id)sender
 {
-    for (Student *aStudent in self.listOfStudents) {
+    for (Student *aStudent in self.currentClass) {
         aStudent.numberOfDisruptions = 0;
     }
     [self.studentCollectionView reloadData];
@@ -48,12 +52,33 @@
 }
 
 
+- (IBAction)classSelected:(UISegmentedControl *)sender {
+//    [self createCurrentClassSegIndex:[[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue]];
+    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+    self.currentClass = [[NSMutableArray alloc] init];
+    for (Student *student in self.listOfStudents) {
+        if (student.schoolClass.grade.integerValue == grade) {
+            [self.currentClass addObject:student];
+        }
+    }
+    [self.studentCollectionView reloadData];
+}
+
+//- (void)createCurrentClassSegIndex:(NSInteger)index {
+//    self.currentClass = [[NSMutableArray alloc] init];
+//    for (Student *student in self.listOfStudents) {
+//        if (student.schoolClass.grade.integerValue == index+1) {
+//            [self.currentClass addObject:student];
+//        }
+//    }
+//    [self.studentCollectionView reloadData];
+//}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     Misbehaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Misbehaviour" inManagedObjectContext:self.managedObjectContext];
     misbehaviour.time = [NSDate date];
-    Student *theStudent = self.listOfStudents[indexPath.row];
+    Student *theStudent = self.currentClass[indexPath.row];
     Parent *theParent = [theStudent.parents anyObject];
     [theStudent addMisbehaviourObject:misbehaviour];
     NSError *error;
@@ -84,7 +109,7 @@
             NSLog(@"Device can't send emails");
         }
     
-        [self.managedObjectContext save:NULL];
+        [self.managedObjectContext save:&error];
     
     }
 }
@@ -102,7 +127,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.listOfStudents.count;
+    return self.currentClass.count;
 }
 
 
@@ -116,7 +141,7 @@
 
 -(void)configureCell:(StudentDeskCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
-    Student *student = self.listOfStudents[indexPath.row];
+    Student *student = self.currentClass[indexPath.row];
     cell.studentNameLabel.text = student.firstName;
     cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%d", [student.numberOfDisruptions integerValue]];
     NSInteger numberOfTaps = [student.numberOfDisruptions integerValue];
@@ -130,6 +155,8 @@
     } else {
         cell.backgroundColor = [UIColor greenColor];
     }
+    
+    
 
 }
      
@@ -139,23 +166,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
     
     [self rebuildSegControl];
+    
+    [self.classSeg setSelectedSegmentIndex:0];
+    [self classSelected:self.classSeg];
+    
+
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
     
     
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSInteger selectedIndex = [self.classSeg selectedSegmentIndex];
+    if (selectedIndex == -1) {
+        [self.classSeg setSelectedSegmentIndex:0];
+        selectedIndex = 0;
+    }
+    NSString *titleString = [self.classSeg titleForSegmentAtIndex:selectedIndex];
+    NSInteger titleAsInt = [titleString integerValue];
+    self.currentClass = [[NSMutableArray alloc] init];
+    for (Student *student in self.listOfStudents) {
+        if (student.schoolClass.grade.integerValue == titleAsInt) {
+            [self.currentClass addObject:student];
+        }
+    }
+    [self.studentCollectionView reloadData];
+}
+
 
 - (void) rebuildSegControl;
 {
     [self.classSeg removeAllSegments];
-    for (SchoolClass *schoolClass in self.listOfSchoolClasses) {
-        [self.classSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
+    
+    if (self.listOfSchoolClasses.count > 0) {
+        for (SchoolClass *schoolClass in self.listOfSchoolClasses) {
+            [self.classSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
+        }
+    } else {
+        [self.classSeg insertSegmentWithTitle:@"Class" atIndex:0 animated:true];
     }
 }
 
@@ -163,16 +217,15 @@
 {
         
     [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
-        
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"numberOfDisruptions" ascending:NO];
+    self.sortClass = @[sort];
+    
+    [self.currentClass sortUsingDescriptors:self.sortClass];
+    
     [self.studentCollectionView reloadData];
     
     [self rebuildSegControl];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - fetches
@@ -183,7 +236,7 @@
     
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"numberOfDisruptions" ascending:NO]];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:NO]];
     
     NSError *error;
     
@@ -222,16 +275,5 @@
     [self.listOfSchoolClasses addObjectsFromArray:[self.managedObjectContext executeFetchRequest:schoolClassFetchRequest error:&schoolClassError]];
     
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

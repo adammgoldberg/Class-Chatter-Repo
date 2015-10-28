@@ -103,9 +103,12 @@
                                     <segment title="Class 1"/>
                                     <segment title="Class 2"/>
                                 </segments>
+                                <connections>
+                                    <action selector="classInfoSelected:" destination="Edq-lz-hBt" eventType="valueChanged" id="nga-U5-HrL"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3W-0G-2Oq">
-                                <rect key="frame" x="257" y="77" width="86" height="30"/>
+                                <rect key="frame" x="474" y="80" width="86" height="30"/>
                                 <state key="normal" title="Add Student"/>
                                 <connections>
                                     <segue destination="6nv-Cu-I0w" kind="presentation" identifier="showModal" id="9sv-sL-S4G"/>
@@ -115,13 +118,21 @@
                         <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="257" id="1hX-8e-a87"/>
+                            <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="5G3-5a-Yo2"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="25" id="5TA-Dp-WTQ"/>
+                            <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="60" id="ECF-ac-JOG"/>
                             <constraint firstAttribute="trailing" secondItem="XJV-vS-zKm" secondAttribute="trailing" id="NCI-gE-Mmx"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="26" id="NHP-AH-SP7"/>
+                            <constraint firstItem="ZVZ-2d-emb" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="QE5-xa-oce"/>
+                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="23" id="T48-tD-Q0p"/>
+                            <constraint firstAttribute="trailing" secondItem="XJV-vS-zKm" secondAttribute="trailing" id="XVs-Xr-wW1"/>
                             <constraint firstItem="pET-nN-FTS" firstAttribute="top" secondItem="XJV-vS-zKm" secondAttribute="bottom" constant="17" id="XuA-1B-LmF"/>
+                            <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="40" id="bqZ-oM-4FE"/>
+                            <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="60" id="dgF-T5-SuG"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="i4V-N8-S2f"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="kJO-X0-Dez"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="centerX" secondItem="ZVZ-2d-emb" secondAttribute="centerX" id="kVw-5p-514"/>
+                            <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="124" id="nfy-2n-2ox"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="21" id="r8b-Fz-fA3"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="58" id="rGs-Of-dMM"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="tqZ-4b-qo7"/>
@@ -129,7 +140,15 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="5TA-Dp-WTQ"/>
+                                <exclude reference="NCI-gE-Mmx"/>
+                                <exclude reference="NHP-AH-SP7"/>
+                                <exclude reference="kJO-X0-Dez"/>
+                                <exclude reference="i4V-N8-S2f"/>
                                 <exclude reference="1hX-8e-a87"/>
+                                <exclude reference="ECF-ac-JOG"/>
+                                <exclude reference="kVw-5p-514"/>
+                                <exclude reference="nfy-2n-2ox"/>
+                                <exclude reference="r8b-Fz-fA3"/>
                                 <exclude reference="rGs-Of-dMM"/>
                             </mask>
                         </variation>
@@ -431,6 +450,9 @@
                                     <segment title="Class 1"/>
                                     <segment title="Class 2"/>
                                 </segments>
+                                <connections>
+                                    <action selector="classSelected:" destination="WYa-IU-QcO" eventType="valueChanged" id="t6z-dH-OMt"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
