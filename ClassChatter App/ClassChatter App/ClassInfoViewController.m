@@ -36,14 +36,14 @@
 
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
-    [self.currentInfoClass removeObjectAtIndex:indexPath.row];
-    [self.classInfoTableView reloadData];
-    NSError *error;
-    [self.managedObjectContext save:&error];
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
+//    [self.currentInfoClass removeObjectAtIndex:indexPath.row];
+//    [self.classInfoTableView reloadData];
+//    NSError *error;
+//    [self.managedObjectContext save:&error];
+//}
 
 
 
@@ -92,8 +92,22 @@
     cell.studentLastNameLabel.text = student.lastName;
     cell.parentTitleLabel.text = parent.title;
     cell.parentEmailLabel.text = parent.emailAddress;
+    
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
+    
+    [cell addGestureRecognizer:swipeGesture];
 }
 
+-(void)swiped:(UISwipeGestureRecognizer*)swipe
+{
+    CGPoint point = [swipe locationInView:self.classInfoTableView];
+    NSIndexPath *indexPath = [self.classInfoTableView indexPathForRowAtPoint:point];
+    [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
+    [self.currentInfoClass removeObjectAtIndex:indexPath.row];
+    [self.classInfoTableView reloadData];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+}
 
 
 
