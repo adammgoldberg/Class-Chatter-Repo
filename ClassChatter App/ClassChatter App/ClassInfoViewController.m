@@ -102,11 +102,27 @@
 {
     CGPoint point = [swipe locationInView:self.classInfoTableView];
     NSIndexPath *indexPath = [self.classInfoTableView indexPathForRowAtPoint:point];
+    
+    Student *student = [self.currentInfoClass objectAtIndex:indexPath.row];
+    SchoolClass *schoolClass = student.schoolClass;
+    NSInteger amountOfStudents = schoolClass.students.count;
+    
     [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
     [self.currentInfoClass removeObjectAtIndex:indexPath.row];
-    [self.classInfoTableView reloadData];
+    
+    if (amountOfStudents == 1) {
+        [self.managedObjectContext deleteObject:schoolClass];
+    }
+    
+    
+
     NSError *error;
     [self.managedObjectContext save:&error];
+    
+    [self fetchStudentAndParentsAndClasses];
+    [self rebuildInfoSegControl];
+    
+    [self.classInfoTableView reloadData];
 }
 
 
@@ -162,13 +178,6 @@
     
     [self rebuildInfoSegControl];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 
 #pragma mark - fetches
