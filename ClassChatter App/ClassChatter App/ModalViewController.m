@@ -9,6 +9,7 @@
 #import "ModalViewController.h"
 #import "Student.h"
 #import "Parent.h"
+#import "SchoolClass.h"
 
 @interface ModalViewController () <UITextFieldDelegate>
 
@@ -19,7 +20,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *parentTitleText;
 
 @property (strong, nonatomic) IBOutlet UITextField *emailAddressText;
-
 
 @property (strong, nonatomic) IBOutlet UITextField *studentClassText;
 
@@ -47,9 +47,29 @@
     parent.title = self.parentTitleText.text;
     parent.emailAddress = self.emailAddressText.text;
     
-    [student addParentsObject:parent];
+    NSInteger gradeInt = [self.studentClassText.text integerValue];
+    
+    NSFetchRequest *fetchForSchoolClass = [NSFetchRequest fetchRequestWithEntityName:@"SchoolClass"];
+    fetchForSchoolClass.predicate = [NSPredicate predicateWithFormat:@"grade = %@", @(gradeInt)];
+    
     
     NSError *error;
+    NSArray *schoolClassesArray = [self.managedObjectContext executeFetchRequest:fetchForSchoolClass error:&error];
+    
+    if (schoolClassesArray.count > 0) {
+        student.schoolClass = [schoolClassesArray firstObject];
+    } else {
+        SchoolClass *schoolClass = [NSEntityDescription insertNewObjectForEntityForName:@"SchoolClass" inManagedObjectContext:self.managedObjectContext];
+        schoolClass.grade = @(gradeInt);
+        student.schoolClass = schoolClass;
+    }
+    
+    
+    
+    [student addParentsObject:parent];
+    
+    
+   
     [self.managedObjectContext save:&error];
     
     self.firstNameText.text = @"";

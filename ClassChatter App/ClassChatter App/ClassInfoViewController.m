@@ -98,6 +98,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark - fetches
+
 -(void)fetchStudentAndParents
 {
     self.listOfStudents = [[NSMutableArray alloc] init];
@@ -115,7 +119,7 @@
     self.listOfParents = [[NSMutableArray alloc] init];
     
     NSFetchRequest *parentFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Parent"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"emailAddress" ascending:YES]];
+    parentFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"emailAddress" ascending:YES]];
     
     NSError *parentError;
     

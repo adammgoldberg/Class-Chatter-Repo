@@ -158,6 +158,18 @@
 }
 
 
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+#pragma mark - fetches
+
 -(void)fetchStudentAndMisbehaviour
 {
     self.listOfStudents = [[NSMutableArray alloc] init];
@@ -175,7 +187,7 @@
     self.listOfMisbehaviour = [[NSMutableArray alloc] init];
     
     NSFetchRequest *misbehaviourFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Misbehaviour"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
+    misbehaviourFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
     
     NSError *misbehaviourError;
     
@@ -183,10 +195,7 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation

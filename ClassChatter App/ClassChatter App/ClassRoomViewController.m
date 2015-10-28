@@ -11,6 +11,7 @@
 #import "ClassInfoViewController.h"
 #import "Student.h"
 #import "Parent.h"
+#import "SchoolClass.h"
 #import "Misbehaviour.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
@@ -27,6 +28,8 @@
 
 @property (strong, nonatomic) NSMutableArray *listOfMisbehaviour;
 
+@property (strong, nonatomic) NSMutableArray *listOfSchoolClasses;
+
 
 @end
 
@@ -41,8 +44,7 @@
     
     NSError *error;
     [self.managedObjectContext save:&error];
-    
-    
+
 }
 
 
@@ -63,7 +65,7 @@
     theStudent.numberOfDisruptions = newNumber;
     
     
-    [self fetchStudentAndParentsAndMisBehaviour];
+    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
     
     if (numberOfTaps == 3) {
         if ([MFMailComposeViewController canSendMail]) {
@@ -79,11 +81,10 @@
         }
         
         else {
-            
             NSLog(@"Device can't send emails");
-    }
+        }
     
-    [self.managedObjectContext save:NULL];
+        [self.managedObjectContext save:NULL];
     
     }
 }
@@ -135,13 +136,54 @@
 
 
 
--(void)fetchStudentAndParentsAndMisBehaviour
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
+    
+    [self rebuildSegControl];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
+    
+    
+}
+
+- (void) rebuildSegControl;
+{
+    [self.classSeg removeAllSegments];
+    for (SchoolClass *schoolClass in self.listOfSchoolClasses) {
+        [self.classSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
+    }
+}
+
+- (void)handleDataModelChange:(NSNotification *)note
+{
+        
+    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
+        
+    [self.studentCollectionView reloadData];
+    
+    [self rebuildSegControl];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - fetches
+
+-(void)fetchStudentAndParentsAndMisbehaviourAndSchoolClasses
 {
     self.listOfStudents = [[NSMutableArray alloc] init];
     
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"numberOfDisruptions" ascending:NO]];
     
     NSError *error;
     
@@ -152,7 +194,7 @@
     self.listOfParents = [[NSMutableArray alloc] init];
     
     NSFetchRequest *parentFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Parent"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"emailAddress" ascending:YES]];
+//    parentFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"emailAddress" ascending:YES]];
     
     NSError *parentError;
     
@@ -163,48 +205,24 @@
     self.listOfMisbehaviour = [[NSMutableArray alloc] init];
     
     NSFetchRequest *misbehaviourFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Misbehaviour"];
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
+//    misbehaviourFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
     
     NSError *misbehaviourError;
     
     [self.listOfMisbehaviour addObjectsFromArray:[self.managedObjectContext executeFetchRequest:misbehaviourFetchRequest error:&misbehaviourError]];
     
-}
-
-
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    [self fetchStudentAndParentsAndMisBehaviour];
+    self.listOfSchoolClasses = [[NSMutableArray alloc] init];
     
+    NSFetchRequest *schoolClassFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SchoolClass"];
+//    schoolClassFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"grade" ascending:YES]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
+    NSError *schoolClassError;
     
+    [self.listOfSchoolClasses addObjectsFromArray:[self.managedObjectContext executeFetchRequest:schoolClassFetchRequest error:&schoolClassError]];
     
 }
-     
 
-- (void)handleDataModelChange:(NSNotification *)note
-{
-        
-    [self fetchStudentAndParentsAndMisBehaviour];
-        
-    [self.studentCollectionView reloadData];
-}
-
-
-
-
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation
