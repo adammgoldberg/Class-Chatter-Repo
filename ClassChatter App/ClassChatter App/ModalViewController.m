@@ -23,6 +23,9 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *studentClassText;
 
+@property (strong, nonatomic) IBOutlet UITextField *activeField;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 @end
@@ -30,6 +33,10 @@
 @implementation ModalViewController
 
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,7 +48,65 @@
     self.emailAddressText.delegate = self;
     self.studentClassText.delegate = self;
     
+    [self.firstNameText becomeFirstResponder];
+    
+    [self registerForKeyboardNotifications];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
+    
+    [self.view addGestureRecognizer:tapGesture];
 }
+
+
+-(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
+{
+    [self.activeField resignFirstResponder];
+}
+
+#pragma mark - scrollview
+
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+
+    
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, self.activeField.frame.origin.y-kbSize.height);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+
+
 
 #pragma mark - buttons and text
 
@@ -100,6 +165,15 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    if ([textField isEqual:self.firstNameText]) {
+        [self.lastNameText becomeFirstResponder];
+    } else if ([textField isEqual:self.lastNameText]) {
+        [self.studentClassText becomeFirstResponder];
+    } else if ([textField isEqual:self.studentClassText]) {
+        [self.parentTitleText becomeFirstResponder];
+    } else if ([textField isEqual:self.parentTitleText]) {
+        [self.emailAddressText becomeFirstResponder];
+    }
     return YES;
 }
 

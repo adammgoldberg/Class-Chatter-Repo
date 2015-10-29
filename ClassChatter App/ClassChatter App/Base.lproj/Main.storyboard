@@ -298,74 +298,75 @@
                         <viewControllerLayoutGuide type="top" id="KDV-np-lth"/>
                         <viewControllerLayoutGuide type="bottom" id="Hs0-Ij-a1X"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ngf-Bd-iz7">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" id="INU-PB-49h">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7fX-KN-HH8">
-                                <rect key="frame" x="227" y="119" width="146" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xpa-fn-TWL">
+                                <rect key="frame" x="227" y="157" width="146" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parent Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c0l-ZP-sW6">
-                                <rect key="frame" x="252" y="307" width="95" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parent Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k3N-At-G0V">
+                                <rect key="frame" x="252" y="331" width="95" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v0B-HA-zlx">
-                                <rect key="frame" x="227" y="182" width="145" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-nX-WKa">
+                                <rect key="frame" x="227" y="214" width="145" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parent Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zsf-eP-7Fx">
-                                <rect key="frame" x="221" y="371" width="158" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parent Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-gP-O0k">
+                                <rect key="frame" x="220" y="386" width="158" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AK9-Ng-duJ">
-                                <rect key="frame" x="271" y="242" width="57" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaW-V9-zfr">
+                                <rect key="frame" x="271" y="274" width="57" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iN-SD-jOt">
-                                <rect key="frame" x="41" y="39" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelAdd:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="RcX-hG-NA8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbA-dh-u67">
-                                <rect key="frame" x="257" y="435" width="86" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-t1-YiM">
+                                <rect key="frame" x="256" y="445" width="86" height="30"/>
                                 <state key="normal" title="Add Student"/>
                                 <connections>
-                                    <action selector="addAStudent:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="ufs-ui-J5Q"/>
+                                    <action selector="addAStudent:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="6gF-KI-NlQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXI-HS-cKu">
+                                <rect key="frame" x="65" y="58" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelAdd:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="2zN-gh-Scz"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="v0B-HA-zlx" firstAttribute="centerX" secondItem="7fX-KN-HH8" secondAttribute="centerX" id="BDu-sx-tGZ"/>
-                            <constraint firstItem="dbA-dh-u67" firstAttribute="top" secondItem="zsf-eP-7Fx" secondAttribute="bottom" constant="34" id="C3O-py-vTF"/>
-                            <constraint firstItem="c0l-ZP-sW6" firstAttribute="top" secondItem="AK9-Ng-duJ" secondAttribute="bottom" constant="35" id="K3d-Et-AZq"/>
-                            <constraint firstItem="zsf-eP-7Fx" firstAttribute="centerX" secondItem="c0l-ZP-sW6" secondAttribute="centerX" id="QsR-ou-8cU"/>
-                            <constraint firstItem="AK9-Ng-duJ" firstAttribute="top" secondItem="v0B-HA-zlx" secondAttribute="bottom" constant="30" id="ThD-Wm-gxU"/>
-                            <constraint firstItem="AK9-Ng-duJ" firstAttribute="centerX" secondItem="v0B-HA-zlx" secondAttribute="centerX" id="TiG-3Z-Bpz"/>
-                            <constraint firstItem="dbA-dh-u67" firstAttribute="centerX" secondItem="zsf-eP-7Fx" secondAttribute="centerX" id="ZOB-8l-Bqi"/>
-                            <constraint firstItem="c0l-ZP-sW6" firstAttribute="centerX" secondItem="AK9-Ng-duJ" secondAttribute="centerX" id="a34-mZ-z4o"/>
-                            <constraint firstItem="zsf-eP-7Fx" firstAttribute="top" secondItem="c0l-ZP-sW6" secondAttribute="bottom" constant="34" id="b18-W6-C82"/>
-                            <constraint firstItem="7fX-KN-HH8" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="99" id="fxZ-NX-EPh"/>
-                            <constraint firstItem="2iN-SD-jOt" firstAttribute="leading" secondItem="Ngf-Bd-iz7" secondAttribute="leading" constant="41" id="lFK-vK-y9q"/>
-                            <constraint firstItem="2iN-SD-jOt" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="19" id="qcl-Ta-2LC"/>
-                            <constraint firstItem="7fX-KN-HH8" firstAttribute="centerX" secondItem="Ngf-Bd-iz7" secondAttribute="centerX" id="rgK-VE-CWK"/>
-                            <constraint firstItem="v0B-HA-zlx" firstAttribute="top" secondItem="7fX-KN-HH8" secondAttribute="bottom" constant="33" id="wag-5U-jQa"/>
+                            <constraint firstItem="WaW-V9-zfr" firstAttribute="centerX" secondItem="ymY-nX-WKa" secondAttribute="centerX" id="498-AK-qT7"/>
+                            <constraint firstItem="xpa-fn-TWL" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="137" id="CNN-Ce-baB"/>
+                            <constraint firstItem="k3N-At-G0V" firstAttribute="top" secondItem="WaW-V9-zfr" secondAttribute="bottom" constant="27" id="FBZ-HI-1nI"/>
+                            <constraint firstItem="ymY-nX-WKa" firstAttribute="centerX" secondItem="xpa-fn-TWL" secondAttribute="centerX" id="FUg-Ck-tE0"/>
+                            <constraint firstItem="QXI-HS-cKu" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="38" id="Jqn-Z4-3LI"/>
+                            <constraint firstItem="5aL-t1-YiM" firstAttribute="top" secondItem="5xX-gP-O0k" secondAttribute="bottom" constant="29" id="KOu-h0-4jI"/>
+                            <constraint firstItem="5aL-t1-YiM" firstAttribute="centerX" secondItem="5xX-gP-O0k" secondAttribute="centerX" id="KZ4-VH-TUF"/>
+                            <constraint firstItem="xpa-fn-TWL" firstAttribute="centerX" secondItem="INU-PB-49h" secondAttribute="centerX" id="N8A-HO-SD0"/>
+                            <constraint firstItem="ymY-nX-WKa" firstAttribute="top" secondItem="xpa-fn-TWL" secondAttribute="bottom" constant="27" id="NCy-9z-hMY"/>
+                            <constraint firstItem="WaW-V9-zfr" firstAttribute="top" secondItem="ymY-nX-WKa" secondAttribute="bottom" constant="30" id="Vjm-XZ-glG"/>
+                            <constraint firstItem="5xX-gP-O0k" firstAttribute="centerX" secondItem="k3N-At-G0V" secondAttribute="centerX" id="hpF-1I-8Gc"/>
+                            <constraint firstItem="QXI-HS-cKu" firstAttribute="leading" secondItem="INU-PB-49h" secondAttribute="leading" constant="65" id="n9j-tb-yD1"/>
+                            <constraint firstItem="5xX-gP-O0k" firstAttribute="top" secondItem="k3N-At-G0V" secondAttribute="bottom" constant="25" id="nL9-Zw-7O7"/>
+                            <constraint firstItem="k3N-At-G0V" firstAttribute="centerX" secondItem="WaW-V9-zfr" secondAttribute="centerX" id="yXb-CZ-ya8"/>
                         </constraints>
-                    </view>
+                    </scrollView>
                     <connections>
-                        <outlet property="emailAddressText" destination="zsf-eP-7Fx" id="8w8-1V-1SF"/>
-                        <outlet property="firstNameText" destination="7fX-KN-HH8" id="LV8-2V-j8Q"/>
-                        <outlet property="lastNameText" destination="v0B-HA-zlx" id="pxe-dy-aRI"/>
-                        <outlet property="parentTitleText" destination="c0l-ZP-sW6" id="EsZ-bB-G8u"/>
-                        <outlet property="studentClassText" destination="AK9-Ng-duJ" id="kOt-MQ-DLJ"/>
+                        <outlet property="emailAddressText" destination="5xX-gP-O0k" id="5a1-aK-Xl7"/>
+                        <outlet property="firstNameText" destination="xpa-fn-TWL" id="Ex3-Cg-RD8"/>
+                        <outlet property="lastNameText" destination="ymY-nX-WKa" id="ayV-U3-Mut"/>
+                        <outlet property="parentTitleText" destination="k3N-At-G0V" id="JuQ-Ts-dla"/>
+                        <outlet property="scrollView" destination="INU-PB-49h" id="FAn-lT-HkU"/>
+                        <outlet property="studentClassText" destination="WaW-V9-zfr" id="DwY-Ii-6MX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmA-tg-QQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
