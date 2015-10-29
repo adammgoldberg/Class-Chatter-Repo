@@ -9,8 +9,10 @@
 #import "ClassRoomViewController.h"
 #import "StudentDeskCell.h"
 #import "ClassInfoViewController.h"
+#import "TemplateViewController.h"
 #import "Student.h"
 #import "Parent.h"
+#import "Teacher.h"
 #import "SchoolClass.h"
 #import "Misbehaviour.h"
 #import <MessageUI/MessageUI.h>
@@ -34,6 +36,12 @@
 
 @property (strong, nonatomic) NSArray *sortClass;
 
+@property (strong, nonatomic) NSMutableArray *listOfTeachers;
+
+@property (strong, nonatomic) TemplateViewController *templateViewController;
+
+@property (strong, nonatomic) NSString *teacherEmailString;
+
 
 @end
 
@@ -43,6 +51,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.listOfTeachers = [[NSMutableArray alloc] init];
+    NSFetchRequest *teacherFetch = [NSFetchRequest fetchRequestWithEntityName:@"Teacher"];
+    NSError *error;
+    [self.listOfTeachers addObjectsFromArray:[self.managedObjectContext executeFetchRequest:teacherFetch error:&error]];
+    
+    if (self.listOfTeachers.count == 0) {
+        Teacher *aTeacher = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher" inManagedObjectContext:self.managedObjectContext];
+        
+        aTeacher.emailAddress = @"Dear %%Title%% %%Parent%%,\n\nI wanted to inform you that %%Student%% disrupted class 3 times today. It would be greatly appreciated if you could please remind %%Student%% the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nMr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
+        
+
+
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        NSFetchRequest *teacherFetch = [NSFetchRequest fetchRequestWithEntityName:@"Teacher"];
+        [self.listOfTeachers addObjectsFromArray:[self.managedObjectContext executeFetchRequest:teacherFetch error:&error]];
+    }
+
+    
+    
+    
     
     [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
     
@@ -163,7 +194,15 @@
             MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
             [mailViewController setSubject:@"Misbehaviour in class."];
-            [mailViewController setMessageBody:[NSString stringWithFormat:@"Dear %@ %@,\n\nI wanted to inform you that %@ disrupted class 3 times today. It would be greatly appreciated if you could please remind %@ the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nMr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service", theParent.title, theStudent.lastName, theStudent.firstName, theStudent.firstName] isHTML:NO];
+            
+            Teacher *theTeacher = [self.listOfTeachers firstObject];
+            NSString *theResultString = theTeacher.emailAddress;
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"%%Title%%" withString:theParent.title];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"%%Parent%%" withString:theStudent.lastName];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"%%Student%%" withString:theStudent.firstName];
+            
+            [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+            
             [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
             
             [self presentViewController:mailViewController animated:YES completion:nil];

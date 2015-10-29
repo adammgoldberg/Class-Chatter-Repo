@@ -10,6 +10,7 @@
 #import "ClassRoomViewController.h"
 #import "ClassInfoViewController.h"
 #import "HistoryViewController.h"
+#import "TemplateViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,11 +25,13 @@
     ClassRoomViewController *crvc = (ClassRoomViewController*)tabBarController.viewControllers[0];
     ClassInfoViewController *civc = (ClassInfoViewController*)tabBarController.viewControllers[1];
     HistoryViewController *hvc = (HistoryViewController*)tabBarController.viewControllers[2];
+    TemplateViewController *tvc = (TemplateViewController*)tabBarController.viewControllers[3];
 //    UINavigationController *navc = tabBarController.viewControllers[2];
 //    HistoryViewController *nhvc = [navc.viewControllers firstObject];
     crvc.managedObjectContext = self.managedObjectContext;
     civc.managedObjectContext = self.managedObjectContext;
     hvc.managedObjectContext = self.managedObjectContext;
+    tvc.managedObjectContext = self.managedObjectContext;
     
     
     return YES;

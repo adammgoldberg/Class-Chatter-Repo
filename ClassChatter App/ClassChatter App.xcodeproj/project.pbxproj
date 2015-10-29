@@ -32,6 +32,7 @@
 		06C2191C1BDFEDA60006BA9E /* SchoolClass+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219181BDFEDA60006BA9E /* SchoolClass+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		06C2191F1BDFF13E0006BA9E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2191E1BDFF13E0006BA9E /* HistoryViewController.m */; settings = {ASSET_TAGS = (); }; };
 		06C219221BDFF1620006BA9E /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219211BDFF1620006BA9E /* HistoryCell.m */; settings = {ASSET_TAGS = (); }; };
+		06C219251BE285E50006BA9E /* TemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219241BE285E50006BA9E /* TemplateViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		06C2191E1BDFF13E0006BA9E /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		06C219201BDFF1620006BA9E /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		06C219211BDFF1620006BA9E /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
+		06C219231BE285E50006BA9E /* TemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateViewController.h; sourceTree = "<group>"; };
+		06C219241BE285E50006BA9E /* TemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				065DBCDB1BDE8DB100CCAF94 /* AppDelegate.h */,
 				065DBCDC1BDE8DB100CCAF94 /* AppDelegate.m */,
 				065DBCE11BDE8DB100CCAF94 /* Main.storyboard */,
+				06C219231BE285E50006BA9E /* TemplateViewController.h */,
+				06C219241BE285E50006BA9E /* TemplateViewController.m */,
 				06C2191D1BDFF13E0006BA9E /* HistoryViewController.h */,
 				06C2191E1BDFF13E0006BA9E /* HistoryViewController.m */,
 				06C219201BDFF1620006BA9E /* HistoryCell.h */,
@@ -381,6 +386,7 @@
 				06C2191F1BDFF13E0006BA9E /* HistoryViewController.m in Sources */,
 				065DBD1E1BDE936400CCAF94 /* Teacher+CoreDataProperties.m in Sources */,
 				065DBD251BDE936400CCAF94 /* Student.m in Sources */,
+				06C219251BE285E50006BA9E /* TemplateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
