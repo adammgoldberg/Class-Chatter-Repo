@@ -60,7 +60,7 @@
     if (self.listOfTeachers.count == 0) {
         Teacher *aTeacher = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher" inManagedObjectContext:self.managedObjectContext];
         
-        aTeacher.emailAddress = @"Dear %%Title%% %%Parent%%,\n\nI wanted to inform you that %%Student%% disrupted class 3 times today. It would be greatly appreciated if you could please remind %%Student%% the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nMr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
+        aTeacher.emailAddress = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class 3 times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nMr. Goldberg\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
         
 
 
@@ -197,9 +197,9 @@
             
             Teacher *theTeacher = [self.listOfTeachers firstObject];
             NSString *theResultString = theTeacher.emailAddress;
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"%%Title%%" withString:theParent.title];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"%%Parent%%" withString:theStudent.lastName];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"%%Student%%" withString:theStudent.firstName];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
             
             [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
             

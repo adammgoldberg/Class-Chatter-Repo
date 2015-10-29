@@ -19,7 +19,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *parentEmailLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *studentClassLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *parentLastLabel;
 
 
 @end

@@ -166,6 +166,8 @@
     cell.studentLastNameLabel.text = student.lastName;
     cell.parentTitleLabel.text = parent.title;
     cell.parentEmailLabel.text = parent.emailAddress;
+    cell.studentClassLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
+    cell.parentLastLabel.text = parent.lastName;
     
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
     

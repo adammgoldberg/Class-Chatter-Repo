@@ -19,11 +19,16 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *parentTitleText;
 
+
+@property (strong, nonatomic) IBOutlet UITextField *parentLastNameText;
+
+
+
 @property (strong, nonatomic) IBOutlet UITextField *emailAddressText;
 
 @property (strong, nonatomic) IBOutlet UITextField *studentClassText;
 
-@property (strong, nonatomic) IBOutlet UITextField *activeField;
+@property (strong, nonatomic) UITextField *activeField;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -128,6 +133,7 @@
     Parent *parent = [NSEntityDescription insertNewObjectForEntityForName:@"Parent" inManagedObjectContext:self.managedObjectContext];
     parent.title = self.parentTitleText.text;
     parent.emailAddress = self.emailAddressText.text;
+    parent.lastName = self.parentLastNameText.text;
     
     NSInteger gradeInt = [self.studentClassText.text integerValue];
     
@@ -174,6 +180,8 @@
     } else if ([textField isEqual:self.studentClassText]) {
         [self.parentTitleText becomeFirstResponder];
     } else if ([textField isEqual:self.parentTitleText]) {
+        [self.parentLastNameText becomeFirstResponder];
+    } else if ([textField isEqual:self.parentLastNameText]) {
         [self.emailAddressText becomeFirstResponder];
     }
     return YES;
