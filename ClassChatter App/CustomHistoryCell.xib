@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" id="bbx-Y2-yVc" customClass="HistoryCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bbx-Y2-yVc" id="x0n-b3-9Dh">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUi-yt-h5v">
+                        <rect key="frame" x="32" y="8" width="34" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKN-2z-ymL">
+                        <rect key="frame" x="88" y="8" width="33" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-u8-XPo">
+                        <rect key="frame" x="150" y="43" width="38" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disruption:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-mR-D2D">
+                        <rect key="frame" x="32" y="43" width="84" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJK-R1-YxV">
+                        <rect key="frame" x="150" y="8" width="47" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="vKN-2z-ymL" firstAttribute="leading" secondItem="bUi-yt-h5v" secondAttribute="trailing" constant="22" id="2Fz-vA-Txx"/>
+                    <constraint firstItem="gJK-R1-YxV" firstAttribute="top" secondItem="vKN-2z-ymL" secondAttribute="top" id="LvM-eD-jGv"/>
+                    <constraint firstItem="nmB-mR-D2D" firstAttribute="top" secondItem="bUi-yt-h5v" secondAttribute="bottom" constant="14" id="ZgD-gu-iFw"/>
+                    <constraint firstItem="nmB-mR-D2D" firstAttribute="leading" secondItem="bUi-yt-h5v" secondAttribute="leading" id="amm-Ma-mCR"/>
+                    <constraint firstItem="bUi-yt-h5v" firstAttribute="top" secondItem="x0n-b3-9Dh" secondAttribute="top" constant="8" id="i8f-BA-96U"/>
+                    <constraint firstItem="KsU-u8-XPo" firstAttribute="leading" secondItem="nmB-mR-D2D" secondAttribute="trailing" constant="34" id="lcX-48-hFS"/>
+                    <constraint firstItem="KsU-u8-XPo" firstAttribute="top" secondItem="nmB-mR-D2D" secondAttribute="top" id="nUv-7O-8zU"/>
+                    <constraint firstItem="vKN-2z-ymL" firstAttribute="top" secondItem="bUi-yt-h5v" secondAttribute="top" id="ppL-gs-AiD"/>
+                    <constraint firstItem="gJK-R1-YxV" firstAttribute="leading" secondItem="vKN-2z-ymL" secondAttribute="trailing" constant="29" id="qRB-eQ-3Nq"/>
+                    <constraint firstItem="bUi-yt-h5v" firstAttribute="leading" secondItem="x0n-b3-9Dh" secondAttribute="leading" constant="32" id="qsO-i5-lEQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="historyDisruptionLabel" destination="nmB-mR-D2D" id="FlQ-nZ-JV0"/>
+                <outlet property="historyFirstLabel" destination="bUi-yt-h5v" id="3Fj-3K-XgK"/>
+                <outlet property="historyGradeLabel" destination="gJK-R1-YxV" id="7h2-g9-0L5"/>
+                <outlet property="historyLastLabel" destination="vKN-2z-ymL" id="ZQU-aR-FJe"/>
+                <outlet property="historyTimeLabel" destination="KsU-u8-XPo" id="IXM-eq-2Ve"/>
+            </connections>
+            <point key="canvasLocation" x="391" y="267"/>
+        </tableViewCell>
+    </objects>
+</document>

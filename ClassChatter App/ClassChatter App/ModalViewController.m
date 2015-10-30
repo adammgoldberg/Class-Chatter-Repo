@@ -52,6 +52,7 @@
     self.parentTitleText.delegate = self;
     self.emailAddressText.delegate = self;
     self.studentClassText.delegate = self;
+    self.parentLastNameText.delegate = self;
     
     [self.firstNameText becomeFirstResponder];
     
@@ -172,7 +173,6 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
     if ([textField isEqual:self.firstNameText]) {
         [self.lastNameText becomeFirstResponder];
     } else if ([textField isEqual:self.lastNameText]) {

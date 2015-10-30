@@ -26,6 +26,7 @@
 		065DBD2E1BDE9BA800CCAF94 /* ClassInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBD2D1BDE9BA800CCAF94 /* ClassInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		065DBD311BDE9F4900CCAF94 /* ClassInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBD301BDE9F4900CCAF94 /* ClassInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		065DBD341BDEEF8700CCAF94 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065DBD331BDEEF8700CCAF94 /* ModalViewController.m */; settings = {ASSET_TAGS = (); }; };
+		06AB60D11BE3FB6100871639 /* CustomHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06AB60D01BE3FB6100871639 /* CustomHistoryCell.xib */; settings = {ASSET_TAGS = (); }; };
 		06C219191BDFEDA60006BA9E /* Student+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219121BDFEDA60006BA9E /* Student+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		06C2191A1BDFEDA60006BA9E /* Misbehaviour+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219141BDFEDA60006BA9E /* Misbehaviour+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		06C2191B1BDFEDA60006BA9E /* Misbehaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219161BDFEDA60006BA9E /* Misbehaviour.m */; settings = {ASSET_TAGS = (); }; };
@@ -90,6 +91,7 @@
 		065DBD301BDE9F4900CCAF94 /* ClassInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInfoCell.m; sourceTree = "<group>"; };
 		065DBD321BDEEF8700CCAF94 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
 		065DBD331BDEEF8700CCAF94 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
+		06AB60D01BE3FB6100871639 /* CustomHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomHistoryCell.xib; sourceTree = "<group>"; };
 		06C219111BDFEDA60006BA9E /* Student+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Student+CoreDataProperties.h"; path = "../Student+CoreDataProperties.h"; sourceTree = "<group>"; };
 		06C219121BDFEDA60006BA9E /* Student+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Student+CoreDataProperties.m"; path = "../Student+CoreDataProperties.m"; sourceTree = "<group>"; };
 		06C219131BDFEDA60006BA9E /* Misbehaviour+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Misbehaviour+CoreDataProperties.h"; path = "../Misbehaviour+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		065DBCCC1BDE8DB100CCAF94 = {
 			isa = PBXGroup;
 			children = (
+				06AB60D01BE3FB6100871639 /* CustomHistoryCell.xib */,
 				065DBCD71BDE8DB100CCAF94 /* ClassChatter App */,
 				065DBCF41BDE8DB200CCAF94 /* ClassChatter AppTests */,
 				065DBCFF1BDE8DB200CCAF94 /* ClassChatter AppUITests */,
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				065DBCEB1BDE8DB200CCAF94 /* LaunchScreen.storyboard in Resources */,
+				06AB60D11BE3FB6100871639 /* CustomHistoryCell.xib in Resources */,
 				065DBCE81BDE8DB200CCAF94 /* Assets.xcassets in Resources */,
 				065DBCE31BDE8DB100CCAF94 /* Main.storyboard in Resources */,
 			);

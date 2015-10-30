@@ -48,6 +48,15 @@
 // self.searchDisplayController.searchResultsTableView = self.tableViewHistory;
 // [self.searchDisplayController.searchResultsTableView registerClass:[HistoryCell class]forCellReuseIdentifier:@"HistoryCell"];
     
+//   [self.searchDisplay.searchResultsTableView registerNib:[UINib nibWithNibName:@"CustomHistoryCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HistoryCell"];
+    
+//    [self.searchDisplay.searchResultsTableView registerClass:[HistoryCell class] forCellReuseIdentifier:@"HistoryCell"];
+    
+    [self.tableViewHistory registerNib:[UINib nibWithNibName:@"CustomHistoryCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HistoryCell"];
+    
+    self.searchDisplay.searchResultsTableView.rowHeight = 82;
+    
+    
     [self fetchStudentAndMisbehaviour];
     
     self.filteredMisbehaviour = [[NSMutableArray alloc] init];
@@ -143,7 +152,14 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"Search Clicked");
     [self searchTableList];
+    
 }
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    
+}
+
 
 
 
