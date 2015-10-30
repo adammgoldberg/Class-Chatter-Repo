@@ -247,7 +247,7 @@
 {
     Student *student = self.currentClass[indexPath.row];
     cell.studentNameLabel.text = student.firstName;
-    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%d", [student.numberOfDisruptions integerValue]];
+    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld", [student.numberOfDisruptions integerValue]];
     NSInteger numberOfTaps = [student.numberOfDisruptions integerValue];
     
     if (numberOfTaps == 1) {

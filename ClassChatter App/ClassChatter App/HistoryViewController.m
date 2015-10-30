@@ -9,6 +9,7 @@
 #import "HistoryViewController.h"
 #import "HistoryCell.h"
 #import "Student.h"
+#import "SchoolClass.h"
 #import "Misbehaviour.h"
 
 @interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
@@ -152,8 +153,16 @@
     Student *student = misbehaviour.student;
     cell.historyFirstLabel.text = student.firstName;
     cell.historyLastLabel.text = student.lastName;
-    cell.historyDisruptionLabel.text = [NSString stringWithFormat:@"%@",student.numberOfDisruptions];
-    cell.historyTimeLabel.text = [NSString stringWithFormat:@"%@",misbehaviour.time];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"MMM dd, yyyy HH:mm:ss"];
+    
+    NSString *dateString = [format stringFromDate:misbehaviour.time];
+    
+    
+    cell.historyTimeLabel.text = dateString;
+    cell.historyGradeLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
+    
 }
 
 

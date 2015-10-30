@@ -39,11 +39,17 @@
     self.emailTemplateText.text = self.teacher.emailAddress;
     
     
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
     
     [self.view addGestureRecognizer:tapGesture];
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [self.emailTemplateText setContentOffset:CGPointZero animated:YES];
+
+}
 
 -(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
 {
