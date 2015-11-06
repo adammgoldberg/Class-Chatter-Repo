@@ -32,8 +32,7 @@
     civc.managedObjectContext = self.managedObjectContext;
     hvc.managedObjectContext = self.managedObjectContext;
     tvc.managedObjectContext = self.managedObjectContext;
-    
-    
+        
     return YES;
 }
 
