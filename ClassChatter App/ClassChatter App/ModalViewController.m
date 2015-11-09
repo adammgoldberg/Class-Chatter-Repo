@@ -22,8 +22,6 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *parentLastNameText;
 
-
-
 @property (strong, nonatomic) IBOutlet UITextField *emailAddressText;
 
 @property (strong, nonatomic) IBOutlet UITextField *studentClassText;
@@ -31,6 +29,9 @@
 @property (strong, nonatomic) UITextField *activeField;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) IBOutlet UIButton *addStudentButton;
+
 
 
 @end
@@ -53,6 +54,9 @@
     self.emailAddressText.delegate = self;
     self.studentClassText.delegate = self;
     self.parentLastNameText.delegate = self;
+    
+    self.addStudentButton.layer.cornerRadius = 12;
+    self.addStudentButton.layer.masksToBounds = YES;
     
     [self.firstNameText becomeFirstResponder];
     
@@ -140,7 +144,8 @@
     NSString *gradeString = self.studentClassText.text;
     
     NSFetchRequest *fetchForSchoolClass = [NSFetchRequest fetchRequestWithEntityName:@"SchoolClass"];
-    fetchForSchoolClass.predicate = [NSPredicate predicateWithFormat:@"grade = %@", gradeString];
+    fetchForSchoolClass.predicate = [NSPredicate predicateWithFormat:@"section = %@", gradeString];
+//    fetchForSchoolClass.predicate = [NSPredicate predicateWithFormat:@"grade = %@", gradeString];
     
     
     NSError *error;

@@ -173,8 +173,14 @@
     cell.historyLastLabel.text = student.lastName;
     if ([behaviour.type  isEqual: @"good"]) {
         cell.backgroundColor = [UIColor yellowColor];
+        if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
+            cell.backgroundColor = [UIColor blueColor];
+        }
     } else {
         cell.backgroundColor = [UIColor grayColor];
+        if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
+            cell.backgroundColor = [UIColor blueColor];
+        }
     }
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];

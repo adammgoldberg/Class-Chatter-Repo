@@ -17,6 +17,9 @@
 @interface ClassInfoViewController () <UITableViewDataSource, UITableViewDelegate>
 
 
+@property (strong, nonatomic) IBOutlet UIButton *addStudent;
+
+
 @property (strong, nonatomic) IBOutlet UITableView *classInfoTableView;
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *classInfoSeg;
@@ -50,6 +53,9 @@
     [self.classInfoSeg setSelectedSegmentIndex:0];
     [self classInfoSelected:self.classInfoSeg];
     
+    self.addStudent.layer.cornerRadius = 12;
+    self.addStudent.layer.masksToBounds = YES;
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
     
@@ -74,10 +80,9 @@
         selectedIndex = 0;
     }
     NSString *titleString = [self.classInfoSeg titleForSegmentAtIndex:selectedIndex];
-    NSInteger titleAsInt = [titleString integerValue];
     self.currentInfoClass = [[NSMutableArray alloc] init];
     for (Student *student in self.listOfStudents) {
-        if (student.schoolClass.grade.integerValue == titleAsInt) { [self.currentInfoClass addObject:student]; }
+        if (student.schoolClass.section == titleString) { [self.currentInfoClass addObject:student]; }
     }
     [self.classInfoTableView reloadData];
 }

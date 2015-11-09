@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+
 //@property (strong, nonatomic) UITextView *activeView;
 
 
@@ -37,6 +39,8 @@
     self.teacher = [[self.managedObjectContext executeFetchRequest:teacherFetch error:&error] firstObject];
     
     self.emailTemplateText.text = self.teacher.emailTemplateBad;
+    self.saveButton.layer.cornerRadius = 12;
+    self.saveButton.layer.masksToBounds = YES;
     
     
     

@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *behaviourDescriptionText;
 
+@property (strong, nonatomic) IBOutlet UIButton *saveDescriptionButton;
 
 
 @end
@@ -27,6 +28,13 @@
     
     self.behaviourDescriptionText.text = self.behaviour.details;
     
+//    [self.behaviourDescriptionText scrollRangeToVisible:NSMakeRange(0, 0)];
+    
+    self.saveDescriptionButton.layer.cornerRadius = 12;
+    self.saveDescriptionButton.layer.masksToBounds = YES;
+    
+
+
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
     
     [self.view addGestureRecognizer:tapGesture];
@@ -34,11 +42,17 @@
 }
 
 
-//-(void)viewDidLayoutSubviews
-//{
-//    [self.behaviourDescriptionText setContentOffset:CGPointZero animated:YES];
-//    
+//override func viewDidLayoutSubviews() {
+//    super.viewDidLayoutSubviews()
+//    welcomeText.setContentOffset(CGPointZero, animated: false)
 //}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self.behaviourDescriptionText setContentOffset:CGPointZero animated:NO];
+    
+}
 
 -(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
 {

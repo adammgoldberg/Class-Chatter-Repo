@@ -114,7 +114,7 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZVZ-2d-emb">
-                                <rect key="frame" x="22" y="28" width="119" height="29"/>
+                                <rect key="frame" x="15" y="28" width="119" height="29"/>
                                 <segments>
                                     <segment title="Class 1"/>
                                     <segment title="Class 2"/>
@@ -125,7 +125,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3W-0G-2Oq">
-                                <rect key="frame" x="472" y="28" width="106" height="38"/>
+                                <rect key="frame" x="479" y="28" width="106" height="38"/>
                                 <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To delete a student, swipe right. If you delete a student, you will lose all of the information associated with that student." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbA-ND-CDj">
-                                <rect key="frame" x="22" y="77" width="556" height="29"/>
+                                <rect key="frame" x="15" y="77" width="570" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -148,14 +148,14 @@
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="257" id="1hX-8e-a87"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="5G3-5a-Yo2"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="25" id="5TA-Dp-WTQ"/>
-                            <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="22" id="5i2-4P-REh"/>
+                            <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="15" id="5i2-4P-REh"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="82" id="758-nj-BBX"/>
                             <constraint firstItem="HbA-ND-CDj" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="EBR-YY-1kU"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="60" id="ECF-ac-JOG"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="H1A-bY-7eU"/>
                             <constraint firstAttribute="trailing" secondItem="XJV-vS-zKm" secondAttribute="trailing" id="NCI-gE-Mmx"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="26" id="NHP-AH-SP7"/>
-                            <constraint firstAttribute="trailing" secondItem="HbA-ND-CDj" secondAttribute="trailing" constant="22" id="PLd-rQ-ztx"/>
+                            <constraint firstAttribute="trailing" secondItem="HbA-ND-CDj" secondAttribute="trailing" constant="15" id="PLd-rQ-ztx"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="QE5-xa-oce"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="23" id="T48-tD-Q0p"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="U6B-NX-27R"/>
@@ -164,11 +164,11 @@
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="40" id="bqZ-oM-4FE"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="60" id="dgF-T5-SuG"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="i4V-N8-S2f"/>
-                            <constraint firstItem="HbA-ND-CDj" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" constant="22" id="jQu-eZ-kwL"/>
+                            <constraint firstItem="HbA-ND-CDj" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" constant="15" id="jQu-eZ-kwL"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="kJO-X0-Dez"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="centerX" secondItem="ZVZ-2d-emb" secondAttribute="centerX" id="kVw-5p-514"/>
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="124" id="nfy-2n-2ox"/>
-                            <constraint firstItem="ZVZ-2d-emb" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" constant="22" id="p5y-pG-iyW"/>
+                            <constraint firstItem="ZVZ-2d-emb" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" constant="15" id="p5y-pG-iyW"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="21" id="r8b-Fz-fA3"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="58" id="rGs-Of-dMM"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="tqZ-4b-qo7"/>
@@ -197,6 +197,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Students" image="Person" id="yYa-iB-WNe"/>
                     <connections>
+                        <outlet property="addStudent" destination="S3W-0G-2Oq" id="2Zt-jL-5AQ"/>
                         <outlet property="classInfoSeg" destination="ZVZ-2d-emb" id="kWm-pQ-dBc"/>
                         <outlet property="classInfoTableView" destination="XJV-vS-zKm" id="tgZ-Eg-rnU"/>
                     </connections>
@@ -291,15 +292,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter text here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PJN-qD-Trp">
-                                <rect key="frame" x="52" y="133" width="496" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PJN-qD-Trp">
+                                <rect key="frame" x="52" y="133" width="496" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-pd-YVM">
-                                <rect key="frame" x="242" y="315" width="116" height="30"/>
-                                <state key="normal" title="Save Description"/>
+                                <rect key="frame" x="232" y="307" width="136" height="38"/>
+                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Save Description">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="saveBehaviourDescription:" destination="NyX-nd-5vd" eventType="touchUpInside" id="SFG-eI-RKB"/>
                                 </connections>
@@ -317,6 +322,7 @@
                     </view>
                     <connections>
                         <outlet property="behaviourDescriptionText" destination="PJN-qD-Trp" id="y1f-Rg-eNi"/>
+                        <outlet property="saveDescriptionButton" destination="jCw-pd-YVM" id="Wcd-In-gLg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pej-Qx-jM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,7 +348,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AMf-cE-TNh">
-                                <rect key="frame" x="15" y="130" width="570" height="376"/>
+                                <rect key="frame" x="15" y="130" width="570" height="308"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="314" id="9wr-ss-6Dk"/>
@@ -368,12 +374,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNI-Zx-c0v">
-                                <rect key="frame" x="240" y="524" width="121" height="38"/>
+                                <rect key="frame" x="240" y="476" width="121" height="28"/>
                                 <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kMj-vx-bDk"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                 <state key="normal" title="Save Template">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -390,7 +396,7 @@
                         <color key="backgroundColor" red="0.77551857830000004" green="1" blue="0.60177645179999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="centerX" secondItem="sPf-0e-0ML" secondAttribute="centerX" id="1HK-Nq-kfi"/>
-                            <constraint firstItem="AMf-cE-TNh" firstAttribute="centerY" secondItem="pN5-bE-cZ6" secondAttribute="centerY" constant="18" id="6I2-Yt-0fr"/>
+                            <constraint firstItem="AMf-cE-TNh" firstAttribute="centerY" secondItem="pN5-bE-cZ6" secondAttribute="centerY" constant="-16" id="6I2-Yt-0fr"/>
                             <constraint firstItem="sPf-0e-0ML" firstAttribute="centerX" secondItem="iql-hG-Uhl" secondAttribute="centerX" id="7zv-Lv-yRV"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="top" secondItem="sPf-0e-0ML" secondAttribute="bottom" constant="25" id="CQc-b8-6pQ"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="trailing" secondItem="sPf-0e-0ML" secondAttribute="trailing" id="JAW-zl-TwZ"/>
@@ -399,11 +405,11 @@
                             <constraint firstItem="oNI-Zx-c0v" firstAttribute="centerX" secondItem="AMf-cE-TNh" secondAttribute="centerX" id="Rmj-Ts-uil"/>
                             <constraint firstItem="sPf-0e-0ML" firstAttribute="leading" secondItem="pN5-bE-cZ6" secondAttribute="leading" constant="15" id="SYx-AB-ovw"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="leading" secondItem="sPf-0e-0ML" secondAttribute="leading" id="bkX-wd-EqB"/>
-                            <constraint firstItem="Ltn-tu-Mk1" firstAttribute="top" secondItem="oNI-Zx-c0v" secondAttribute="bottom" constant="27" id="c2k-dA-aAB"/>
+                            <constraint firstItem="Ltn-tu-Mk1" firstAttribute="top" secondItem="oNI-Zx-c0v" secondAttribute="bottom" constant="37" id="c2k-dA-aAB"/>
                             <constraint firstItem="iql-hG-Uhl" firstAttribute="top" secondItem="a5D-u8-Hok" secondAttribute="bottom" constant="8" id="fwW-jX-sEz"/>
                             <constraint firstItem="sPf-0e-0ML" firstAttribute="top" secondItem="iql-hG-Uhl" secondAttribute="bottom" constant="13" id="kyS-Yd-Hdp"/>
                             <constraint firstAttribute="trailing" secondItem="sPf-0e-0ML" secondAttribute="trailing" constant="15" id="ppE-p9-5W0"/>
-                            <constraint firstItem="oNI-Zx-c0v" firstAttribute="top" secondItem="AMf-cE-TNh" secondAttribute="bottom" constant="18" id="pzz-te-vON"/>
+                            <constraint firstItem="oNI-Zx-c0v" firstAttribute="top" secondItem="AMf-cE-TNh" secondAttribute="bottom" constant="38" id="pzz-te-vON"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -417,6 +423,7 @@
                     <tabBarItem key="tabBarItem" title="Template" image="newtemp" id="iSd-FN-nK9"/>
                     <connections>
                         <outlet property="emailTemplateText" destination="AMf-cE-TNh" id="dOE-zh-xis"/>
+                        <outlet property="saveButton" destination="oNI-Zx-c0v" id="PwX-yn-GT9"/>
                         <outlet property="scrollView" destination="pN5-bE-cZ6" id="VHM-DO-87S"/>
                     </connections>
                 </viewController>
@@ -457,9 +464,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-t1-YiM">
-                                <rect key="frame" x="257" y="426" width="86" height="30"/>
+                                <rect key="frame" x="247" y="426" width="106" height="38"/>
+                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Add Student">
-                                    <color key="titleColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="addAStudent:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="6gF-KI-NlQ"/>
@@ -474,8 +483,8 @@
                                     <action selector="cancelAdd:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="2zN-gh-Scz"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class #" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaW-V9-zfr">
-                                <rect key="frame" x="266" y="198" width="69" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaW-V9-zfr">
+                                <rect key="frame" x="252" y="198" width="98" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -520,6 +529,7 @@
                         </variation>
                     </scrollView>
                     <connections>
+                        <outlet property="addStudentButton" destination="5aL-t1-YiM" id="Bpy-3e-doX"/>
                         <outlet property="emailAddressText" destination="5xX-gP-O0k" id="5a1-aK-Xl7"/>
                         <outlet property="firstNameText" destination="xpa-fn-TWL" id="Ex3-Cg-RD8"/>
                         <outlet property="lastNameText" destination="ymY-nX-WKa" id="ayV-U3-Mut"/>
@@ -552,11 +562,11 @@
                                     <size key="itemSize" width="164" height="157"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StudentDeskCell" id="m5p-vz-K0L" customClass="StudentDeskCell">
-                                        <rect key="frame" x="10" y="10" width="164" height="157"/>
+                                        <rect key="frame" x="20" y="10" width="164" height="157"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="164" height="157"/>
@@ -607,7 +617,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TX7-cq-edh">
-                                <rect key="frame" x="440" y="28" width="126" height="38"/>
+                                <rect key="frame" x="459" y="28" width="126" height="38"/>
                                 <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Reset Numbers">
@@ -618,7 +628,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CyU-Wj-q5I">
-                                <rect key="frame" x="34" y="28" width="119" height="29"/>
+                                <rect key="frame" x="15" y="28" width="119" height="29"/>
                                 <segments>
                                     <segment title="Class 1"/>
                                     <segment title="Class 2"/>
@@ -634,14 +644,14 @@
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="75" id="Btm-53-Enn"/>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="centerX" secondItem="Xw1-Fa-dgt" secondAttribute="centerX" id="F9d-zT-hag"/>
                             <constraint firstItem="CyU-Wj-q5I" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="8" id="LgT-p5-GMl"/>
-                            <constraint firstAttribute="trailing" secondItem="TX7-cq-edh" secondAttribute="trailing" constant="34" id="NNO-7S-CEy"/>
+                            <constraint firstAttribute="trailing" secondItem="TX7-cq-edh" secondAttribute="trailing" constant="15" id="NNO-7S-CEy"/>
                             <constraint firstItem="TX7-cq-edh" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="8" id="bgx-l5-V0f"/>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="trailing" secondItem="Xw1-Fa-dgt" secondAttribute="trailingMargin" constant="20" id="fcQ-L6-d93"/>
                             <constraint firstItem="CyU-Wj-q5I" firstAttribute="centerX" secondItem="Xw1-Fa-dgt" secondAttribute="centerX" id="gYe-Xu-dSj"/>
                             <constraint firstItem="I99-YZ-Nb6" firstAttribute="top" secondItem="gcz-FJ-VFL" secondAttribute="bottom" constant="20" id="ksu-dW-RLF"/>
                             <constraint firstItem="CyU-Wj-q5I" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="8" id="sJl-33-Q0t"/>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="top" secondItem="CyU-Wj-q5I" secondAttribute="bottom" constant="20" id="sSy-SG-UDb"/>
-                            <constraint firstItem="CyU-Wj-q5I" firstAttribute="leading" secondItem="Xw1-Fa-dgt" secondAttribute="leading" constant="34" id="wKh-9B-ufM"/>
+                            <constraint firstItem="CyU-Wj-q5I" firstAttribute="leading" secondItem="Xw1-Fa-dgt" secondAttribute="leading" constant="15" id="wKh-9B-ufM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -654,6 +664,7 @@
                     <tabBarItem key="tabBarItem" title="Classroom" image="750-home-selected" id="Keh-zM-Yo9"/>
                     <connections>
                         <outlet property="classSeg" destination="CyU-Wj-q5I" id="Foa-Iw-HKp"/>
+                        <outlet property="resetButton" destination="TX7-cq-edh" id="xbR-GK-rr3"/>
                         <outlet property="studentCollectionView" destination="gcz-FJ-VFL" id="xai-uU-d5G"/>
                     </connections>
                 </viewController>
