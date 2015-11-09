@@ -1,16 +1,16 @@
 //
-//  Misbehaviour.m
+//  Teacher.m
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-27.
+//  Created by Adam Goldberg on 2015-11-09.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 
-#import "Misbehaviour.h"
+#import "Teacher.h"
 #import "SchoolClass.h"
 #import "Student.h"
 
-@implementation Misbehaviour
+@implementation Teacher
 
 // Insert code here to add functionality to your managed object subclass
 

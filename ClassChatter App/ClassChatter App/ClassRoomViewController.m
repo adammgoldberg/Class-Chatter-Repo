@@ -14,7 +14,7 @@
 #import "Parent.h"
 #import "Teacher.h"
 #import "SchoolClass.h"
-#import "Misbehaviour.h"
+#import "Behaviour.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
@@ -28,7 +28,7 @@
 
 @property (strong, nonatomic) NSMutableArray *listOfParents;
 
-@property (strong, nonatomic) NSMutableArray *listOfMisbehaviour;
+@property (strong, nonatomic) NSMutableArray *listOfBehaviour;
 
 @property (strong, nonatomic) NSMutableArray *listOfSchoolClasses;
 
@@ -60,7 +60,9 @@
     if (self.listOfTeachers.count == 0) {
         Teacher *aTeacher = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher" inManagedObjectContext:self.managedObjectContext];
         
-        aTeacher.emailAddress = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class 3 times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
+        aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class 3 times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
+        
+        aTeacher.emailTemplateGood = @"YOUR KID IS AWESOME!!!!";
         
 
 
@@ -75,7 +77,7 @@
     
     
     
-    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
+    [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
     
     [self rebuildSegControl];
     
@@ -113,7 +115,7 @@
 - (void)handleDataModelChange:(NSNotification *)note
 {
         
-    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
+    [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"numberOfDisruptions" ascending:NO];
     self.sortClass = @[sort];
@@ -131,6 +133,7 @@
 {
     for (Student *aStudent in self.currentClass) {
         aStudent.numberOfDisruptions = 0;
+        aStudent.numberOfPositives = 0;
     }
     [self.studentCollectionView reloadData];
     
@@ -142,10 +145,11 @@
 
 - (IBAction)classSelected:(UISegmentedControl *)sender {
 
-    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+//    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+    NSString *gradeTitle = [sender titleForSegmentAtIndex:sender.selectedSegmentIndex];
     self.currentClass = [[NSMutableArray alloc] init];
     for (Student *student in self.listOfStudents) {
-        if (student.schoolClass.grade.integerValue == grade) {
+        if (student.schoolClass.section == gradeTitle) {
             [self.currentClass addObject:student];
         }
     }
@@ -158,7 +162,8 @@
     
     if (self.listOfSchoolClasses.count > 0) {
         for (SchoolClass *schoolClass in self.listOfSchoolClasses) {
-            [self.classSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
+            [self.classSeg insertSegmentWithTitle:schoolClass.section atIndex:0 animated:NO];
+//            [self.classSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
         }
     } else {
         [self.classSeg insertSegmentWithTitle:@"Class" atIndex:0 animated:true];
@@ -172,50 +177,50 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    Misbehaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Misbehaviour" inManagedObjectContext:self.managedObjectContext];
-    misbehaviour.time = [NSDate date];
-    Student *theStudent = self.currentClass[indexPath.row];
-    Parent *theParent = [theStudent.parents anyObject];
-    [theStudent addMisbehaviourObject:misbehaviour];
-    NSError *error;
-    [self.managedObjectContext save:&error];
-    
-    NSInteger numberOfTaps = [theStudent.numberOfDisruptions integerValue];
-    numberOfTaps = numberOfTaps + 1;
-    NSNumber *newNumber = [NSNumber numberWithInteger:numberOfTaps];
-    theStudent.numberOfDisruptions = newNumber;
-    
-    
-    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
-    
-    if (numberOfTaps == 3) {
-        if ([MFMailComposeViewController canSendMail]) {
-            
-            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-            mailViewController.mailComposeDelegate = self;
-            [mailViewController setSubject:@"Misbehaviour in class."];
-            
-            Teacher *theTeacher = [self.listOfTeachers firstObject];
-            NSString *theResultString = theTeacher.emailAddress;
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
-            
-            [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
-            
-            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
-            
-            [self presentViewController:mailViewController animated:YES completion:nil];
-            
-        }
-        
-        else {
-            NSLog(@"Device can't send emails");
-        }
-        
-        [self.managedObjectContext save:&error];
-        
-    }
+//    Misbehaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Misbehaviour" inManagedObjectContext:self.managedObjectContext];
+//    misbehaviour.time = [NSDate date];
+//    Student *theStudent = self.currentClass[indexPath.row];
+//    Parent *theParent = [theStudent.parents anyObject];
+//    [theStudent addMisbehaviourObject:misbehaviour];
+//    NSError *error;
+//    [self.managedObjectContext save:&error];
+//    
+//    NSInteger numberOfTaps = [theStudent.numberOfDisruptions integerValue];
+//    numberOfTaps = numberOfTaps + 1;
+//    NSNumber *newNumber = [NSNumber numberWithInteger:numberOfTaps];
+//    theStudent.numberOfDisruptions = newNumber;
+//    
+//    
+//    [self fetchStudentAndParentsAndMisbehaviourAndSchoolClasses];
+//    
+//    if (numberOfTaps == 3) {
+//        if ([MFMailComposeViewController canSendMail]) {
+//            
+//            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+//            mailViewController.mailComposeDelegate = self;
+//            [mailViewController setSubject:@"Misbehaviour in class."];
+//            
+//            Teacher *theTeacher = [self.listOfTeachers firstObject];
+//            NSString *theResultString = theTeacher.emailAddress;
+//            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+//            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+//            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
+//            
+//            [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+//            
+//            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
+//            
+//            [self presentViewController:mailViewController animated:YES completion:nil];
+//            
+//        }
+//        
+//        else {
+//            NSLog(@"Device can't send emails");
+//        }
+//        
+//        [self.managedObjectContext save:&error];
+//        
+//    }
 }
 
 
@@ -245,10 +250,16 @@
 
 -(void)configureCell:(StudentDeskCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
+    for (UIGestureRecognizer *recognizer in self.view.gestureRecognizers) {
+        [self.view removeGestureRecognizer:recognizer];
+    }
+    
     Student *student = self.currentClass[indexPath.row];
     cell.studentNameLabel.text = student.firstName;
-    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%d", [student.numberOfDisruptions integerValue]];
+    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld", [student.numberOfDisruptions integerValue]];
+    cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld", [student.numberOfPositives integerValue]];
     NSInteger numberOfTaps = [student.numberOfDisruptions integerValue];
+    cell.tag = indexPath.row;
     
     if (numberOfTaps == 1) {
         cell.backgroundColor = [UIColor yellowColor];
@@ -260,7 +271,124 @@
         cell.backgroundColor = [UIColor greenColor];
     }
     
+    UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(badSwipe:)];
+    [downSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
+    [cell addGestureRecognizer:downSwipe];
     
+    UISwipeGestureRecognizer *upSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goodSwipe:)];
+    [upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
+    [cell addGestureRecognizer:upSwipe];
+    
+    
+}
+
+
+-(void)badSwipe:(UISwipeGestureRecognizer*)swipe
+{
+    
+//    CGPoint location = [swipe locationInView:self.studentCollectionView];
+//    NSIndexPath *swipedIndexPath = [self.studentCollectionView indexPathForItemAtPoint:location];
+//    StudentDeskCell
+//    CGPoint location = [gesture locationInView:tableView];
+//    NSIndexPath *swipedIndexPath = [tableView indexPathForRowAtPoint:location];
+//    UITableViewCell *swipedCell  = [tableView cellForRowAtIndexPath:swipedIndexPath];
+    
+    
+    NSLog(@"bad swipe");
+    Behaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Behaviour" inManagedObjectContext:self.managedObjectContext];
+    misbehaviour.time = [NSDate date];
+    Student *theStudent = self.currentClass[swipe.view.tag];
+    Parent *theParent = [theStudent.parents anyObject];
+    [theStudent addBehaviourObject:misbehaviour];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    NSInteger numberOfBadSwipes = [theStudent.numberOfDisruptions integerValue];
+    numberOfBadSwipes = numberOfBadSwipes + 1;
+    NSNumber *newNumber = [NSNumber numberWithInteger:numberOfBadSwipes];
+    theStudent.numberOfDisruptions = newNumber;
+    
+    
+    [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
+    
+    if (numberOfBadSwipes == 3) {
+        if ([MFMailComposeViewController canSendMail]) {
+            
+            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+            mailViewController.mailComposeDelegate = self;
+            [mailViewController setSubject:@"Misbehaviour in class."];
+            
+            Teacher *theTeacher = [self.listOfTeachers firstObject];
+            NSString *theResultString = theTeacher.emailTemplateBad;
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
+            
+            [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+            
+            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
+            
+            [self presentViewController:mailViewController animated:YES completion:nil];
+            
+        }
+        
+        else {
+            NSLog(@"Device can't send emails");
+        }
+        
+        [self.managedObjectContext save:&error];
+        
+    }
+
+}
+
+-(void)goodSwipe:(UISwipeGestureRecognizer*)swipe
+{
+    NSLog(@"goodswipe");
+    Behaviour *goodBehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Behaviour" inManagedObjectContext:self.managedObjectContext];
+    goodBehaviour.time = [NSDate date];
+    goodBehaviour.type = @"good";
+    Student *theStudent = self.currentClass[swipe.view.tag];
+    Parent *theParent = [theStudent.parents anyObject];
+    [theStudent addBehaviourObject:goodBehaviour];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    NSInteger numberOfGoodSwipes = [theStudent.numberOfPositives integerValue];
+    numberOfGoodSwipes = numberOfGoodSwipes + 1;
+    NSNumber *goodNumber = [NSNumber numberWithInteger:numberOfGoodSwipes];
+    theStudent.numberOfPositives = goodNumber;
+    
+    
+    [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
+    
+    if (numberOfGoodSwipes == 5) {
+        if ([MFMailComposeViewController canSendMail]) {
+            
+            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+            mailViewController.mailComposeDelegate = self;
+            [mailViewController setSubject:@"Good behaviour in class."];
+            
+            Teacher *theTeacher = [self.listOfTeachers firstObject];
+            NSString *theResultString = theTeacher.emailTemplateGood;
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
+            
+            [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+            
+            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
+            
+            [self presentViewController:mailViewController animated:YES completion:nil];
+            
+        }
+        
+        else {
+            NSLog(@"Device can't send emails");
+        }
+        
+        [self.managedObjectContext save:&error];
+    }
     
 }
 
@@ -268,9 +396,10 @@
 
 
 
+
 #pragma mark - fetches
 
--(void)fetchStudentAndParentsAndMisbehaviourAndSchoolClasses
+-(void)fetchStudentAndParentsAndBehaviourAndSchoolClasses
 {
     self.listOfStudents = [[NSMutableArray alloc] init];
     
@@ -295,14 +424,14 @@
     
     
     
-    self.listOfMisbehaviour = [[NSMutableArray alloc] init];
+    self.listOfBehaviour = [[NSMutableArray alloc] init];
     
-    NSFetchRequest *misbehaviourFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Misbehaviour"];
+    NSFetchRequest *behaviourFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Behaviour"];
 //    misbehaviourFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
     
-    NSError *misbehaviourError;
+    NSError *behaviourError;
     
-    [self.listOfMisbehaviour addObjectsFromArray:[self.managedObjectContext executeFetchRequest:misbehaviourFetchRequest error:&misbehaviourError]];
+    [self.listOfBehaviour addObjectsFromArray:[self.managedObjectContext executeFetchRequest:behaviourFetchRequest error:&behaviourError]];
     
     
     self.listOfSchoolClasses = [[NSMutableArray alloc] init];

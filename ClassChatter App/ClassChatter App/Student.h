@@ -2,14 +2,14 @@
 //  Student.h
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-26.
+//  Created by Adam Goldberg on 2015-11-09.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Parent, SchoolClass, Teacher;
+@class Behaviour, Parent, SchoolClass, Teacher;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
-    <entity name="Misbehaviour" representedClassName="Misbehaviour" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="Behaviour" representedClassName="Behaviour" syncable="YES">
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="schoolClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolClass" inverseName="misbehaviour" inverseEntity="SchoolClass" syncable="YES"/>
-        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="misbehaviour" inverseEntity="Student" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="schoolClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolClass" inverseName="behaviour" inverseEntity="SchoolClass" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="behaviour" inverseEntity="Student" syncable="YES"/>
     </entity>
     <entity name="Parent" representedClassName="Parent" syncable="YES">
         <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,7 +16,7 @@
         <attribute name="grade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="misbehaviour" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Misbehaviour" inverseName="schoolClass" inverseEntity="Misbehaviour" syncable="YES"/>
+        <relationship name="behaviour" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Behaviour" inverseName="schoolClass" inverseEntity="Behaviour" syncable="YES"/>
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="schoolClass" inverseEntity="Student" syncable="YES"/>
         <relationship name="teacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="schoolClasses" inverseEntity="Teacher" syncable="YES"/>
     </entity>
@@ -23,21 +24,21 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberOfDisruptions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="numberOfEmails" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="misbehaviour" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Misbehaviour" inverseName="student" inverseEntity="Misbehaviour" syncable="YES"/>
+        <attribute name="numberOfPositives" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="behaviour" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Behaviour" inverseName="student" inverseEntity="Behaviour" syncable="YES"/>
         <relationship name="parents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Parent" inverseName="student" inverseEntity="Parent" syncable="YES"/>
         <relationship name="schoolClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolClass" inverseName="students" inverseEntity="SchoolClass" syncable="YES"/>
         <relationship name="teacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="students" inverseEntity="Teacher" syncable="YES"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES">
-        <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emailTemplateBad" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="emailTemplateGood" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="principalEmail" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="schoolClasses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SchoolClass" inverseName="teacher" inverseEntity="SchoolClass" syncable="YES"/>
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="teacher" inverseEntity="Student" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Misbehaviour" positionX="9" positionY="108" width="128" height="90"/>
+        <element name="Behaviour" positionX="9" positionY="108" width="128" height="105"/>
         <element name="Parent" positionX="36" positionY="108" width="128" height="105"/>
         <element name="SchoolClass" positionX="9" positionY="90" width="128" height="135"/>
         <element name="Student" positionX="-18" positionY="27" width="128" height="165"/>

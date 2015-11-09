@@ -1,17 +1,19 @@
 //
-//  Parent.h
+//  SchoolClass.h
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-26.
+//  Created by Adam Goldberg on 2015-11-09.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Behaviour, Student, Teacher;
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Parent : NSManagedObject
+@interface SchoolClass : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -19,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "Parent+CoreDataProperties.h"
+#import "SchoolClass+CoreDataProperties.h"

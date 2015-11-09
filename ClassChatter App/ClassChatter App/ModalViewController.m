@@ -136,10 +136,11 @@
     parent.emailAddress = self.emailAddressText.text;
     parent.lastName = self.parentLastNameText.text;
     
-    NSInteger gradeInt = [self.studentClassText.text integerValue];
+//    NSInteger gradeInt = [self.studentClassText.text integerValue];
+    NSString *gradeString = self.studentClassText.text;
     
     NSFetchRequest *fetchForSchoolClass = [NSFetchRequest fetchRequestWithEntityName:@"SchoolClass"];
-    fetchForSchoolClass.predicate = [NSPredicate predicateWithFormat:@"grade = %@", @(gradeInt)];
+    fetchForSchoolClass.predicate = [NSPredicate predicateWithFormat:@"grade = %@", gradeString];
     
     
     NSError *error;
@@ -149,7 +150,7 @@
         student.schoolClass = [schoolClassesArray firstObject];
     } else {
         SchoolClass *schoolClass = [NSEntityDescription insertNewObjectForEntityForName:@"SchoolClass" inManagedObjectContext:self.managedObjectContext];
-        schoolClass.grade = @(gradeInt);
+        schoolClass.section = gradeString;
         student.schoolClass = schoolClass;
     }
     

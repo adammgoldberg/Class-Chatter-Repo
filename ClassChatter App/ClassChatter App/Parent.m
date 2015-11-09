@@ -1,14 +1,15 @@
 //
-//  Teacher.m
+//  Parent.m
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-26.
+//  Created by Adam Goldberg on 2015-11-09.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 
-#import "Teacher.h"
+#import "Parent.h"
+#import "Student.h"
 
-@implementation Teacher
+@implementation Parent
 
 // Insert code here to add functionality to your managed object subclass
 

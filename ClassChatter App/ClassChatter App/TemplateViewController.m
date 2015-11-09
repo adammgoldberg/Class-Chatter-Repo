@@ -36,7 +36,7 @@
     NSError *error;
     self.teacher = [[self.managedObjectContext executeFetchRequest:teacherFetch error:&error] firstObject];
     
-    self.emailTemplateText.text = self.teacher.emailAddress;
+    self.emailTemplateText.text = self.teacher.emailTemplateBad;
     
     
     
@@ -60,7 +60,7 @@
 
 - (IBAction)saveTemplate:(UIButton *)sender
 {
-    self.teacher.emailAddress = self.emailTemplateText.text;
+    self.teacher.emailTemplateBad = self.emailTemplateText.text;
     NSError *error;
     [self.managedObjectContext save:&error];
 }

@@ -10,7 +10,7 @@
 #import "HistoryCell.h"
 #import "Student.h"
 #import "SchoolClass.h"
-#import "Misbehaviour.h"
+#import "Behaviour.h"
 
 @interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -25,10 +25,10 @@
 
 @property (strong, nonatomic) NSMutableArray *listOfStudents;
 
-@property (strong, nonatomic) NSMutableArray *listOfMisbehaviour;
+@property (strong, nonatomic) NSMutableArray *listOfBehaviour;
 
 
-@property (strong, nonatomic) NSMutableArray *filteredMisbehaviour;
+@property (strong, nonatomic) NSMutableArray *filteredBehaviour;
 
 @property (assign, nonatomic) BOOL isSearching;
 
@@ -57,9 +57,9 @@
     self.searchDisplay.searchResultsTableView.rowHeight = 82;
     
     
-    [self fetchStudentAndMisbehaviour];
+    [self fetchStudentAndBehaviour];
     
-    self.filteredMisbehaviour = [[NSMutableArray alloc] init];
+    self.filteredBehaviour = [[NSMutableArray alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
     
@@ -70,7 +70,7 @@
 - (void)handleDataModelChange:(NSNotification *)note
 {
     
-    [self fetchStudentAndMisbehaviour];
+    [self fetchStudentAndBehaviour];
     
     [self.tableViewHistory reloadData];
 }
@@ -81,10 +81,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.isSearching) {
-        return self.filteredMisbehaviour.count;
+        return self.filteredBehaviour.count;
     }
     else {
-        return self.listOfMisbehaviour.count;
+        return self.listOfBehaviour.count;
     }
     
 }
@@ -95,11 +95,12 @@
     
     HistoryCell *cell = [self.tableViewHistory dequeueReusableCellWithIdentifier:@"HistoryCell" forIndexPath:indexPath];
     
+    
     if (self.isSearching) {
-        [self configureCell:cell withMisbehaviour:[self.filteredMisbehaviour objectAtIndex:indexPath.row]];
+        [self configureCell:cell withBehaviour:[self.filteredBehaviour objectAtIndex:indexPath.row]];
     }
     else {
-        [self configureCell:cell withMisbehaviour:[self.listOfMisbehaviour objectAtIndex:indexPath.row]];
+        [self configureCell:cell withBehaviour:[self.listOfBehaviour objectAtIndex:indexPath.row]];
     }
     
     return cell;
@@ -109,13 +110,13 @@
 - (void)searchTableList {
     NSString *searchString = self.searchBar.text;
     
-    for (Misbehaviour *aMisbehaviour in self.listOfMisbehaviour) {
-        NSComparisonResult result = [aMisbehaviour.student.firstName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+    for (Behaviour *aBehaviour in self.listOfBehaviour) {
+        NSComparisonResult result = [aBehaviour.student.firstName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
         
-        NSComparisonResult result2 = [aMisbehaviour.student.lastName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+        NSComparisonResult result2 = [aBehaviour.student.lastName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
         
         if (result == NSOrderedSame || result2 == NSOrderedSame) {
-            [self.filteredMisbehaviour addObject:aMisbehaviour];
+            [self.filteredBehaviour addObject:aBehaviour];
         }
     }
 }
@@ -129,7 +130,7 @@
     NSLog(@"Text change - %d",self.isSearching);
     
     //Remove all objects first.
-    [self.filteredMisbehaviour removeAllObjects];
+    [self.filteredBehaviour removeAllObjects];
     
     if([searchText length] != 0) {
         self.isSearching = YES;
@@ -164,16 +165,21 @@
 
 
 
--(void)configureCell:(HistoryCell*)cell withMisbehaviour:(Misbehaviour*)misbehaviour
+-(void)configureCell:(HistoryCell*)cell withBehaviour:(Behaviour*)behaviour
 {
-    Student *student = misbehaviour.student;
+    Student *student = behaviour.student;
     cell.historyFirstLabel.text = student.firstName;
     cell.historyLastLabel.text = student.lastName;
+    if ([behaviour.type  isEqual: @"good"]) {
+        cell.backgroundColor = [UIColor yellowColor];
+    } else {
+        cell.backgroundColor = [UIColor grayColor];
+    }
     
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM dd, yyyy HH:mm:ss"];
     
-    NSString *dateString = [format stringFromDate:misbehaviour.time];
+    NSString *dateString = [format stringFromDate:behaviour.time];
     
     
     cell.historyTimeLabel.text = dateString;
@@ -184,7 +190,7 @@
 
 #pragma mark - fetches
 
--(void)fetchStudentAndMisbehaviour
+-(void)fetchStudentAndBehaviour
 {
     self.listOfStudents = [[NSMutableArray alloc] init];
     
@@ -198,14 +204,14 @@
     
     
     
-    self.listOfMisbehaviour = [[NSMutableArray alloc] init];
+    self.listOfBehaviour = [[NSMutableArray alloc] init];
     
-    NSFetchRequest *misbehaviourFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Misbehaviour"];
-    misbehaviourFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
+    NSFetchRequest *behaviourFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Behaviour"];
+    behaviourFetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES]];
     
-    NSError *misbehaviourError;
+    NSError *behaviourError;
     
-    [self.listOfMisbehaviour addObjectsFromArray:[self.managedObjectContext executeFetchRequest:misbehaviourFetchRequest error:&misbehaviourError]];
+    [self.listOfBehaviour addObjectsFromArray:[self.managedObjectContext executeFetchRequest:behaviourFetchRequest error:&behaviourError]];
 }
 
 

@@ -316,7 +316,7 @@
                                     <constraint firstAttribute="height" constant="344" id="BEa-XA-vX5"/>
                                     <constraint firstAttribute="height" constant="257" id="hY2-dR-ZYi"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
@@ -335,12 +335,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNI-Zx-c0v">
-                                <rect key="frame" x="250" y="524" width="101" height="30"/>
+                                <rect key="frame" x="240" y="524" width="121" height="38"/>
+                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kMj-vx-bDk"/>
                                 </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Save Template">
-                                    <color key="titleColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -514,29 +516,35 @@
                                 <rect key="frame" x="0.0" y="76" width="600" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dp8-vR-42v">
-                                    <size key="itemSize" width="108" height="106"/>
+                                    <size key="itemSize" width="164" height="157"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StudentDeskCell" id="m5p-vz-K0L" customClass="StudentDeskCell">
-                                        <rect key="frame" x="10" y="10" width="108" height="106"/>
+                                        <rect key="frame" x="10" y="10" width="164" height="157"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="108" height="106"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="164" height="157"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UN-vl-Msh">
-                                                    <rect key="frame" x="77" y="77" width="23" height="21"/>
+                                                    <rect key="frame" x="132" y="114" width="11" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.019546765859999999" green="0.14478772100000001" blue="0.017674270910000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ha-bF-jr2">
-                                                    <rect key="frame" x="24" y="42" width="61" height="21"/>
+                                                    <rect key="frame" x="52" y="68" width="61" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.019546765864779995" green="0.1447877209666667" blue="0.017674270906999537" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkV-tV-A8s">
+                                                    <rect key="frame" x="23" y="115" width="11" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.019546765859999999" green="0.14478772100000001" blue="0.017674270910000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -544,16 +552,18 @@
                                         </view>
                                         <color key="backgroundColor" red="0.27663461960000002" green="1" blue="0.1769873337" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="1ha-bF-jr2" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" constant="24" id="2cH-6G-unb"/>
-                                            <constraint firstItem="5UN-vl-Msh" firstAttribute="trailing" secondItem="m5p-vz-K0L" secondAttribute="trailingMargin" id="Byn-DS-Mpr"/>
-                                            <constraint firstItem="1ha-bF-jr2" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" constant="42" id="Udn-Hs-RYN"/>
-                                            <constraint firstAttribute="trailing" secondItem="1ha-bF-jr2" secondAttribute="trailing" constant="23" id="jra-Lo-LnG"/>
-                                            <constraint firstItem="5UN-vl-Msh" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leadingMargin" constant="69" id="vwF-vB-Vcz"/>
-                                            <constraint firstAttribute="bottom" secondItem="1ha-bF-jr2" secondAttribute="bottom" constant="43" id="wMQ-Pe-piz"/>
-                                            <constraint firstItem="5UN-vl-Msh" firstAttribute="bottom" secondItem="m5p-vz-K0L" secondAttribute="bottomMargin" id="z1X-ni-SOd"/>
+                                            <constraint firstItem="1ha-bF-jr2" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" constant="52" id="2cH-6G-unb"/>
+                                            <constraint firstItem="5UN-vl-Msh" firstAttribute="trailing" secondItem="m5p-vz-K0L" secondAttribute="trailingMargin" constant="-13" id="Byn-DS-Mpr"/>
+                                            <constraint firstAttribute="bottom" secondItem="jkV-tV-A8s" secondAttribute="bottom" constant="21" id="Elp-sv-143"/>
+                                            <constraint firstItem="jkV-tV-A8s" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" constant="23" id="IMX-j4-udt"/>
+                                            <constraint firstItem="1ha-bF-jr2" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" constant="68" id="Udn-Hs-RYN"/>
+                                            <constraint firstAttribute="trailing" secondItem="1ha-bF-jr2" secondAttribute="trailing" constant="51" id="jra-Lo-LnG"/>
+                                            <constraint firstAttribute="bottom" secondItem="1ha-bF-jr2" secondAttribute="bottom" constant="68" id="wMQ-Pe-piz"/>
+                                            <constraint firstItem="5UN-vl-Msh" firstAttribute="bottom" secondItem="m5p-vz-K0L" secondAttribute="bottomMargin" constant="-14" id="z1X-ni-SOd"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="numberOfDisruptionsLabel" destination="5UN-vl-Msh" id="w4u-Ot-QeD"/>
+                                            <outlet property="numberOfGoodsLabel" destination="jkV-tV-A8s" id="Zra-p9-mCO"/>
                                             <outlet property="studentNameLabel" destination="1ha-bF-jr2" id="Y6W-fK-PG8"/>
                                         </connections>
                                     </collectionViewCell>

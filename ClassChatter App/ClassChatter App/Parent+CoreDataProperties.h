@@ -2,7 +2,7 @@
 //  Parent+CoreDataProperties.h
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-26.
+//  Created by Adam Goldberg on 2015-11-09.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Parent (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *title;
-@property (nullable, nonatomic, retain) NSString *lastName;
 @property (nullable, nonatomic, retain) NSString *emailAddress;
-@property (nullable, nonatomic, retain) NSManagedObject *student;
+@property (nullable, nonatomic, retain) NSString *lastName;
+@property (nullable, nonatomic, retain) NSString *title;
+@property (nullable, nonatomic, retain) Student *student;
 
 @end
 

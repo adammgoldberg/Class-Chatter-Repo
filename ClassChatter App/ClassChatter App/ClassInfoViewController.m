@@ -103,10 +103,11 @@
 
 - (IBAction)classInfoSelected:(UISegmentedControl *)sender
 {
-    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+//    NSInteger grade = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+    NSString *gradeTitle = [sender titleForSegmentAtIndex:sender.selectedSegmentIndex];
     self.currentInfoClass = [[NSMutableArray alloc] init];
     for (Student *student in self.listOfStudents) {
-        if (student.schoolClass.grade.integerValue == grade) {
+        if (student.schoolClass.section == gradeTitle) {
             [self.currentInfoClass addObject:student];
         }
     }
@@ -120,7 +121,7 @@
     [self.classInfoSeg removeAllSegments];
     if (self.listOfSchoolClasses.count > 0) {
         for (SchoolClass *schoolClass in self.listOfSchoolClasses) {
-            [self.classInfoSeg insertSegmentWithTitle:[NSString stringWithFormat:@"%@", schoolClass.grade] atIndex:0 animated:NO];
+            [self.classInfoSeg insertSegmentWithTitle:schoolClass.section atIndex:0 animated:NO];
         }
     } else {
         [self.classInfoSeg insertSegmentWithTitle:@"Class" atIndex:0 animated:true];

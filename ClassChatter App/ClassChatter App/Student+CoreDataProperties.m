@@ -2,7 +2,7 @@
 //  Student+CoreDataProperties.m
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-27.
+//  Created by Adam Goldberg on 2015-11-09.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,10 +16,10 @@
 @dynamic firstName;
 @dynamic lastName;
 @dynamic numberOfDisruptions;
-@dynamic numberOfEmails;
+@dynamic numberOfPositives;
+@dynamic behaviour;
 @dynamic parents;
 @dynamic schoolClass;
 @dynamic teacher;
-@dynamic misbehaviour;
 
 @end

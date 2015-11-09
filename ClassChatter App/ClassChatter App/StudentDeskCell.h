@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *studentNameLabel;
 
 
+@property (strong, nonatomic) IBOutlet UILabel *numberOfGoodsLabel;
 
 
 @end

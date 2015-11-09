@@ -1,22 +1,23 @@
 //
-//  Teacher+CoreDataProperties.m
+//  SchoolClass+CoreDataProperties.m
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-10-26.
+//  Created by Adam Goldberg on 2015-11-09.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Teacher+CoreDataProperties.h"
+#import "SchoolClass+CoreDataProperties.h"
 
-@implementation Teacher (CoreDataProperties)
+@implementation SchoolClass (CoreDataProperties)
 
-@dynamic firstName;
-@dynamic lastName;
-@dynamic emailAddress;
+@dynamic grade;
+@dynamic section;
+@dynamic subject;
+@dynamic behaviour;
 @dynamic students;
-@dynamic schoolClasses;
+@dynamic teacher;
 
 @end
