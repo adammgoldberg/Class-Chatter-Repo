@@ -24,16 +24,17 @@
 		06C2191F1BDFF13E0006BA9E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2191E1BDFF13E0006BA9E /* HistoryViewController.m */; };
 		06C219221BDFF1620006BA9E /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219211BDFF1620006BA9E /* HistoryCell.m */; };
 		06C219251BE285E50006BA9E /* TemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219241BE285E50006BA9E /* TemplateViewController.m */; };
-		06FD81211BF1257300ABE34A /* Student+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD810E1BF1257300ABE34A /* Student+CoreDataProperties.m */; };
-		06FD81221BF1257300ABE34A /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81101BF1257300ABE34A /* Student.m */; };
-		06FD81231BF1257300ABE34A /* SchoolClass+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81121BF1257300ABE34A /* SchoolClass+CoreDataProperties.m */; };
-		06FD81241BF1257300ABE34A /* SchoolClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81141BF1257300ABE34A /* SchoolClass.m */; };
-		06FD81251BF1257300ABE34A /* Teacher+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81161BF1257300ABE34A /* Teacher+CoreDataProperties.m */; };
-		06FD81261BF1257300ABE34A /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81181BF1257300ABE34A /* Teacher.m */; };
-		06FD81271BF1257300ABE34A /* Behaviour+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD811A1BF1257300ABE34A /* Behaviour+CoreDataProperties.m */; };
-		06FD81281BF1257300ABE34A /* Behaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD811C1BF1257300ABE34A /* Behaviour.m */; };
-		06FD81291BF1257300ABE34A /* Parent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD811E1BF1257300ABE34A /* Parent+CoreDataProperties.m */; };
-		06FD812A1BF1257300ABE34A /* Parent.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81201BF1257300ABE34A /* Parent.m */; };
+		06FD812D1BF1313A00ABE34A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD812C1BF1313A00ABE34A /* DetailViewController.m */; };
+		06FD81421BF13D2C00ABE34A /* Teacher+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD812F1BF13D2C00ABE34A /* Teacher+CoreDataProperties.m */; };
+		06FD81431BF13D2C00ABE34A /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81311BF13D2C00ABE34A /* Teacher.m */; };
+		06FD81441BF13D2C00ABE34A /* Parent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81331BF13D2C00ABE34A /* Parent+CoreDataProperties.m */; };
+		06FD81451BF13D2C00ABE34A /* Parent.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81351BF13D2C00ABE34A /* Parent.m */; };
+		06FD81461BF13D2C00ABE34A /* SchoolClass+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81371BF13D2C00ABE34A /* SchoolClass+CoreDataProperties.m */; };
+		06FD81471BF13D2C00ABE34A /* SchoolClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81391BF13D2C00ABE34A /* SchoolClass.m */; };
+		06FD81481BF13D2C00ABE34A /* Student+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD813B1BF13D2C00ABE34A /* Student+CoreDataProperties.m */; };
+		06FD81491BF13D2C00ABE34A /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD813D1BF13D2C00ABE34A /* Student.m */; };
+		06FD814A1BF13D2C00ABE34A /* Behaviour+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD813F1BF13D2C00ABE34A /* Behaviour+CoreDataProperties.m */; };
+		06FD814B1BF13D2C00ABE34A /* Behaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD81411BF13D2C00ABE34A /* Behaviour.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,26 +87,28 @@
 		06C219211BDFF1620006BA9E /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		06C219231BE285E50006BA9E /* TemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateViewController.h; sourceTree = "<group>"; };
 		06C219241BE285E50006BA9E /* TemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateViewController.m; sourceTree = "<group>"; };
-		06FD810D1BF1257300ABE34A /* Student+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataProperties.h"; sourceTree = "<group>"; };
-		06FD810E1BF1257300ABE34A /* Student+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataProperties.m"; sourceTree = "<group>"; };
-		06FD810F1BF1257300ABE34A /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
-		06FD81101BF1257300ABE34A /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
-		06FD81111BF1257300ABE34A /* SchoolClass+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SchoolClass+CoreDataProperties.h"; sourceTree = "<group>"; };
-		06FD81121BF1257300ABE34A /* SchoolClass+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SchoolClass+CoreDataProperties.m"; sourceTree = "<group>"; };
-		06FD81131BF1257300ABE34A /* SchoolClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolClass.h; sourceTree = "<group>"; };
-		06FD81141BF1257300ABE34A /* SchoolClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolClass.m; sourceTree = "<group>"; };
-		06FD81151BF1257300ABE34A /* Teacher+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataProperties.h"; sourceTree = "<group>"; };
-		06FD81161BF1257300ABE34A /* Teacher+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataProperties.m"; sourceTree = "<group>"; };
-		06FD81171BF1257300ABE34A /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
-		06FD81181BF1257300ABE34A /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
-		06FD81191BF1257300ABE34A /* Behaviour+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Behaviour+CoreDataProperties.h"; sourceTree = "<group>"; };
-		06FD811A1BF1257300ABE34A /* Behaviour+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Behaviour+CoreDataProperties.m"; sourceTree = "<group>"; };
-		06FD811B1BF1257300ABE34A /* Behaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Behaviour.h; sourceTree = "<group>"; };
-		06FD811C1BF1257300ABE34A /* Behaviour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Behaviour.m; sourceTree = "<group>"; };
-		06FD811D1BF1257300ABE34A /* Parent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Parent+CoreDataProperties.h"; sourceTree = "<group>"; };
-		06FD811E1BF1257300ABE34A /* Parent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Parent+CoreDataProperties.m"; sourceTree = "<group>"; };
-		06FD811F1BF1257300ABE34A /* Parent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parent.h; sourceTree = "<group>"; };
-		06FD81201BF1257300ABE34A /* Parent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parent.m; sourceTree = "<group>"; };
+		06FD812B1BF1313A00ABE34A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		06FD812C1BF1313A00ABE34A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		06FD812E1BF13D2C00ABE34A /* Teacher+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataProperties.h"; sourceTree = "<group>"; };
+		06FD812F1BF13D2C00ABE34A /* Teacher+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataProperties.m"; sourceTree = "<group>"; };
+		06FD81301BF13D2C00ABE34A /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
+		06FD81311BF13D2C00ABE34A /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
+		06FD81321BF13D2C00ABE34A /* Parent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Parent+CoreDataProperties.h"; sourceTree = "<group>"; };
+		06FD81331BF13D2C00ABE34A /* Parent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Parent+CoreDataProperties.m"; sourceTree = "<group>"; };
+		06FD81341BF13D2C00ABE34A /* Parent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parent.h; sourceTree = "<group>"; };
+		06FD81351BF13D2C00ABE34A /* Parent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parent.m; sourceTree = "<group>"; };
+		06FD81361BF13D2C00ABE34A /* SchoolClass+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SchoolClass+CoreDataProperties.h"; sourceTree = "<group>"; };
+		06FD81371BF13D2C00ABE34A /* SchoolClass+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SchoolClass+CoreDataProperties.m"; sourceTree = "<group>"; };
+		06FD81381BF13D2C00ABE34A /* SchoolClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolClass.h; sourceTree = "<group>"; };
+		06FD81391BF13D2C00ABE34A /* SchoolClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolClass.m; sourceTree = "<group>"; };
+		06FD813A1BF13D2C00ABE34A /* Student+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataProperties.h"; sourceTree = "<group>"; };
+		06FD813B1BF13D2C00ABE34A /* Student+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataProperties.m"; sourceTree = "<group>"; };
+		06FD813C1BF13D2C00ABE34A /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		06FD813D1BF13D2C00ABE34A /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		06FD813E1BF13D2C00ABE34A /* Behaviour+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Behaviour+CoreDataProperties.h"; sourceTree = "<group>"; };
+		06FD813F1BF13D2C00ABE34A /* Behaviour+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Behaviour+CoreDataProperties.m"; sourceTree = "<group>"; };
+		06FD81401BF13D2C00ABE34A /* Behaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Behaviour.h; sourceTree = "<group>"; };
+		06FD81411BF13D2C00ABE34A /* Behaviour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Behaviour.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 				065DBCDB1BDE8DB100CCAF94 /* AppDelegate.h */,
 				065DBCDC1BDE8DB100CCAF94 /* AppDelegate.m */,
 				065DBCE11BDE8DB100CCAF94 /* Main.storyboard */,
+				06FD812B1BF1313A00ABE34A /* DetailViewController.h */,
+				06FD812C1BF1313A00ABE34A /* DetailViewController.m */,
 				06C219231BE285E50006BA9E /* TemplateViewController.h */,
 				06C219241BE285E50006BA9E /* TemplateViewController.m */,
 				06C2191D1BDFF13E0006BA9E /* HistoryViewController.h */,
@@ -215,26 +220,26 @@
 		065DBD351BDEFD7600CCAF94 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				06FD810D1BF1257300ABE34A /* Student+CoreDataProperties.h */,
-				06FD810E1BF1257300ABE34A /* Student+CoreDataProperties.m */,
-				06FD810F1BF1257300ABE34A /* Student.h */,
-				06FD81101BF1257300ABE34A /* Student.m */,
-				06FD81111BF1257300ABE34A /* SchoolClass+CoreDataProperties.h */,
-				06FD81121BF1257300ABE34A /* SchoolClass+CoreDataProperties.m */,
-				06FD81131BF1257300ABE34A /* SchoolClass.h */,
-				06FD81141BF1257300ABE34A /* SchoolClass.m */,
-				06FD81151BF1257300ABE34A /* Teacher+CoreDataProperties.h */,
-				06FD81161BF1257300ABE34A /* Teacher+CoreDataProperties.m */,
-				06FD81171BF1257300ABE34A /* Teacher.h */,
-				06FD81181BF1257300ABE34A /* Teacher.m */,
-				06FD81191BF1257300ABE34A /* Behaviour+CoreDataProperties.h */,
-				06FD811A1BF1257300ABE34A /* Behaviour+CoreDataProperties.m */,
-				06FD811B1BF1257300ABE34A /* Behaviour.h */,
-				06FD811C1BF1257300ABE34A /* Behaviour.m */,
-				06FD811D1BF1257300ABE34A /* Parent+CoreDataProperties.h */,
-				06FD811E1BF1257300ABE34A /* Parent+CoreDataProperties.m */,
-				06FD811F1BF1257300ABE34A /* Parent.h */,
-				06FD81201BF1257300ABE34A /* Parent.m */,
+				06FD812E1BF13D2C00ABE34A /* Teacher+CoreDataProperties.h */,
+				06FD812F1BF13D2C00ABE34A /* Teacher+CoreDataProperties.m */,
+				06FD81301BF13D2C00ABE34A /* Teacher.h */,
+				06FD81311BF13D2C00ABE34A /* Teacher.m */,
+				06FD81321BF13D2C00ABE34A /* Parent+CoreDataProperties.h */,
+				06FD81331BF13D2C00ABE34A /* Parent+CoreDataProperties.m */,
+				06FD81341BF13D2C00ABE34A /* Parent.h */,
+				06FD81351BF13D2C00ABE34A /* Parent.m */,
+				06FD81361BF13D2C00ABE34A /* SchoolClass+CoreDataProperties.h */,
+				06FD81371BF13D2C00ABE34A /* SchoolClass+CoreDataProperties.m */,
+				06FD81381BF13D2C00ABE34A /* SchoolClass.h */,
+				06FD81391BF13D2C00ABE34A /* SchoolClass.m */,
+				06FD813A1BF13D2C00ABE34A /* Student+CoreDataProperties.h */,
+				06FD813B1BF13D2C00ABE34A /* Student+CoreDataProperties.m */,
+				06FD813C1BF13D2C00ABE34A /* Student.h */,
+				06FD813D1BF13D2C00ABE34A /* Student.m */,
+				06FD813E1BF13D2C00ABE34A /* Behaviour+CoreDataProperties.h */,
+				06FD813F1BF13D2C00ABE34A /* Behaviour+CoreDataProperties.m */,
+				06FD81401BF13D2C00ABE34A /* Behaviour.h */,
+				06FD81411BF13D2C00ABE34A /* Behaviour.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -371,26 +376,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06FD81441BF13D2C00ABE34A /* Parent+CoreDataProperties.m in Sources */,
 				06C219221BDFF1620006BA9E /* HistoryCell.m in Sources */,
-				06FD81211BF1257300ABE34A /* Student+CoreDataProperties.m in Sources */,
-				06FD81221BF1257300ABE34A /* Student.m in Sources */,
 				065DBD2B1BDE95B600CCAF94 /* StudentDeskCell.m in Sources */,
+				06FD81461BF13D2C00ABE34A /* SchoolClass+CoreDataProperties.m in Sources */,
+				06FD81471BF13D2C00ABE34A /* SchoolClass.m in Sources */,
 				065DBCDD1BDE8DB100CCAF94 /* AppDelegate.m in Sources */,
 				065DBD281BDE958000CCAF94 /* ClassRoomViewController.m in Sources */,
+				06FD814B1BF13D2C00ABE34A /* Behaviour.m in Sources */,
+				06FD81491BF13D2C00ABE34A /* Student.m in Sources */,
 				065DBD2E1BDE9BA800CCAF94 /* ClassInfoViewController.m in Sources */,
+				06FD812D1BF1313A00ABE34A /* DetailViewController.m in Sources */,
 				065DBCE61BDE8DB200CCAF94 /* ClassChatter_App.xcdatamodeld in Sources */,
 				065DBD311BDE9F4900CCAF94 /* ClassInfoCell.m in Sources */,
+				06FD81431BF13D2C00ABE34A /* Teacher.m in Sources */,
 				065DBD341BDEEF8700CCAF94 /* ModalViewController.m in Sources */,
-				06FD81241BF1257300ABE34A /* SchoolClass.m in Sources */,
-				06FD81261BF1257300ABE34A /* Teacher.m in Sources */,
-				06FD81231BF1257300ABE34A /* SchoolClass+CoreDataProperties.m in Sources */,
 				065DBCDA1BDE8DB100CCAF94 /* main.m in Sources */,
-				06FD812A1BF1257300ABE34A /* Parent.m in Sources */,
-				06FD81281BF1257300ABE34A /* Behaviour.m in Sources */,
-				06FD81291BF1257300ABE34A /* Parent+CoreDataProperties.m in Sources */,
+				06FD81421BF13D2C00ABE34A /* Teacher+CoreDataProperties.m in Sources */,
+				06FD81451BF13D2C00ABE34A /* Parent.m in Sources */,
 				06C2191F1BDFF13E0006BA9E /* HistoryViewController.m in Sources */,
-				06FD81271BF1257300ABE34A /* Behaviour+CoreDataProperties.m in Sources */,
-				06FD81251BF1257300ABE34A /* Teacher+CoreDataProperties.m in Sources */,
+				06FD814A1BF13D2C00ABE34A /* Behaviour+CoreDataProperties.m in Sources */,
+				06FD81481BF13D2C00ABE34A /* Student+CoreDataProperties.m in Sources */,
 				06C219251BE285E50006BA9E /* TemplateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

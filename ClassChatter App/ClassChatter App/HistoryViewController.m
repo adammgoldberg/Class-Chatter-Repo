@@ -11,6 +11,7 @@
 #import "Student.h"
 #import "SchoolClass.h"
 #import "Behaviour.h"
+#import "DetailViewController.h"
 
 @interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -184,6 +185,26 @@
     
     cell.historyTimeLabel.text = dateString;
     cell.historyGradeLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
+    
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DetailViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailView"];
+    dvc.managedObjectContext = self.managedObjectContext;
+    if (self.isSearching) {
+        Behaviour *aBehaviour = self.filteredBehaviour[indexPath.row];
+        dvc.behaviour = aBehaviour;
+    }
+    else {
+        Behaviour *aBehaviour = self.listOfBehaviour[indexPath.row];
+        dvc.behaviour = aBehaviour;
+    }
+    [self.navigationController pushViewController:dvc animated:YES];
+    
+    
+    
     
 }
 

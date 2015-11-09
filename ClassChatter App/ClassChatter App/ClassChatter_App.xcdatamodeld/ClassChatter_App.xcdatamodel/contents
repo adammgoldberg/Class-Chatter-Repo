@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Automatic">
     <entity name="Behaviour" representedClassName="Behaviour" syncable="YES">
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="schoolClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolClass" inverseName="behaviour" inverseEntity="SchoolClass" syncable="YES"/>
@@ -38,7 +39,7 @@
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="teacher" inverseEntity="Student" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Behaviour" positionX="9" positionY="108" width="128" height="105"/>
+        <element name="Behaviour" positionX="9" positionY="108" width="128" height="120"/>
         <element name="Parent" positionX="36" positionY="108" width="128" height="105"/>
         <element name="SchoolClass" positionX="9" positionY="90" width="128" height="135"/>
         <element name="Student" positionX="-18" positionY="27" width="128" height="165"/>

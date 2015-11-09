@@ -15,6 +15,7 @@
 
 @dynamic time;
 @dynamic type;
+@dynamic details;
 @dynamic schoolClass;
 @dynamic student;
 

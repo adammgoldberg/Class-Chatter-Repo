@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSDate *time;
 @property (nullable, nonatomic, retain) NSString *type;
+@property (nullable, nonatomic, retain) NSString *details;
 @property (nullable, nonatomic, retain) SchoolClass *schoolClass;
 @property (nullable, nonatomic, retain) Student *student;
 
