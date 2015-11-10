@@ -119,18 +119,18 @@
                                     <segment title="Class 1"/>
                                     <segment title="Class 2"/>
                                 </segments>
-                                <color key="tintColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="classInfoSelected:" destination="Edq-lz-hBt" eventType="valueChanged" id="nga-U5-HrL"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3W-0G-2Oq">
                                 <rect key="frame" x="479" y="28" width="106" height="38"/>
-                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.60196050440000004" green="0.99626974609999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Add Student">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="6nv-Cu-I0w" kind="presentation" identifier="showModal" id="9sv-sL-S4G"/>
@@ -139,11 +139,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To delete a student, swipe right. If you delete a student, you will lose all of the information associated with that student." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbA-ND-CDj">
                                 <rect key="frame" x="15" y="77" width="570" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.77551857830000004" green="1" blue="0.60177645179999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="257" id="1hX-8e-a87"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="5G3-5a-Yo2"/>
@@ -206,7 +206,7 @@
             </objects>
             <point key="canvasLocation" x="-547" y="933"/>
         </scene>
-        <!--History View Controller-->
+        <!--Student Behaviour History-->
         <scene sceneID="qd1-Ng-WLy">
             <objects>
                 <viewController id="2Zy-DY-ZMG" customClass="HistoryViewController" sceneMemberID="viewController">
@@ -218,39 +218,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Behaviour History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52Y-PP-AV3">
-                                <rect key="frame" x="200" y="72" width="201" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8uM-8i-VSf">
-                                <rect key="frame" x="0.0" y="147" width="600" height="404"/>
-                                <color key="backgroundColor" red="0.77551857830000004" green="1" blue="0.60177645179999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="2Zy-DY-ZMG" id="B07-MR-gri"/>
-                                    <outlet property="delegate" destination="2Zy-DY-ZMG" id="j65-JK-lCa"/>
-                                </connections>
-                            </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="l2i-cc-OV6">
-                                <rect key="frame" x="0.0" y="103" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="2Zy-DY-ZMG" id="SBs-c9-Gda"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8uM-8i-VSf">
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2Zy-DY-ZMG" id="B07-MR-gri"/>
+                                    <outlet property="delegate" destination="2Zy-DY-ZMG" id="j65-JK-lCa"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.77551857830000004" green="1" blue="0.60177645179999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8uM-8i-VSf" firstAttribute="leading" secondItem="2xs-c8-bdC" secondAttribute="leading" id="2GD-e5-Pxc"/>
-                            <constraint firstItem="52Y-PP-AV3" firstAttribute="centerX" secondItem="2xs-c8-bdC" secondAttribute="centerX" id="AIv-4m-UyP"/>
                             <constraint firstItem="rQI-u7-SC9" firstAttribute="top" secondItem="8uM-8i-VSf" secondAttribute="bottom" id="Ei9-FW-izd"/>
                             <constraint firstAttribute="trailing" secondItem="l2i-cc-OV6" secondAttribute="trailing" id="OSb-0l-IWV"/>
                             <constraint firstItem="l2i-cc-OV6" firstAttribute="leading" secondItem="2xs-c8-bdC" secondAttribute="leading" id="WoA-IY-U4q"/>
-                            <constraint firstItem="l2i-cc-OV6" firstAttribute="top" secondItem="52Y-PP-AV3" secondAttribute="bottom" constant="10" id="Ww3-7O-cGP"/>
+                            <constraint firstItem="l2i-cc-OV6" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" id="YjK-Vg-Bgb"/>
                             <constraint firstAttribute="trailing" secondItem="8uM-8i-VSf" secondAttribute="trailing" id="e0u-zN-JD0"/>
                             <constraint firstItem="8uM-8i-VSf" firstAttribute="top" secondItem="l2i-cc-OV6" secondAttribute="bottom" id="hQy-Ka-XxC"/>
-                            <constraint firstItem="52Y-PP-AV3" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" constant="8" id="wDC-88-Zjg"/>
                             <constraint firstItem="8uM-8i-VSf" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" constant="73" id="wsS-hx-7n2"/>
                         </constraints>
                         <variation key="default">
@@ -259,7 +251,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="IcQ-lb-Pik"/>
+                    <navigationItem key="navigationItem" title="Student Behaviour History" id="IcQ-lb-Pik"/>
                     <connections>
                         <outlet property="searchBar" destination="l2i-cc-OV6" id="vZY-hG-tw5"/>
                         <outlet property="searchDisplay" destination="XVD-LE-FRy" id="Ojd-jN-glM"/>
@@ -293,11 +285,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-pd-YVM">
-                                <rect key="frame" x="232" y="378" width="136" height="38"/>
-                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="255" y="378" width="90" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Save Description">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Save Note">
+                                    <color key="titleColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="saveBehaviourDescription:" destination="NyX-nd-5vd" eventType="touchUpInside" id="SFG-eI-RKB"/>
@@ -310,7 +302,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.64361265827049818" green="1" blue="0.49750499611426191" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="PJN-qD-Trp" secondAttribute="trailing" id="1fM-2d-rem"/>
                             <constraint firstItem="PJN-qD-Trp" firstAttribute="leading" secondItem="JWh-Bh-0Kp" secondAttribute="leading" id="1io-tD-2c4"/>
@@ -371,7 +363,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your email template below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iql-hG-Uhl">
                                 <rect key="frame" x="183" y="78" width="234" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AMf-cE-TNh">
@@ -397,18 +389,18 @@
                                 <rect key="frame" x="15" y="122" width="570" height="43"/>
                                 <string key="text">The following text will be emailed and automatically populated with student and parent specific information when it is being sent. DO NOT EDIT THE PLACEHOLDERS (i.e. &lt;Parent&gt;), but remember to ADD your name to the template for signing off.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNI-Zx-c0v">
                                 <rect key="frame" x="240" y="476" width="121" height="38"/>
-                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kMj-vx-bDk"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Save Template">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -425,13 +417,13 @@
                                     <segment title="Negative Behaviour"/>
                                     <segment title="Positive Behaviour"/>
                                 </segments>
-                                <color key="tintColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="selectTemplate:" destination="EU3-Tz-Go7" eventType="valueChanged" id="0vm-tl-54k"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="0.77551857830000004" green="1" blue="0.60177645179999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="centerX" secondItem="sPf-0e-0ML" secondAttribute="centerX" id="1HK-Nq-kfi"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="centerY" secondItem="pN5-bE-cZ6" secondAttribute="centerY" constant="19" id="6I2-Yt-0fr"/>
@@ -630,82 +622,102 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xpa-fn-TWL">
-                                <rect key="frame" x="227" y="84" width="146" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Student First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xpa-fn-TWL">
+                                <rect key="frame" x="236" y="56" width="129" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parent Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k3N-At-G0V">
-                                <rect key="frame" x="253" y="255" width="95" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Parent Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k3N-At-G0V">
+                                <rect key="frame" x="263" y="137" width="78" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-nX-WKa">
-                                <rect key="frame" x="228" y="141" width="145" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Student Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-nX-WKa">
+                                <rect key="frame" x="237" y="83" width="128" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parent Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-gP-O0k">
-                                <rect key="frame" x="221" y="369" width="158" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Parent Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-gP-O0k">
+                                <rect key="frame" x="232" y="191" width="141" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-t1-YiM">
-                                <rect key="frame" x="247" y="426" width="106" height="38"/>
-                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Add Student">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addAStudent:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="6gF-KI-NlQ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXI-HS-cKu">
-                                <rect key="frame" x="40" y="36" width="48" height="30"/>
+                                <rect key="frame" x="21" y="35" width="68" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelAdd:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="2zN-gh-Scz"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaW-V9-zfr">
-                                <rect key="frame" x="252" y="198" width="98" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Class Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaW-V9-zfr">
+                                <rect key="frame" x="261" y="110" width="81" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parent Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jta-cQ-Qcv">
-                                <rect key="frame" x="232" y="312" width="136" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Parent Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jta-cQ-Qcv">
+                                <rect key="frame" x="243" y="164" width="119" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-t1-YiM">
+                                <rect key="frame" x="250" y="237" width="106" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="CnS-D9-fJL"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Add Student">
+                                    <color key="titleColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CnS-D9-fJL"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="addAStudent:" destination="6nv-Cu-I0w" eventType="touchUpInside" id="6gF-KI-NlQ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.77551857830000004" green="1" blue="0.60177645179999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jta-cQ-Qcv" firstAttribute="centerX" secondItem="k3N-At-G0V" secondAttribute="centerX" id="2ij-a8-xZS"/>
                             <constraint firstItem="WaW-V9-zfr" firstAttribute="centerX" secondItem="ymY-nX-WKa" secondAttribute="centerX" id="498-AK-qT7"/>
-                            <constraint firstItem="xpa-fn-TWL" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="64" id="CNN-Ce-baB"/>
+                            <constraint firstItem="xpa-fn-TWL" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="36" id="CNN-Ce-baB"/>
                             <constraint firstItem="5xX-gP-O0k" firstAttribute="centerX" secondItem="jta-cQ-Qcv" secondAttribute="centerX" id="EmG-vu-Ln2"/>
-                            <constraint firstItem="k3N-At-G0V" firstAttribute="top" secondItem="WaW-V9-zfr" secondAttribute="bottom" constant="27" id="FBZ-HI-1nI"/>
+                            <constraint firstItem="k3N-At-G0V" firstAttribute="top" secondItem="WaW-V9-zfr" secondAttribute="bottom" constant="10" id="FBZ-HI-1nI"/>
                             <constraint firstItem="ymY-nX-WKa" firstAttribute="centerX" secondItem="xpa-fn-TWL" secondAttribute="centerX" id="FUg-Ck-tE0"/>
-                            <constraint firstItem="jta-cQ-Qcv" firstAttribute="top" secondItem="k3N-At-G0V" secondAttribute="bottom" constant="27" id="FZW-e0-qSv"/>
-                            <constraint firstItem="QXI-HS-cKu" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="16" id="Jqn-Z4-3LI"/>
-                            <constraint firstItem="5aL-t1-YiM" firstAttribute="top" secondItem="5xX-gP-O0k" secondAttribute="bottom" constant="27" id="KOu-h0-4jI"/>
+                            <constraint firstItem="jta-cQ-Qcv" firstAttribute="top" secondItem="k3N-At-G0V" secondAttribute="bottom" constant="10" id="FZW-e0-qSv"/>
+                            <constraint firstAttribute="trailing" secondItem="5aL-t1-YiM" secondAttribute="trailing" constant="27" id="G6O-KZ-ifB"/>
+                            <constraint firstItem="QXI-HS-cKu" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="15" id="Jqn-Z4-3LI"/>
                             <constraint firstItem="5aL-t1-YiM" firstAttribute="centerX" secondItem="5xX-gP-O0k" secondAttribute="centerX" id="KZ4-VH-TUF"/>
-                            <constraint firstItem="5xX-gP-O0k" firstAttribute="top" secondItem="jta-cQ-Qcv" secondAttribute="bottom" constant="27" id="KnN-MT-6Go"/>
+                            <constraint firstItem="5xX-gP-O0k" firstAttribute="top" secondItem="jta-cQ-Qcv" secondAttribute="bottom" constant="10" id="KnN-MT-6Go"/>
+                            <constraint firstItem="5aL-t1-YiM" firstAttribute="top" secondItem="5xX-gP-O0k" secondAttribute="bottom" constant="29" id="Md5-F3-DI7"/>
                             <constraint firstItem="xpa-fn-TWL" firstAttribute="centerX" secondItem="INU-PB-49h" secondAttribute="centerX" id="N8A-HO-SD0"/>
-                            <constraint firstItem="ymY-nX-WKa" firstAttribute="top" secondItem="xpa-fn-TWL" secondAttribute="bottom" constant="27" id="NCy-9z-hMY"/>
-                            <constraint firstItem="WaW-V9-zfr" firstAttribute="top" secondItem="ymY-nX-WKa" secondAttribute="bottom" constant="27" id="Vjm-XZ-glG"/>
+                            <constraint firstItem="ymY-nX-WKa" firstAttribute="top" secondItem="xpa-fn-TWL" secondAttribute="bottom" constant="10" id="NCy-9z-hMY"/>
+                            <constraint firstItem="WaW-V9-zfr" firstAttribute="top" secondItem="ymY-nX-WKa" secondAttribute="bottom" constant="10" id="Vjm-XZ-glG"/>
+                            <constraint firstItem="5aL-t1-YiM" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="15" id="WRt-97-nyL"/>
+                            <constraint firstItem="5aL-t1-YiM" firstAttribute="top" secondItem="KDV-np-lth" secondAttribute="bottom" constant="16" id="XRu-y1-Wmy"/>
                             <constraint firstItem="5xX-gP-O0k" firstAttribute="centerX" secondItem="k3N-At-G0V" secondAttribute="centerX" id="hpF-1I-8Gc"/>
-                            <constraint firstItem="QXI-HS-cKu" firstAttribute="leading" secondItem="INU-PB-49h" secondAttribute="leading" constant="40" id="n9j-tb-yD1"/>
+                            <constraint firstItem="5aL-t1-YiM" firstAttribute="centerX" secondItem="5xX-gP-O0k" secondAttribute="centerX" id="lR8-Jp-ODa"/>
+                            <constraint firstItem="QXI-HS-cKu" firstAttribute="leading" secondItem="INU-PB-49h" secondAttribute="leading" constant="21" id="n9j-tb-yD1"/>
                             <constraint firstItem="5xX-gP-O0k" firstAttribute="top" secondItem="k3N-At-G0V" secondAttribute="bottom" constant="27" id="nL9-Zw-7O7"/>
+                            <constraint firstItem="5aL-t1-YiM" firstAttribute="leading" secondItem="xpa-fn-TWL" secondAttribute="trailing" constant="105" id="wrb-Dh-FGg"/>
                             <constraint firstItem="k3N-At-G0V" firstAttribute="centerX" secondItem="WaW-V9-zfr" secondAttribute="centerX" id="yXb-CZ-ya8"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="hpF-1I-8Gc"/>
                                 <exclude reference="nL9-Zw-7O7"/>
+                                <exclude reference="G6O-KZ-ifB"/>
+                                <exclude reference="KZ4-VH-TUF"/>
+                                <exclude reference="WRt-97-nyL"/>
+                                <exclude reference="XRu-y1-Wmy"/>
+                                <exclude reference="wrb-Dh-FGg"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular" ambiguous="YES">
@@ -805,10 +817,10 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TX7-cq-edh">
                                 <rect key="frame" x="459" y="28" width="126" height="38"/>
-                                <color key="backgroundColor" red="0.048463408049999997" green="0.35898042930000001" blue="0.043820824830000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Reset Numbers">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetNumbers:" destination="WYa-IU-QcO" eventType="touchUpInside" id="MyT-dh-T1Q"/>
@@ -820,13 +832,13 @@
                                     <segment title="Class 1"/>
                                     <segment title="Class 2"/>
                                 </segments>
-                                <color key="tintColor" red="0.048463408047168199" green="0.35898042929292928" blue="0.043820824827368592" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="classSelected:" destination="WYa-IU-QcO" eventType="valueChanged" id="t6z-dH-OMt"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="0.77551857829489845" green="1" blue="0.60177645184735984" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.37647058823529411" green="0.68235294117647061" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="top" secondItem="7e3-Wa-xZC" secondAttribute="bottom" constant="75" id="Btm-53-Enn"/>
                             <constraint firstItem="gcz-FJ-VFL" firstAttribute="centerX" secondItem="Xw1-Fa-dgt" secondAttribute="centerX" id="F9d-zT-hag"/>

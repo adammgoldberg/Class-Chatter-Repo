@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *historyGradeLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *historyDisruptionLabel;
+@property (strong, nonatomic) IBOutlet UIView *colourView;
+
 
 @end

@@ -213,19 +213,20 @@
     }
     
     Student *student = self.currentClass[indexPath.row];
+    Teacher *theTeacher = [self.listOfTeachers firstObject];
     cell.studentNameLabel.text = student.firstName;
-    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld", [student.numberOfDisruptions integerValue]];
-    cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld", [student.numberOfPositives integerValue]];
-    NSInteger numberOfTaps = [student.numberOfDisruptions integerValue];
+    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld / %ld", [student.numberOfDisruptions integerValue], [theTeacher.limitForBadEmails integerValue]];
+    cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld / %ld", [student.numberOfPositives integerValue], [theTeacher.limitforGoodEmails integerValue]];
+    NSInteger numberOfSwipes = [student.numberOfDisruptions integerValue];
     cell.tag = indexPath.row;
     cell.layer.cornerRadius = 15;
     cell.layer.masksToBounds = YES;
     
-    if (numberOfTaps == 1) {
+    if (numberOfSwipes == 1) {
         cell.backgroundColor = [UIColor colorWithRed:214/255.0f green:214/255.0f blue:0/255.0f alpha:1];
-    } else if (numberOfTaps == 2) {
+    } else if (numberOfSwipes == 2) {
         cell.backgroundColor = [UIColor orangeColor];
-    } else if (numberOfTaps >= 3) {
+    } else if (numberOfSwipes >= 3) {
         cell.backgroundColor = [UIColor redColor];
     } else {
         cell.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];

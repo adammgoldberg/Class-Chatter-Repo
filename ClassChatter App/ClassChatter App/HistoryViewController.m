@@ -171,15 +171,17 @@
     Student *student = behaviour.student;
     cell.historyFirstLabel.text = student.firstName;
     cell.historyLastLabel.text = student.lastName;
+    cell.colourView.layer.cornerRadius = 12;
+    cell.colourView.layer.masksToBounds = YES;
     if ([behaviour.type  isEqual: @"good"]) {
-        cell.backgroundColor = [UIColor colorWithRed:164/255.0f green:255/255.0f blue:127/255.0f alpha:1];
+        cell.colourView.backgroundColor = [UIColor colorWithRed:164/255.0f green:255/255.0f blue:127/255.0f alpha:1];
         if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
-            cell.backgroundColor = [UIColor colorWithRed:36/255.0f green:213/255.0f blue:68/255.0f alpha:1];
+            cell.colourView.backgroundColor = [UIColor colorWithRed:36/255.0f green:213/255.0f blue:68/255.0f alpha:1];
         }
     } else {
-        cell.backgroundColor = [UIColor colorWithRed:255/255.0f green:118/255.0f blue:103/255.0f alpha:1];
+        cell.colourView.backgroundColor = [UIColor colorWithRed:255/255.0f green:118/255.0f blue:103/255.0f alpha:1];
         if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
-            cell.backgroundColor = [UIColor colorWithRed:255/255.0f green:25/255.0f blue:52/255.0f alpha:1];
+            cell.colourView.backgroundColor = [UIColor colorWithRed:255/255.0f green:25/255.0f blue:52/255.0f alpha:1];
         }
     }
     
