@@ -39,10 +39,6 @@
 @implementation ModalViewController
 
 
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    self.activeField = textField;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,6 +67,11 @@
 -(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
 {
     [self.activeField resignFirstResponder];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
 }
 
 #pragma mark - scrollview

@@ -18,6 +18,12 @@
 
 @property (strong, nonatomic) NSArray *pickerData;
 
+@property (strong, nonatomic) UITextField *activeField;
+
+@property (strong, nonatomic) IBOutlet UILabel *ccLabel;
+
+
+
 @end
 
 @implementation SettingsViewController
@@ -30,15 +36,41 @@
     NSError *error;
     self.teacher = [[self.managedObjectContext executeFetchRequest:teacherFetch error:&error] firstObject];
 
-    self.pickerData = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"Off"];
+    self.pickerData = @[@"Off", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"];
     
     self.badEmailNumbers.delegate = self;
-    
     self.goodEmailNumbers.delegate = self;
+    self.principalEmailTextField.delegate = self;
     
-    [self.badEmailNumbers selectRow:2 inComponent:0 animated:NO];
-    [self.goodEmailNumbers selectRow:4 inComponent:0 animated:NO];
+//    [self.badEmailNumbers selectRow:2 inComponent:0 animated:NO];
+//    [self.goodEmailNumbers selectRow:4 inComponent:0 animated:NO];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
+    
+    [self.view addGestureRecognizer:tapGesture];
 }
+
+
+-(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
+{
+    [self.activeField resignFirstResponder];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+}
+
+
+- (IBAction)savePrincipalEmail:(UIButton *)sender
+{
+    self.teacher.principalEmail = self.principalEmailTextField.text;
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    self.principalEmailTextField.text = @"";
+    self.ccLabel.text = [NSString stringWithFormat:@"Currently CC'd to: %@", self.teacher.principalEmail];
+}
+
 
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component

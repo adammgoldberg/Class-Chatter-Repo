@@ -62,7 +62,7 @@
     if (self.listOfTeachers.count == 0) {
         Teacher *aTeacher = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher" inManagedObjectContext:self.managedObjectContext];
         
-        aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class 3 times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
+        aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class <Selected Number> times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
         
         aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
         
@@ -272,25 +272,32 @@
     
     [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
     
-    Teacher *aTeacher = [self.listOfTeachers firstObject];
-    if (numberOfBadSwipes == [aTeacher.limitForBadEmails integerValue]) {
-        if ([MFMailComposeViewController canSendMail]) {
-            
-            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-            mailViewController.mailComposeDelegate = self;
-            [mailViewController setSubject:@"Misbehaviour in class."];
-            
-            Teacher *theTeacher = [self.listOfTeachers firstObject];
-            NSString *theResultString = theTeacher.emailTemplateBad;
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
-            
-            [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
-            
-            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
-            
-            [self presentViewController:mailViewController animated:YES completion:nil];
+
+    Teacher *theTeacher = [self.listOfTeachers firstObject];
+    
+    if (![theTeacher.limitForBadEmails isEqualToString:@"Off"]) {
+        
+        if (numberOfBadSwipes == [theTeacher.limitForBadEmails integerValue]) {
+            if ([MFMailComposeViewController canSendMail]) {
+                
+                MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+                mailViewController.mailComposeDelegate = self;
+                [mailViewController setSubject:@"Misbehaviour in class."];
+                NSString *theResultString = theTeacher.emailTemplateBad;
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Selected Number>" withString:theTeacher.limitForBadEmails];
+                
+                
+                
+                [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+                
+                [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], theTeacher.principalEmail]];
+                
+                [self presentViewController:mailViewController animated:YES completion:nil];
+                
+            }
             
         }
         
@@ -299,7 +306,10 @@
         }
         
         [self.managedObjectContext save:&error];
-        
+    }
+    
+    else {
+        NSLog(@"Emails have been turned off by you");
     }
 
 }
@@ -324,25 +334,29 @@
     
     [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
     
-    Teacher *aTeacher = [self.listOfTeachers firstObject];
-    if (numberOfGoodSwipes == [aTeacher.limitforGoodEmails integerValue]) {
-        if ([MFMailComposeViewController canSendMail]) {
-            
-            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-            mailViewController.mailComposeDelegate = self;
-            [mailViewController setSubject:@"Good behaviour in class."];
-            
-            Teacher *theTeacher = [self.listOfTeachers firstObject];
-            NSString *theResultString = theTeacher.emailTemplateGood;
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
-            theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
-            
-            [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
-            
-            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
-            
-            [self presentViewController:mailViewController animated:YES completion:nil];
+    Teacher *theTeacher = [self.listOfTeachers firstObject];
+    if (![theTeacher.limitforGoodEmails isEqualToString:@"Off"]) {
+
+        if (numberOfGoodSwipes == [theTeacher.limitforGoodEmails integerValue]) {
+            if ([MFMailComposeViewController canSendMail]) {
+                
+                MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+                mailViewController.mailComposeDelegate = self;
+                [mailViewController setSubject:@"Good behaviour in class."];
+                
+                
+                NSString *theResultString = theTeacher.emailTemplateGood;
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
+                
+                [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+                
+                [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], theTeacher.principalEmail]];
+                
+                [self presentViewController:mailViewController animated:YES completion:nil];
+                
+            }
             
         }
         
@@ -351,6 +365,10 @@
         }
         
         [self.managedObjectContext save:&error];
+    }
+    
+    else {
+        NSLog(@"Emails have been turned off by you");
     }
     
 }
