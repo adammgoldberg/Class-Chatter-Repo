@@ -25,20 +25,14 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-u8-XPo">
-                        <rect key="frame" x="150" y="43" width="38" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disruption:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-mR-D2D">
-                        <rect key="frame" x="32" y="43" width="84" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJK-R1-YxV">
                         <rect key="frame" x="150" y="8" width="47" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-u8-XPo">
+                        <rect key="frame" x="32" y="44" width="38" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -47,18 +41,15 @@
                 <constraints>
                     <constraint firstItem="vKN-2z-ymL" firstAttribute="leading" secondItem="bUi-yt-h5v" secondAttribute="trailing" constant="22" id="2Fz-vA-Txx"/>
                     <constraint firstItem="gJK-R1-YxV" firstAttribute="top" secondItem="vKN-2z-ymL" secondAttribute="top" id="LvM-eD-jGv"/>
-                    <constraint firstItem="nmB-mR-D2D" firstAttribute="top" secondItem="bUi-yt-h5v" secondAttribute="bottom" constant="14" id="ZgD-gu-iFw"/>
-                    <constraint firstItem="nmB-mR-D2D" firstAttribute="leading" secondItem="bUi-yt-h5v" secondAttribute="leading" id="amm-Ma-mCR"/>
                     <constraint firstItem="bUi-yt-h5v" firstAttribute="top" secondItem="x0n-b3-9Dh" secondAttribute="top" constant="8" id="i8f-BA-96U"/>
-                    <constraint firstItem="KsU-u8-XPo" firstAttribute="leading" secondItem="nmB-mR-D2D" secondAttribute="trailing" constant="34" id="lcX-48-hFS"/>
-                    <constraint firstItem="KsU-u8-XPo" firstAttribute="top" secondItem="nmB-mR-D2D" secondAttribute="top" id="nUv-7O-8zU"/>
                     <constraint firstItem="vKN-2z-ymL" firstAttribute="top" secondItem="bUi-yt-h5v" secondAttribute="top" id="ppL-gs-AiD"/>
+                    <constraint firstItem="KsU-u8-XPo" firstAttribute="top" secondItem="bUi-yt-h5v" secondAttribute="bottom" constant="15" id="qFz-Xh-0lq"/>
                     <constraint firstItem="gJK-R1-YxV" firstAttribute="leading" secondItem="vKN-2z-ymL" secondAttribute="trailing" constant="29" id="qRB-eQ-3Nq"/>
                     <constraint firstItem="bUi-yt-h5v" firstAttribute="leading" secondItem="x0n-b3-9Dh" secondAttribute="leading" constant="32" id="qsO-i5-lEQ"/>
+                    <constraint firstItem="KsU-u8-XPo" firstAttribute="leading" secondItem="bUi-yt-h5v" secondAttribute="leading" id="scZ-4a-AeW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="historyDisruptionLabel" destination="nmB-mR-D2D" id="FlQ-nZ-JV0"/>
                 <outlet property="historyFirstLabel" destination="bUi-yt-h5v" id="3Fj-3K-XgK"/>
                 <outlet property="historyGradeLabel" destination="gJK-R1-YxV" id="7h2-g9-0L5"/>
                 <outlet property="historyLastLabel" destination="vKN-2z-ymL" id="ZQU-aR-FJe"/>

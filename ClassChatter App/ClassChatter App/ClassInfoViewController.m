@@ -174,6 +174,7 @@
     cell.parentEmailLabel.text = parent.emailAddress;
     cell.studentClassLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
     cell.parentLastLabel.text = parent.lastName;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
     

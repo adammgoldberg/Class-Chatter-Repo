@@ -191,6 +191,7 @@
     
     cell.historyTimeLabel.text = dateString;
     cell.historyGradeLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
 }
 
@@ -211,10 +212,11 @@
     
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
+//-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    HistoryCell *cell = tableView.indexPathForSelectedRow;
+//    cell.backgroundColor =
+//}
 
 
 #pragma mark - fetches

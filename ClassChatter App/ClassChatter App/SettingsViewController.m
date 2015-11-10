@@ -1,0 +1,99 @@
+//
+//  SettingsViewController.m
+//  ClassChatter App
+//
+//  Created by Adam Goldberg on 2015-11-10.
+//  Copyright © 2015 Adam Goldberg. All rights reserved.
+//
+
+#import "SettingsViewController.h"
+
+@interface SettingsViewController () <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIPickerView *badEmailNumbers;
+
+@property (strong, nonatomic) IBOutlet UIPickerView *goodEmailNumbers;
+
+@property (strong, nonatomic) IBOutlet UITextField *principalEmailTextField;
+
+@property (strong, nonatomic) NSArray *pickerData;
+
+@end
+
+@implementation SettingsViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    NSFetchRequest *teacherFetch = [NSFetchRequest fetchRequestWithEntityName:@"Teacher"];
+    NSError *error;
+    self.teacher = [[self.managedObjectContext executeFetchRequest:teacherFetch error:&error] firstObject];
+
+    self.pickerData = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"Off"];
+    
+    self.badEmailNumbers.delegate = self;
+    
+    self.goodEmailNumbers.delegate = self;
+    
+    [self.badEmailNumbers selectRow:2 inComponent:0 animated:NO];
+    [self.goodEmailNumbers selectRow:4 inComponent:0 animated:NO];
+}
+
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return self.pickerData.count;
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (pickerView == self.badEmailNumbers) {
+        return self.pickerData[row];
+    } else
+    return self.pickerData[row];
+  
+
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    if (pickerView == self.badEmailNumbers) {
+        NSInteger numberForBadEmail = [self.badEmailNumbers selectedRowInComponent:component];
+        NSLog(@"number for bad emails is %@", [self.pickerData objectAtIndex:numberForBadEmail]);
+        self.teacher.limitForBadEmails = self.pickerData[numberForBadEmail];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+    } else if (pickerView == self.goodEmailNumbers) {
+        NSInteger numberForGoodEmail = [self.goodEmailNumbers selectedRowInComponent:component];
+        NSLog(@"number for good emails is %@", [self.pickerData objectAtIndex:numberForGoodEmail]);
+        self.teacher.limitforGoodEmails = self.pickerData[numberForGoodEmail];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+    }
+
+    
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

@@ -64,7 +64,7 @@
         
         aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class 3 times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
         
-        aTeacher.emailTemplateGood = @"YOUR KID IS AWESOME!!!!";
+        aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
         
 
 
@@ -272,7 +272,8 @@
     
     [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
     
-    if (numberOfBadSwipes == 3) {
+    Teacher *aTeacher = [self.listOfTeachers firstObject];
+    if (numberOfBadSwipes == [aTeacher.limitForBadEmails integerValue]) {
         if ([MFMailComposeViewController canSendMail]) {
             
             MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
@@ -323,7 +324,8 @@
     
     [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
     
-    if (numberOfGoodSwipes == 5) {
+    Teacher *aTeacher = [self.listOfTeachers firstObject];
+    if (numberOfGoodSwipes == [aTeacher.limitforGoodEmails integerValue]) {
         if ([MFMailComposeViewController canSendMail]) {
             
             MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];

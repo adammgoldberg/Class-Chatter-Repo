@@ -18,6 +18,9 @@
 
 @property (strong, nonatomic) UITextView *activeView;
 
+@property (strong, nonatomic) IBOutlet UISegmentedControl *templateSeg;
+
+
 
 @end
 
@@ -34,11 +37,14 @@
     
     self.emailTemplateText.delegate = self;
     
+    [self.templateSeg setSelectedSegmentIndex:0];
+
+    
     NSFetchRequest *teacherFetch = [NSFetchRequest fetchRequestWithEntityName:@"Teacher"];
     NSError *error;
     self.teacher = [[self.managedObjectContext executeFetchRequest:teacherFetch error:&error] firstObject];
     
-    self.emailTemplateText.text = self.teacher.emailTemplateBad;
+//    self.emailTemplateText.text = self.teacher.emailTemplateBad;
     self.saveButton.layer.cornerRadius = 12;
     self.saveButton.layer.masksToBounds = YES;
     
@@ -50,6 +56,32 @@
     
     [self.view addGestureRecognizer:tapGesture];
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.templateSeg.selectedSegmentIndex == 0) {
+        self.emailTemplateText.text = self.teacher.emailTemplateBad;
+    } else {
+        self.emailTemplateText.text = self.teacher.emailTemplateGood;
+    }
+    [self.emailTemplateText reloadInputViews];
+}
+
+
+- (IBAction)selectTemplate:(UISegmentedControl *)sender {
+
+    if (self.templateSeg.selectedSegmentIndex == 0) {
+        self.emailTemplateText.text = self.teacher.emailTemplateBad;
+    } else {
+        self.emailTemplateText.text = self.teacher.emailTemplateGood;
+    }
+    [self.emailTemplateText reloadInputViews];
+
+
+}
+
+
 
 -(void)viewDidLayoutSubviews
 {
@@ -66,7 +98,11 @@
 
 - (IBAction)saveTemplate:(UIButton *)sender
 {
-    self.teacher.emailTemplateBad = self.emailTemplateText.text;
+    if (self.templateSeg.selectedSegmentIndex == 0) {
+        self.teacher.emailTemplateBad = self.emailTemplateText.text;
+    } else {
+        self.teacher.emailTemplateGood = self.emailTemplateText.text;
+    }
     NSError *error;
     [self.managedObjectContext save:&error];
 }
