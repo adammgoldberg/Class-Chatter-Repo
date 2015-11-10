@@ -28,12 +28,12 @@
     
     self.behaviourDescriptionText.text = self.behaviour.details;
     
-//    [self.behaviourDescriptionText scrollRangeToVisible:NSMakeRange(0, 0)];
+
     
     self.saveDescriptionButton.layer.cornerRadius = 12;
     self.saveDescriptionButton.layer.masksToBounds = YES;
     
-
+    self.behaviourDescriptionText.layoutManager.allowsNonContiguousLayout = NO;
 
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
     
@@ -42,21 +42,12 @@
 }
 
 
-//override func viewDidLayoutSubviews() {
-//    super.viewDidLayoutSubviews()
-//    welcomeText.setContentOffset(CGPointZero, animated: false)
-//}
 
--(void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    [self.behaviourDescriptionText setContentOffset:CGPointZero animated:NO];
-    
-}
+
 
 -(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
 {
-    [self.behaviourDescriptionText resignFirstResponder];
+//    [self.behaviourDescriptionText resignFirstResponder];
 }
 
 

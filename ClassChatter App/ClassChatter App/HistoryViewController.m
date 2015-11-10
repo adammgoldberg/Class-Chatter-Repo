@@ -172,14 +172,14 @@
     cell.historyFirstLabel.text = student.firstName;
     cell.historyLastLabel.text = student.lastName;
     if ([behaviour.type  isEqual: @"good"]) {
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.backgroundColor = [UIColor colorWithRed:164/255.0f green:255/255.0f blue:127/255.0f alpha:1];
         if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
-            cell.backgroundColor = [UIColor blueColor];
+            cell.backgroundColor = [UIColor colorWithRed:36/255.0f green:213/255.0f blue:68/255.0f alpha:1];
         }
     } else {
-        cell.backgroundColor = [UIColor grayColor];
+        cell.backgroundColor = [UIColor colorWithRed:255/255.0f green:118/255.0f blue:103/255.0f alpha:1];
         if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
-            cell.backgroundColor = [UIColor blueColor];
+            cell.backgroundColor = [UIColor colorWithRed:255/255.0f green:25/255.0f blue:52/255.0f alpha:1];
         }
     }
     
@@ -209,8 +209,10 @@
     }
     [self.navigationController pushViewController:dvc animated:YES];
     
-    
-    
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 

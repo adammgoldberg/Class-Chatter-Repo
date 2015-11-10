@@ -222,13 +222,13 @@
     cell.layer.masksToBounds = YES;
     
     if (numberOfTaps == 1) {
-        cell.backgroundColor = [UIColor yellowColor];
+        cell.backgroundColor = [UIColor colorWithRed:214/255.0f green:214/255.0f blue:0/255.0f alpha:1];
     } else if (numberOfTaps == 2) {
         cell.backgroundColor = [UIColor orangeColor];
     } else if (numberOfTaps >= 3) {
         cell.backgroundColor = [UIColor redColor];
     } else {
-        cell.backgroundColor = [UIColor greenColor];
+        cell.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
     }
     
     UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(badSwipe:)];
