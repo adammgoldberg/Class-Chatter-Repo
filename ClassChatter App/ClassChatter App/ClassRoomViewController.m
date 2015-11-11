@@ -66,6 +66,9 @@
         
         aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
         
+        aTeacher.limitForBadEmails = [NSString stringWithFormat:@"%@", @"3"];
+        aTeacher.limitforGoodEmails = [NSString stringWithFormat:@"%@", @"5"];
+        
 
 
         NSError *error;
@@ -294,7 +297,10 @@
                 
                 [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
                 
-                [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], theTeacher.principalEmail]];
+                if (theTeacher.principalEmail != nil) {
+                [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], [NSString stringWithFormat:@"%@", theTeacher.principalEmail]]];
+                } else
+                [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
                 
                 [self presentViewController:mailViewController animated:YES completion:nil];
                 

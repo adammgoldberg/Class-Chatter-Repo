@@ -28,6 +28,21 @@
 
 @implementation SettingsViewController
 
+- (IBAction)showInformation:(UIButton *)sender {
+    UIView *informationView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, self.view.bounds.size.width - 40, self.view.bounds.size.height - 40)];
+    informationView.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:informationView];
+    
+    UILabel *informationLabel = [[UILabel alloc] initWithFrame:CGRectMake(informationView.bounds.origin.x + 20, informationView.bounds.origin.y + 20, informationView.bounds.size.width - 40, informationView.bounds.size.height - 40)];
+    informationLabel.numberOfLines = 50;
+    informationLabel.backgroundColor = [UIColor orangeColor];
+    informationLabel.text = @"Welcome to ClassTrack! Our aim is to help save you time as a teacher!\n\nBelow is information to help you use the app.\n\n1. Sending emails:\nIf you want to send an email to a parent, simply swipe up (represents good behaviour in class) or swipe down (represents poor behaviour in class) on a 'student desk' found in the Classroom page. There are numbers that indicate the amount of swipes up or swipes down that you've done so far and the background colour of the student desk changes as well to help you keep track of student behaviour.\n2.Adding Students and Classes:\nIf you want to add a student or a class, simply press the 'Add Student' button where you simply will add in student, class, and parent information. The app uses this information to automatically fill in emails and save you time! This information is kept secure and private on the app and stored on your phone.\nHistory: Anytime you swipe up or down, the behaviour is recorded and stored on the history page. You can click on the behaviour event and add notes to it for future refrence.";
+    [informationView addSubview:informationLabel];
+}
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -42,8 +57,8 @@
     self.goodEmailNumbers.delegate = self;
     self.principalEmailTextField.delegate = self;
     
-//    [self.badEmailNumbers selectRow:2 inComponent:0 animated:NO];
-//    [self.goodEmailNumbers selectRow:4 inComponent:0 animated:NO];
+    [self.badEmailNumbers selectRow:3 inComponent:0 animated:NO];
+    [self.goodEmailNumbers selectRow:5 inComponent:0 animated:NO];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
     

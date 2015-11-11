@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-1D-WWN">
-                        <rect key="frame" x="264" y="29" width="24" height="24"/>
+                        <rect key="frame" x="388" y="29" width="24" height="24"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="GQr-Tx-sXw"/>
@@ -48,11 +48,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="vKN-2z-ymL" firstAttribute="leading" secondItem="bUi-yt-h5v" secondAttribute="trailing" constant="22" id="2Fz-vA-Txx"/>
-                    <constraint firstItem="Eef-1D-WWN" firstAttribute="leading" secondItem="gJK-R1-YxV" secondAttribute="trailing" constant="67" id="8CY-jK-Da3"/>
                     <constraint firstItem="gJK-R1-YxV" firstAttribute="top" secondItem="vKN-2z-ymL" secondAttribute="top" id="LvM-eD-jGv"/>
+                    <constraint firstItem="Eef-1D-WWN" firstAttribute="centerX" secondItem="x0n-b3-9Dh" secondAttribute="centerX" constant="100" id="TDd-qQ-LJc"/>
                     <constraint firstItem="bUi-yt-h5v" firstAttribute="top" secondItem="x0n-b3-9Dh" secondAttribute="top" constant="8" id="i8f-BA-96U"/>
                     <constraint firstItem="vKN-2z-ymL" firstAttribute="top" secondItem="bUi-yt-h5v" secondAttribute="top" id="ppL-gs-AiD"/>
-                    <constraint firstItem="Eef-1D-WWN" firstAttribute="centerY" secondItem="x0n-b3-9Dh" secondAttribute="centerY" constant="0.5" id="pqn-JM-QOi"/>
+                    <constraint firstItem="Eef-1D-WWN" firstAttribute="centerY" secondItem="x0n-b3-9Dh" secondAttribute="centerY" id="pqn-JM-QOi"/>
                     <constraint firstItem="KsU-u8-XPo" firstAttribute="top" secondItem="bUi-yt-h5v" secondAttribute="bottom" constant="15" id="qFz-Xh-0lq"/>
                     <constraint firstItem="gJK-R1-YxV" firstAttribute="leading" secondItem="vKN-2z-ymL" secondAttribute="trailing" constant="29" id="qRB-eQ-3Nq"/>
                     <constraint firstItem="bUi-yt-h5v" firstAttribute="leading" secondItem="x0n-b3-9Dh" secondAttribute="leading" constant="32" id="qsO-i5-lEQ"/>

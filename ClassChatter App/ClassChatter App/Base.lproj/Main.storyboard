@@ -218,15 +218,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="l2i-cc-OV6">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="2Zy-DY-ZMG" id="SBs-c9-Gda"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8uM-8i-VSf">
-                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2Zy-DY-ZMG" id="B07-MR-gri"/>
@@ -236,39 +229,26 @@
                         </subviews>
                         <color key="backgroundColor" red="0.77551857830000004" green="1" blue="0.60177645179999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="8uM-8i-VSf" firstAttribute="leading" secondItem="2xs-c8-bdC" secondAttribute="leading" id="2GD-e5-Pxc"/>
-                            <constraint firstItem="rQI-u7-SC9" firstAttribute="top" secondItem="8uM-8i-VSf" secondAttribute="bottom" id="Ei9-FW-izd"/>
-                            <constraint firstAttribute="trailing" secondItem="l2i-cc-OV6" secondAttribute="trailing" id="OSb-0l-IWV"/>
-                            <constraint firstItem="l2i-cc-OV6" firstAttribute="leading" secondItem="2xs-c8-bdC" secondAttribute="leading" id="WoA-IY-U4q"/>
-                            <constraint firstItem="l2i-cc-OV6" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" id="YjK-Vg-Bgb"/>
-                            <constraint firstAttribute="trailing" secondItem="8uM-8i-VSf" secondAttribute="trailing" id="e0u-zN-JD0"/>
-                            <constraint firstItem="8uM-8i-VSf" firstAttribute="top" secondItem="l2i-cc-OV6" secondAttribute="bottom" id="hQy-Ka-XxC"/>
+                            <constraint firstItem="8uM-8i-VSf" firstAttribute="leading" secondItem="2xs-c8-bdC" secondAttribute="leading" id="1UY-8p-9RO"/>
+                            <constraint firstItem="rQI-u7-SC9" firstAttribute="top" secondItem="8uM-8i-VSf" secondAttribute="bottom" id="BJh-6V-Vjy"/>
+                            <constraint firstAttribute="bottom" secondItem="8uM-8i-VSf" secondAttribute="bottom" id="LH4-Fc-b4H"/>
+                            <constraint firstItem="8uM-8i-VSf" firstAttribute="top" secondItem="2xs-c8-bdC" secondAttribute="top" id="a76-22-W37"/>
+                            <constraint firstAttribute="trailing" secondItem="8uM-8i-VSf" secondAttribute="trailing" id="eep-EK-qLz"/>
                             <constraint firstItem="8uM-8i-VSf" firstAttribute="top" secondItem="yll-r5-tXV" secondAttribute="bottom" constant="73" id="wsS-hx-7n2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="wsS-hx-7n2"/>
+                                <exclude reference="BJh-6V-Vjy"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Student Behaviour History" id="IcQ-lb-Pik"/>
                     <connections>
-                        <outlet property="searchBar" destination="l2i-cc-OV6" id="vZY-hG-tw5"/>
-                        <outlet property="searchDisplay" destination="XVD-LE-FRy" id="Ojd-jN-glM"/>
-                        <outlet property="searchDisplayController" destination="XVD-LE-FRy" id="Ct2-16-XVM"/>
                         <outlet property="tableViewHistory" destination="8uM-8i-VSf" id="j1s-z2-ejr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnZ-NO-qOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="XVD-LE-FRy">
-                    <connections>
-                        <outlet property="delegate" destination="2Zy-DY-ZMG" id="MJb-pT-i3Y"/>
-                        <outlet property="searchBar" destination="l2i-cc-OV6" id="eL8-bd-Lz4"/>
-                        <outlet property="searchContentsController" destination="2Zy-DY-ZMG" id="KCz-Gi-aBI"/>
-                        <outlet property="searchResultsDataSource" destination="2Zy-DY-ZMG" id="0EL-kq-f7N"/>
-                        <outlet property="searchResultsDelegate" destination="2Zy-DY-ZMG" id="O3O-AX-8ky"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="94" y="1647"/>
         </scene>
@@ -543,6 +523,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQk-i0-9rg">
                                 <rect key="frame" x="297" y="431" width="77" height="30"/>
                                 <state key="normal" title="Show More"/>
+                                <connections>
+                                    <action selector="showInformation:" destination="OJa-Jw-w6F" eventType="touchUpInside" id="Ttx-a1-ogS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SM-bO-xkV">
                                 <rect key="frame" x="225" y="328" width="134" height="30"/>
@@ -624,21 +607,25 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Student First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xpa-fn-TWL">
                                 <rect key="frame" x="236" y="56" width="129" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Parent Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k3N-At-G0V">
                                 <rect key="frame" x="263" y="137" width="78" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Student Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymY-nX-WKa">
                                 <rect key="frame" x="237" y="83" width="128" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Parent Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xX-gP-O0k">
                                 <rect key="frame" x="232" y="191" width="141" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -655,11 +642,13 @@
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Class Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaW-V9-zfr">
                                 <rect key="frame" x="261" y="110" width="81" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Parent Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jta-cQ-Qcv">
                                 <rect key="frame" x="243" y="164" width="119" height="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>

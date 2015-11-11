@@ -13,14 +13,11 @@
 #import "Behaviour.h"
 #import "DetailViewController.h"
 
-@interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface HistoryViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate,UISearchResultsUpdating, UISearchControllerDelegate>
 
 
 
-
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-
-@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchDisplay;
+@property (nonatomic) UISearchController *searchController;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableViewHistory;
 
@@ -28,10 +25,9 @@
 
 @property (strong, nonatomic) NSMutableArray *listOfBehaviour;
 
-
 @property (strong, nonatomic) NSMutableArray *filteredBehaviour;
 
-@property (assign, nonatomic) BOOL isSearching;
+
 
 
 
@@ -55,8 +51,9 @@
     
     [self.tableViewHistory registerNib:[UINib nibWithNibName:@"CustomHistoryCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HistoryCell"];
     
-    self.searchDisplay.searchResultsTableView.rowHeight = 82;
+//    self.tableViewHistory.rowHeight = 82;
     
+    [self makeSearchController];
     
     [self fetchStudentAndBehaviour];
     
@@ -66,6 +63,19 @@
     
 
 }
+
+-(void)makeSearchController
+{
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
+    self.tableViewHistory.tableHeaderView = self.searchController.searchBar;
+}
+
+
+
 
 
 - (void)handleDataModelChange:(NSNotification *)note
@@ -81,7 +91,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.isSearching) {
+    if (self.searchController.active) {
         return self.filteredBehaviour.count;
     }
     else {
@@ -97,7 +107,7 @@
     HistoryCell *cell = [self.tableViewHistory dequeueReusableCellWithIdentifier:@"HistoryCell" forIndexPath:indexPath];
     
     
-    if (self.isSearching) {
+    if (self.searchController.active) {
         [self configureCell:cell withBehaviour:[self.filteredBehaviour objectAtIndex:indexPath.row]];
     }
     else {
@@ -108,61 +118,25 @@
     
 }
 
-- (void)searchTableList {
-    NSString *searchString = self.searchBar.text;
-    
-    for (Behaviour *aBehaviour in self.listOfBehaviour) {
-        NSComparisonResult result = [aBehaviour.student.firstName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        NSComparisonResult result2 = [aBehaviour.student.lastName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+        [self.managedObjectContext deleteObject:[self.listOfBehaviour objectAtIndex:indexPath.row]];
+        [self.listOfBehaviour removeObjectAtIndex:indexPath.row];
         
-        if (result == NSOrderedSame || result2 == NSOrderedSame) {
-            [self.filteredBehaviour addObject:aBehaviour];
-        }
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        [self fetchStudentAndBehaviour];
+ 
+        [self.tableViewHistory reloadData];
     }
 }
-
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    self.isSearching = YES;
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"Text change - %d",self.isSearching);
-    
-    //Remove all objects first.
-    [self.filteredBehaviour removeAllObjects];
-    
-    if([searchText length] != 0) {
-        self.isSearching = YES;
-        [self searchTableList];
-    }
-    else {
-        self.isSearching = NO;
-    }
-    [self.tableViewHistory reloadData];
-    
-    // There is still an issue that one of the search results is hidden...
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"Cancel clicked");
-    self.isSearching = NO;
-    [self.tableViewHistory reloadData];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"Search Clicked");
-    [self searchTableList];
-    
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-    
-}
-
-
 
 
 
@@ -192,7 +166,7 @@
     
     
     cell.historyTimeLabel.text = dateString;
-    cell.historyGradeLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
+    cell.historyGradeLabel.text = student.schoolClass.section;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
 }
@@ -202,7 +176,7 @@
 {
     DetailViewController *dvc = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailView"];
     dvc.managedObjectContext = self.managedObjectContext;
-    if (self.isSearching) {
+    if (self.searchController.active) {
         Behaviour *aBehaviour = self.filteredBehaviour[indexPath.row];
         dvc.behaviour = aBehaviour;
     }
@@ -214,12 +188,88 @@
     
 }
 
-//-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    HistoryCell *cell = tableView.indexPathForSelectedRow;
-//    cell.backgroundColor =
+// OLD DEPRECATED WAY - STEVE'S WAY WITH THE SEARCHCOTROLLER IS WAY BETTER
+//- (void)searchTableList {
+//    NSString *searchString = self.searchBar.text;
+//
+//    for (Behaviour *aBehaviour in self.listOfBehaviour) {
+//        NSComparisonResult result = [aBehaviour.student.firstName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+//
+//        NSComparisonResult result2 = [aBehaviour.student.lastName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+//
+//        if (result == NSOrderedSame || result2 == NSOrderedSame) {
+//            [self.filteredBehaviour addObject:aBehaviour];
+//        }
+//    }
 //}
 
+
+//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+//    self.isSearching = YES;
+//}
+
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+//    NSLog(@"Text change - %d",self.isSearching);
+
+//    //Remove all objects first.
+//    [self.filteredBehaviour removeAllObjects];
+//
+//    if([searchText length] != 0) {
+//        self.isSearching = YES;
+//        [self searchTableList];
+//    }
+//    else {
+//        self.isSearching = NO;
+//    }
+//    [self.tableViewHistory reloadData];
+//
+//    // There is still an issue that one of the search results is hidden...
+//}
+//
+//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+//    NSLog(@"Cancel clicked");
+//    self.isSearching = NO;
+//    [self.tableViewHistory reloadData];
+//}
+//
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+//    NSLog(@"Search Clicked");
+//    [self searchTableList];
+//
+//}
+//
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+//{
+//
+//}
+
+
+
+
+#pragma mark - UISearchResultUpdating Protocol method
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
+    NSString *searchText = searchController.searchBar.text;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.student.firstName contains[cd] %@ || SELF.student.lastName contains[cd] %@ || SELF.student.schoolClass.section contains[cd] %@", searchText, searchText, searchText];
+    self.filteredBehaviour = [[self.listOfBehaviour filteredArrayUsingPredicate:predicate] mutableCopy];
+    [self.tableViewHistory reloadData];
+    
+
+// OLD WAY TO FILTER, SEE BETTER WAY ABOVE
+//  NSString *searchString = self.searchController.searchBar.text;
+//
+//  for (Behaviour *aBehaviour in self.listOfBehaviour) {
+//  NSComparisonResult result = [aBehaviour.student.firstName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+//
+//  NSComparisonResult result2 = [aBehaviour.student.lastName compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+//
+//  if (result == NSOrderedSame || result2 == NSOrderedSame) {
+//      [self.filteredBehaviour addObject:aBehaviour];
+//      }
+//  }
+    
+}
 
 #pragma mark - fetches
 
