@@ -176,37 +176,68 @@
     cell.parentLastLabel.text = parent.lastName;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
-    
-    [cell addGestureRecognizer:swipeGesture];
 }
 
--(void)swiped:(UISwipeGestureRecognizer*)swipe
-{
-    CGPoint point = [swipe locationInView:self.classInfoTableView];
-    NSIndexPath *indexPath = [self.classInfoTableView indexPathForRowAtPoint:point];
-    
-    Student *student = [self.currentInfoClass objectAtIndex:indexPath.row];
-    SchoolClass *schoolClass = student.schoolClass;
-    NSInteger amountOfStudents = schoolClass.students.count;
-    
-    [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
-    [self.currentInfoClass removeObjectAtIndex:indexPath.row];
-    
-    if (amountOfStudents == 1) {
-        [self.managedObjectContext deleteObject:schoolClass];
-    }
-    
-    
-    
-    NSError *error;
-    [self.managedObjectContext save:&error];
-    
-    [self fetchStudentAndParentsAndClasses];
-    [self rebuildInfoSegControl];
-    
-    [self.classInfoTableView reloadData];
+
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Student *student = [self.currentInfoClass objectAtIndex:indexPath.row];
+            SchoolClass *schoolClass = student.schoolClass;
+            NSInteger amountOfStudents = schoolClass.students.count;
+        
+            [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
+            [self.currentInfoClass removeObjectAtIndex:indexPath.row];
+        
+            if (amountOfStudents == 1) {
+                [self.managedObjectContext deleteObject:schoolClass];
+            }
+        
+        
+        
+            NSError *error;
+            [self.managedObjectContext save:&error];
+        
+            [self fetchStudentAndParentsAndClasses];
+            [self rebuildInfoSegControl];
+            
+            [self.classInfoTableView reloadData];
+    }
+}
+
+
+
+//-(void)swiped:(UISwipeGestureRecognizer*)swipe
+//{
+//    CGPoint point = [swipe locationInView:self.classInfoTableView];
+//    NSIndexPath *indexPath = [self.classInfoTableView indexPathForRowAtPoint:point];
+//    
+//    Student *student = [self.currentInfoClass objectAtIndex:indexPath.row];
+//    SchoolClass *schoolClass = student.schoolClass;
+//    NSInteger amountOfStudents = schoolClass.students.count;
+//    
+//    [self.managedObjectContext deleteObject:[self.currentInfoClass objectAtIndex:indexPath.row]];
+//    [self.currentInfoClass removeObjectAtIndex:indexPath.row];
+//    
+//    if (amountOfStudents == 1) {
+//        [self.managedObjectContext deleteObject:schoolClass];
+//    }
+//    
+//    
+//    
+//    NSError *error;
+//    [self.managedObjectContext save:&error];
+//    
+//    [self fetchStudentAndParentsAndClasses];
+//    [self rebuildInfoSegControl];
+//    
+//    [self.classInfoTableView reloadData];
+//}
 
 
 

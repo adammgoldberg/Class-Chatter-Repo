@@ -217,21 +217,21 @@
     cell.studentNameLabel.text = student.firstName;
     cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld / %ld", [student.numberOfDisruptions integerValue], [theTeacher.limitForBadEmails integerValue]];
     cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld / %ld", [student.numberOfPositives integerValue], [theTeacher.limitforGoodEmails integerValue]];
-    NSInteger numberOfSwipes = [student.numberOfDisruptions integerValue];
+    CGFloat numberOfSwipes = [student.numberOfDisruptions integerValue];
     cell.tag = indexPath.row;
     cell.layer.cornerRadius = 15;
     cell.layer.masksToBounds = YES;
-    
-    if (numberOfSwipes == 1) {
+        
+    if ((numberOfSwipes > 0) && (numberOfSwipes <= (1.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
         cell.backgroundColor = [UIColor colorWithRed:214/255.0f green:214/255.0f blue:0/255.0f alpha:1];
-    } else if (numberOfSwipes == 2) {
+    } else if ((numberOfSwipes > (1.0/3.0 * [theTeacher.limitForBadEmails integerValue])) && (numberOfSwipes <= (2.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
         cell.backgroundColor = [UIColor orangeColor];
-    } else if (numberOfSwipes >= 3) {
+    } else if (numberOfSwipes > (2.0/3.0 * [theTeacher.limitForBadEmails integerValue])) {
         cell.backgroundColor = [UIColor redColor];
     } else {
         cell.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
     }
-    
+
     UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(badSwipe:)];
     [downSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
     [cell addGestureRecognizer:downSwipe];
