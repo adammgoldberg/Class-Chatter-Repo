@@ -32,6 +32,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *addStudentButton;
 
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 
 
 @end
@@ -53,6 +54,9 @@
     
     self.addStudentButton.layer.cornerRadius = 12;
     self.addStudentButton.layer.masksToBounds = YES;
+    
+    self.cancelButton.layer.cornerRadius = 12;
+    self.cancelButton.layer.masksToBounds = 12;
     
     [self.firstNameText becomeFirstResponder];
     

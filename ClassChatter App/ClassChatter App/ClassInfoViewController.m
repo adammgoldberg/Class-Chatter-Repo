@@ -175,9 +175,9 @@
     [self.editView addGestureRecognizer:tapGesture];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.editView.bounds.origin.x + 20, self.editView.bounds.origin.y + 10, 60, 30)];
-    closeButton.backgroundColor = [UIColor whiteColor];
-    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
-    [closeButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
+    closeButton.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
+    [closeButton setTitle:@"X" forState:UIControlStateNormal];
+    [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(removeTheView:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.editView addSubview:closeButton];
@@ -239,6 +239,8 @@
     [saveChangesButton setTitle:@"Save Changes" forState:UIControlStateNormal];
     [saveChangesButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
     [saveChangesButton addTarget:self action:@selector(saveChanges:) forControlEvents:UIControlEventTouchUpInside];
+    saveChangesButton.layer.cornerRadius = 12;
+    saveChangesButton.layer.masksToBounds = YES;
     
     [self.editView addSubview:saveChangesButton];
 }
@@ -328,7 +330,7 @@
     cell.studentLastNameLabel.text = student.lastName;
     cell.parentTitleLabel.text = parent.title;
     cell.parentEmailLabel.text = parent.emailAddress;
-    cell.studentClassLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
+    cell.studentClassLabel.text = student.schoolClass.section;
     cell.parentLastLabel.text = parent.lastName;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
