@@ -53,6 +53,12 @@
 @property (strong, nonatomic) UITextField *activeField;
 
 
+@property (strong, nonatomic) IBOutlet UIButton *editClassButton;
+
+
+@property (strong, nonatomic) IBOutlet UIButton *deleteClassButton;
+
+
 
 
 
@@ -69,6 +75,7 @@
     // Do any additional setup after loading the view.
     
     self.classInfoTableView.delegate = self;
+    self.deleteClassButton.hidden = YES;
     
     [self fetchStudentAndParentsAndClasses];
     
@@ -153,14 +160,12 @@
 
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+#pragma mark editview, buttons, and textfields
+
+
+-(void)longTapGesture
 {
-    
-    self.student = self.currentInfoClass[indexPath.row];
-    
     [self buildEditViewButtonsAndTextFields];
-    
-    
 }
 
 
@@ -332,10 +337,9 @@
     cell.parentEmailLabel.text = parent.emailAddress;
     cell.studentClassLabel.text = student.schoolClass.section;
     cell.parentLastLabel.text = parent.lastName;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     
 }
-
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -366,6 +370,78 @@
             
             [self.classInfoTableView reloadData];
     }
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    
+
+    NSLog(@"Tapped");
+    
+    if (!tableView.editing) {
+        //    self.student = self.currentInfoClass[indexPath.row];
+        
+        //    [self buildEditViewButtonsAndTextFields];
+    }
+    
+    
+    
+    
+    
+}
+
+
+- (IBAction)deleteClass:(UIButton *)sender {
+ 
+    
+    NSArray *studentToBeDeleted = [self.classInfoTableView.indexPathsForSelectedRows mutableCopy];
+    
+    SchoolClass *aSchoolClass = ((Student*)self.currentInfoClass[0]).schoolClass;
+    NSMutableIndexSet *indicesToDelete = [NSMutableIndexSet indexSet];
+    for (NSIndexPath *studentIndex in studentToBeDeleted) {
+        Student *aStudent = self.currentInfoClass[studentIndex.row];
+        [indicesToDelete addIndex:studentIndex.row];
+        [self.managedObjectContext deleteObject:aStudent];
+    }
+    if (studentToBeDeleted.count == self.currentInfoClass.count) {
+        [self.managedObjectContext deleteObject:aSchoolClass];
+    }
+    [self.currentInfoClass removeObjectsAtIndexes:indicesToDelete];
+    
+    [self.classInfoTableView deleteRowsAtIndexPaths:studentToBeDeleted withRowAnimation:UITableViewRowAnimationLeft];
+    
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    [self.classInfoTableView reloadData];
+
+    
+}
+
+
+- (IBAction)editClass:(UIButton *)sender {
+    
+    if (!self.classInfoTableView.editing) {
+        [self.classInfoTableView setEditing:YES animated:YES];
+        [self.editClassButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        self.deleteClassButton.hidden = NO;
+    } else {
+        [self.classInfoTableView setEditing:NO animated:YES];
+        [self.editClassButton setTitle:@"Edit Class" forState:UIControlStateNormal];
+        self.deleteClassButton.hidden = YES;
+    }
+    
+
+    
+    
+
+    
 }
 
 

@@ -17,13 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XJV-vS-zKm">
-                                <rect key="frame" x="0.0" y="130" width="600" height="404"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XJV-vS-zKm">
+                                <rect key="frame" x="0.0" y="173" width="600" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="403" id="fgZ-i8-nw0"/>
                                     <constraint firstAttribute="height" constant="340" id="zNY-fV-lHM"/>
                                 </constraints>
+                                <color key="separatorColor" red="0.064745398699999998" green="0.47305082069999999" blue="0.059649314350000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassInfoCell" rowHeight="83" id="Tu6-Dd-BbI" customClass="ClassInfoCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="83"/>
@@ -143,21 +144,42 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvY-w6-5lz">
+                                <rect key="frame" x="15" y="126" width="68" height="30"/>
+                                <state key="normal" title="Edit Class">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editClass:" destination="Edq-lz-hBt" eventType="touchUpInside" id="QHw-4H-pZ3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBS-RJ-Lt2">
+                                <rect key="frame" x="540" y="126" width="45" height="30"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteClass:" destination="Edq-lz-hBt" eventType="touchUpInside" id="RfK-Tb-sCn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="257" id="1hX-8e-a87"/>
+                            <constraint firstItem="fvY-w6-5lz" firstAttribute="leading" secondItem="HbA-ND-CDj" secondAttribute="leading" id="2MM-fN-JTv"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="5G3-5a-Yo2"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="25" id="5TA-Dp-WTQ"/>
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="15" id="5i2-4P-REh"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="74" id="758-nj-BBX"/>
+                            <constraint firstItem="OBS-RJ-Lt2" firstAttribute="top" secondItem="HbA-ND-CDj" secondAttribute="bottom" constant="16" id="8sZ-bW-SbB"/>
                             <constraint firstItem="HbA-ND-CDj" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="EBR-YY-1kU"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="60" id="ECF-ac-JOG"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="H1A-bY-7eU"/>
-                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="HbA-ND-CDj" secondAttribute="bottom" constant="20" id="Ipa-0q-rDB"/>
+                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="HbA-ND-CDj" secondAttribute="bottom" constant="63" id="Ipa-0q-rDB"/>
                             <constraint firstAttribute="trailing" secondItem="XJV-vS-zKm" secondAttribute="trailing" id="NCI-gE-Mmx"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="26" id="NHP-AH-SP7"/>
                             <constraint firstAttribute="trailing" secondItem="HbA-ND-CDj" secondAttribute="trailing" constant="15" id="PLd-rQ-ztx"/>
+                            <constraint firstItem="fvY-w6-5lz" firstAttribute="top" secondItem="HbA-ND-CDj" secondAttribute="bottom" constant="16" id="Pct-CH-qNB"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="QE5-xa-oce"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="23" id="T48-tD-Q0p"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="U6B-NX-27R"/>
@@ -170,10 +192,12 @@
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="kJO-X0-Dez"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="centerX" secondItem="ZVZ-2d-emb" secondAttribute="centerX" id="kVw-5p-514"/>
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="124" id="nfy-2n-2ox"/>
+                            <constraint firstItem="OBS-RJ-Lt2" firstAttribute="trailing" secondItem="HbA-ND-CDj" secondAttribute="trailing" id="ntM-zX-ZiK"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" constant="15" id="p5y-pG-iyW"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="21" id="r8b-Fz-fA3"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="58" id="rGs-Of-dMM"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="tqZ-4b-qo7"/>
+                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="fvY-w6-5lz" secondAttribute="bottom" constant="17" id="ud2-BV-Qu9"/>
                             <constraint firstItem="HbA-ND-CDj" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="54" id="yMq-Mw-boG"/>
                         </constraints>
                         <variation key="default">
@@ -183,6 +207,7 @@
                                 <exclude reference="tqZ-4b-qo7"/>
                                 <exclude reference="5TA-Dp-WTQ"/>
                                 <exclude reference="758-nj-BBX"/>
+                                <exclude reference="Ipa-0q-rDB"/>
                                 <exclude reference="NCI-gE-Mmx"/>
                                 <exclude reference="NHP-AH-SP7"/>
                                 <exclude reference="T48-tD-Q0p"/>
@@ -203,6 +228,8 @@
                         <outlet property="addStudent" destination="S3W-0G-2Oq" id="2Zt-jL-5AQ"/>
                         <outlet property="classInfoSeg" destination="ZVZ-2d-emb" id="kWm-pQ-dBc"/>
                         <outlet property="classInfoTableView" destination="XJV-vS-zKm" id="tgZ-Eg-rnU"/>
+                        <outlet property="deleteClassButton" destination="OBS-RJ-Lt2" id="e2b-aQ-hAA"/>
+                        <outlet property="editClassButton" destination="fvY-w6-5lz" id="PAq-KD-H9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOH-lW-kYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
