@@ -17,15 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XJV-vS-zKm">
-                                <rect key="frame" x="0.0" y="138" width="600" height="396"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XJV-vS-zKm">
+                                <rect key="frame" x="0.0" y="130" width="600" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="403" id="fgZ-i8-nw0"/>
                                     <constraint firstAttribute="height" constant="340" id="zNY-fV-lHM"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassInfoCell" rowHeight="83" id="Tu6-Dd-BbI" customClass="ClassInfoCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClassInfoCell" rowHeight="83" id="Tu6-Dd-BbI" customClass="ClassInfoCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tu6-Dd-BbI" id="j8y-fZ-GbH">
@@ -137,7 +137,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbA-ND-CDj">
-                                <rect key="frame" x="15" y="77" width="570" height="29"/>
+                                <rect key="frame" x="15" y="74" width="570" height="29"/>
                                 <string key="text">To delete a student, swipe left and press delete. If you delete a student, you will lose all of the information associated with that student.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,7 +150,7 @@
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="leading" secondItem="FuO-3a-Mpw" secondAttribute="leading" id="5G3-5a-Yo2"/>
                             <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="S3W-0G-2Oq" secondAttribute="bottom" constant="25" id="5TA-Dp-WTQ"/>
                             <constraint firstAttribute="trailing" secondItem="S3W-0G-2Oq" secondAttribute="trailing" constant="15" id="5i2-4P-REh"/>
-                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="82" id="758-nj-BBX"/>
+                            <constraint firstItem="XJV-vS-zKm" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="74" id="758-nj-BBX"/>
                             <constraint firstItem="HbA-ND-CDj" firstAttribute="centerX" secondItem="FuO-3a-Mpw" secondAttribute="centerX" id="EBR-YY-1kU"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="60" id="ECF-ac-JOG"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="H1A-bY-7eU"/>
@@ -173,7 +173,7 @@
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="ZVZ-2d-emb" secondAttribute="bottom" constant="21" id="r8b-Fz-fA3"/>
                             <constraint firstItem="S3W-0G-2Oq" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="58" id="rGs-Of-dMM"/>
                             <constraint firstItem="ZVZ-2d-emb" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="8" id="tqZ-4b-qo7"/>
-                            <constraint firstItem="HbA-ND-CDj" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="57" id="yMq-Mw-boG"/>
+                            <constraint firstItem="HbA-ND-CDj" firstAttribute="top" secondItem="Pq9-74-x0D" secondAttribute="bottom" constant="54" id="yMq-Mw-boG"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

@@ -11,7 +11,7 @@
         <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="parents" inverseEntity="Student" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="parent" inverseEntity="Student" syncable="YES"/>
     </entity>
     <entity name="SchoolClass" representedClassName="SchoolClass" syncable="YES">
         <attribute name="grade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -27,7 +27,7 @@
         <attribute name="numberOfDisruptions" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="numberOfPositives" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="behaviour" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Behaviour" inverseName="student" inverseEntity="Behaviour" syncable="YES"/>
-        <relationship name="parents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Parent" inverseName="student" inverseEntity="Parent" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Parent" inverseName="student" inverseEntity="Parent" syncable="YES"/>
         <relationship name="schoolClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolClass" inverseName="students" inverseEntity="SchoolClass" syncable="YES"/>
         <relationship name="teacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="students" inverseEntity="Teacher" syncable="YES"/>
     </entity>

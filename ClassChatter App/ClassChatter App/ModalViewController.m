@@ -160,9 +160,10 @@
         student.schoolClass = schoolClass;
     }
     
-    
-    
-    [student addParentsObject:parent];
+    student.parent = parent;
+
+// BELOW IS PREVIOUS TEXT WHEN STUDENT PARENT RELATIONSHIP WAS ONE TO MANY
+//    [student addParentsObject:parent];
     
     
     

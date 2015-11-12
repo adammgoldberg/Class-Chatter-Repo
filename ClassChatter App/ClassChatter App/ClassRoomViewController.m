@@ -261,7 +261,7 @@
     Behaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Behaviour" inManagedObjectContext:self.managedObjectContext];
     misbehaviour.time = [NSDate date];
     Student *theStudent = self.currentClass[swipe.view.tag];
-    Parent *theParent = [theStudent.parents anyObject];
+    Parent *theParent = theStudent.parent;
     [theStudent addBehaviourObject:misbehaviour];
     NSError *error;
     [self.managedObjectContext save:&error];
@@ -326,7 +326,7 @@
     goodBehaviour.time = [NSDate date];
     goodBehaviour.type = @"good";
     Student *theStudent = self.currentClass[swipe.view.tag];
-    Parent *theParent = [theStudent.parents anyObject];
+    Parent *theParent = theStudent.parent;
     [theStudent addBehaviourObject:goodBehaviour];
     NSError *error;
     [self.managedObjectContext save:&error];
@@ -357,7 +357,12 @@
                 
                 [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
                 
-                [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], theTeacher.principalEmail]];
+                if (theTeacher.principalEmail != nil) {
+                    [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], [NSString stringWithFormat:@"%@", theTeacher.principalEmail]]];
+                } else
+                    [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
+                
+                [self presentViewController:mailViewController animated:YES completion:nil];
                 
                 [self presentViewController:mailViewController animated:YES completion:nil];
                 

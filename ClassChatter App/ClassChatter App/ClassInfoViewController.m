@@ -14,7 +14,7 @@
 #import "ModalViewController.h"
 
 
-@interface ClassInfoViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ClassInfoViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *addStudent;
@@ -32,10 +32,34 @@
 
 @property (strong, nonatomic) NSMutableArray *currentInfoClass;
 
+@property (strong, nonatomic) UIView *editView;
+
+@property (strong, nonatomic) Student *student;
+
+//@property (strong, nonatomic) Parent *parent;
+
+@property (strong, nonatomic) UITextField *firstNameTextField;
+
+@property (strong, nonatomic) UITextField *lastNameTextField;
+
+//@property (strong, nonatomic) UITextField *classNameTextField;
+
+@property (strong, nonatomic) UITextField *parentTitleTextField;
+
+@property (strong, nonatomic) UITextField *parentLastNameTextField;
+
+@property (strong, nonatomic) UITextField *parentEmailTextField;
+
+@property (strong, nonatomic) UITextField *activeField;
+
+
+
+
 
 @end
 
 @implementation ClassInfoViewController
+
 
 
 
@@ -56,19 +80,13 @@
     self.addStudent.layer.cornerRadius = 12;
     self.addStudent.layer.masksToBounds = YES;
     
+  
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
     
 }
 
 
-
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    
-//    [self.classInfoTableView reloadData];
-//}
 
 
 -(void)viewWillAppear:(BOOL)animated
@@ -135,7 +153,145 @@
 
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    
+    self.student = self.currentInfoClass[indexPath.row];
+    
+    [self buildEditViewButtonsAndTextFields];
+    
+    
+}
 
+
+-(void)buildEditViewButtonsAndTextFields
+{
+    self.editView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.view.bounds) + 20, CGRectGetMinY(self.view.bounds) + 20, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - 40)];
+    self.editView.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
+    [self.view addSubview:self.editView];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
+    
+    [self.editView addGestureRecognizer:tapGesture];
+    
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.editView.bounds.origin.x + 20, self.editView.bounds.origin.y + 10, 60, 30)];
+    closeButton.backgroundColor = [UIColor whiteColor];
+    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+    [closeButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
+    [closeButton addTarget:self action:@selector(removeTheView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.editView addSubview:closeButton];
+    
+    self.firstNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.editView.bounds) - 60, self.editView.bounds.origin.y + 80, 120, 30)];
+    self.firstNameTextField.backgroundColor = [UIColor whiteColor];
+    self.firstNameTextField.textAlignment = NSTextAlignmentCenter;
+    self.firstNameTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.firstNameTextField.text = self.student.firstName;
+    [self.editView addSubview:self.firstNameTextField];
+    
+    [self.firstNameTextField becomeFirstResponder];
+    
+    self.lastNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.editView.bounds) - 60, self.editView.bounds.origin.y + 120, 120, 30)];
+    self.lastNameTextField.backgroundColor = [UIColor whiteColor];
+    self.lastNameTextField.textAlignment = NSTextAlignmentCenter;
+    self.lastNameTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.lastNameTextField.text = self.student.lastName;
+    [self.editView addSubview:self.lastNameTextField];
+    
+    // THERE ARE ISSUES WHEN TRYING TO CHANGE THE CLASS... IT SCREWS UP THE OTHER STUDENTS CLASSES AND THE SEG CONTROL... DOESN'T SORT THEM... CAN PROBABLY BE FIXED BY LOOKING AT THE METHOD FOR SORTING KIDS INTO CLASSES BUT NOT NECESSARY FOR NOW
+    //    self.classNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(self.editView.bounds.origin.x + 50, self.editView.bounds.origin.y + 160, 70, 30)];
+    //    self.classNameTextField.backgroundColor = [UIColor whiteColor];
+    //    self.classNameTextField.text = self.student.schoolClass.section;
+    //    [self.editView addSubview:self.classNameTextField];
+    
+    self.parentTitleTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.editView.bounds) - 60, self.editView.bounds.origin.y + 160, 120, 30)];
+    self.parentTitleTextField.backgroundColor = [UIColor whiteColor];
+    self.parentTitleTextField.textAlignment = NSTextAlignmentCenter;
+    self.parentTitleTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.parentTitleTextField.text = self.student.parent.title;
+    [self.editView addSubview:self.parentTitleTextField];
+    
+    self.parentLastNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.editView.bounds) - 60, self.editView.bounds.origin.y + 200, 120, 30)];
+    self.parentLastNameTextField.backgroundColor = [UIColor whiteColor];
+    self.parentLastNameTextField.textAlignment = NSTextAlignmentCenter;
+    self.parentLastNameTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.parentLastNameTextField.text = self.student.parent.lastName;
+    [self.editView addSubview:self.parentLastNameTextField];
+    
+    
+    self.parentEmailTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.editView.bounds) - 60, self.editView.bounds.origin.y + 240, 120, 30)];
+    self.parentEmailTextField.backgroundColor = [UIColor whiteColor];
+    self.parentEmailTextField.textAlignment = NSTextAlignmentCenter;
+    self.parentEmailTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.parentEmailTextField.text = self.student.parent.emailAddress;
+    [self.editView addSubview:self.parentEmailTextField];
+    
+    
+    self.firstNameTextField.delegate = self;
+    self.lastNameTextField.delegate = self;
+    self.parentTitleTextField.delegate = self;
+    self.parentLastNameTextField.delegate = self;
+    self.parentEmailTextField.delegate = self;
+    
+    
+    UIButton *saveChangesButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.editView.bounds) - 70, self.editView.bounds.origin.y + 320, 140, 30)];
+    saveChangesButton.backgroundColor = [UIColor whiteColor];
+    [saveChangesButton setTitle:@"Save Changes" forState:UIControlStateNormal];
+    [saveChangesButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
+    [saveChangesButton addTarget:self action:@selector(saveChanges:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.editView addSubview:saveChangesButton];
+}
+
+
+
+-(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
+{
+    [self.activeField resignFirstResponder];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField isEqual:self.firstNameTextField]) {
+        [self.lastNameTextField becomeFirstResponder];
+    } else if ([textField isEqual:self.lastNameTextField]) {
+        [self.parentTitleTextField becomeFirstResponder];
+    } else if ([textField isEqual:self.parentTitleTextField]) {
+        [self.parentLastNameTextField becomeFirstResponder];
+    } else if ([textField isEqual:self.parentLastNameTextField]) {
+        [self.parentEmailTextField becomeFirstResponder];
+
+    }
+    return YES;
+}
+
+-(void)removeTheView:(UIButton*)button
+{
+    [self.editView removeFromSuperview];
+}
+
+-(void)saveChanges:(UIButton*)button
+{
+    self.student.firstName = self.firstNameTextField.text;
+    self.student.lastName = self.lastNameTextField.text;
+//    self.student.schoolClass.section = self.classNameTextField.text;
+    self.student.parent.title = self.parentTitleTextField.text;
+    self.student.parent.lastName = self.parentLastNameTextField.text;
+    self.student.parent.emailAddress = self.parentEmailTextField.text;
+    
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    [self.classInfoTableView reloadData];
+    
+    [self.editView removeFromSuperview];
+    
+}
 
 
 
@@ -167,7 +323,7 @@
 -(void)configureCell:(ClassInfoCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
     Student *student = self.currentInfoClass[indexPath.row];
-    Parent *parent = [student.parents anyObject];
+    Parent *parent = student.parent;
     cell.studentFirstNameLabel.text = student.firstName;
     cell.studentLastNameLabel.text = student.lastName;
     cell.parentTitleLabel.text = parent.title;
