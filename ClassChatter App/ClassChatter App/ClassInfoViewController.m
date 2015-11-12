@@ -337,6 +337,8 @@
     cell.parentEmailLabel.text = parent.emailAddress;
     cell.studentClassLabel.text = student.schoolClass.section;
     cell.parentLastLabel.text = parent.lastName;
+    cell.selectedBackgroundView = [[UIView alloc] init];
+    cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
 
     
 }
@@ -377,23 +379,17 @@
     return UITableViewCellEditingStyleDelete;
 }
 
-
+//  I PUT 'NO SELECTION' IN THE STORY BOARD AND INSTEAD OF DOING 'DIDSELECT' I WILL ADD A LONG TAPGESTURE TO THE CELL FOR EDITING PURPOSES
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    
-
     NSLog(@"Tapped");
     
     if (!tableView.editing) {
-        //    self.student = self.currentInfoClass[indexPath.row];
-        
-        //    [self buildEditViewButtonsAndTextFields];
+            self.student = self.currentInfoClass[indexPath.row];
+            [self buildEditViewButtonsAndTextFields];
+//        ClassInfoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
     }
-    
-    
-    
-    
-    
 }
 
 
