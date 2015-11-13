@@ -493,10 +493,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzY-27-cFQ">
-                                <rect key="frame" x="29" y="43" width="542" height="69"/>
+                                <rect key="frame" x="0.0" y="43" width="600" height="69"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfN-cQ-xVM">
-                                        <rect key="frame" x="471" y="0.0" width="50" height="68"/>
+                                        <rect key="frame" x="529" y="0.0" width="50" height="68"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="2EI-Y1-g2I"/>
@@ -516,7 +516,7 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of times before sending an email for misbehaviour." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEf-Ab-Cmu">
-                                        <rect key="frame" x="8" y="8" width="451" height="21"/>
+                                        <rect key="frame" x="8" y="8" width="509" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -532,16 +532,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lv-Bb-3BE">
-                                <rect key="frame" x="29" y="126" width="542" height="69"/>
+                                <rect key="frame" x="0.0" y="126" width="600" height="69"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of times before sending an email for positive behaviour." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5q-KE-paj">
-                                        <rect key="frame" x="8" y="8" width="451" height="41"/>
+                                        <rect key="frame" x="8" y="8" width="509" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHu-HM-nz0">
-                                        <rect key="frame" x="471" y="0.0" width="50" height="68"/>
+                                        <rect key="frame" x="529" y="0.0" width="50" height="68"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="68" id="AE0-sa-fA1"/>
@@ -584,7 +584,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bS-9O-WBR">
-                                <rect key="frame" x="29" y="211" width="542" height="172"/>
+                                <rect key="frame" x="0.0" y="211" width="600" height="172"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Principal email address for CC:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4i-oH-aYe">
                                         <rect key="frame" x="8" y="14" width="235" height="21"/>
@@ -593,7 +593,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1d-0u-yqu">
-                                        <rect key="frame" x="8" y="45" width="517" height="30"/>
+                                        <rect key="frame" x="8" y="45" width="575" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
@@ -604,7 +604,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SM-bO-xkV">
-                                        <rect key="frame" x="366" y="132" width="159" height="33"/>
+                                        <rect key="frame" x="424" y="132" width="159" height="33"/>
                                         <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title=" Save Email Address ">
@@ -667,21 +667,29 @@
                         <constraints>
                             <constraint firstItem="0lv-Bb-3BE" firstAttribute="leading" secondItem="LzY-27-cFQ" secondAttribute="leading" id="7Wb-xd-kGj"/>
                             <constraint firstItem="0bS-9O-WBR" firstAttribute="trailing" secondItem="0lv-Bb-3BE" secondAttribute="trailing" id="8bj-UE-eGe"/>
+                            <constraint firstAttribute="trailing" secondItem="LzY-27-cFQ" secondAttribute="trailing" id="AnE-Mc-wBJ"/>
                             <constraint firstItem="0bS-9O-WBR" firstAttribute="top" secondItem="0lv-Bb-3BE" secondAttribute="bottom" constant="16" id="D7A-bs-dFh"/>
                             <constraint firstItem="gQk-i0-9rg" firstAttribute="top" secondItem="NQg-ez-ix1" secondAttribute="bottom" constant="12" id="ImU-Ma-VFE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LzY-27-cFQ" secondAttribute="trailing" constant="9" id="JPN-kL-hvg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LzY-27-cFQ" secondAttribute="trailing" id="JPN-kL-hvg"/>
                             <constraint firstItem="0bS-9O-WBR" firstAttribute="top" secondItem="j6V-zA-zVV" secondAttribute="top" constant="211" id="VbG-WH-tlR"/>
                             <constraint firstItem="NQg-ez-ix1" firstAttribute="centerX" secondItem="0bS-9O-WBR" secondAttribute="centerX" id="Vlr-Ew-HB5"/>
                             <constraint firstItem="LzY-27-cFQ" firstAttribute="centerX" secondItem="j6V-zA-zVV" secondAttribute="centerX" id="Xe6-H2-Rnn"/>
+                            <constraint firstItem="LzY-27-cFQ" firstAttribute="leading" secondItem="j6V-zA-zVV" secondAttribute="leading" id="eDv-Gb-CRX"/>
                             <constraint firstItem="NQg-ez-ix1" firstAttribute="top" secondItem="0bS-9O-WBR" secondAttribute="bottom" constant="29" id="eJ1-Qv-JBI"/>
                             <constraint firstItem="0bS-9O-WBR" firstAttribute="top" secondItem="0lv-Bb-3BE" secondAttribute="bottom" constant="16" id="gMo-RB-vHE"/>
-                            <constraint firstItem="LzY-27-cFQ" firstAttribute="leading" secondItem="j6V-zA-zVV" secondAttribute="leadingMargin" constant="9" id="iVA-rA-rHd"/>
+                            <constraint firstItem="LzY-27-cFQ" firstAttribute="leading" secondItem="j6V-zA-zVV" secondAttribute="leadingMargin" id="iVA-rA-rHd"/>
                             <constraint firstItem="0lv-Bb-3BE" firstAttribute="top" secondItem="LzY-27-cFQ" secondAttribute="bottom" constant="14" id="lec-Wt-fzD"/>
                             <constraint firstItem="0bS-9O-WBR" firstAttribute="leading" secondItem="0lv-Bb-3BE" secondAttribute="leading" id="s7O-hG-GxZ"/>
                             <constraint firstItem="LzY-27-cFQ" firstAttribute="top" secondItem="pFZ-nS-toC" secondAttribute="bottom" constant="23" id="uUA-mw-c2A"/>
                             <constraint firstItem="gQk-i0-9rg" firstAttribute="centerX" secondItem="NQg-ez-ix1" secondAttribute="centerX" id="vOv-8K-TtE"/>
                             <constraint firstItem="0bS-9O-WBR" firstAttribute="trailing" secondItem="LzY-27-cFQ" secondAttribute="trailing" id="vk2-hK-VCB"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JPN-kL-hvg"/>
+                                <exclude reference="iVA-rA-rHd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="HfE-Fm-NHj"/>
                     <connections>
