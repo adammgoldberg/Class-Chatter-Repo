@@ -216,8 +216,8 @@
     Student *student = self.currentClass[indexPath.row];
     Teacher *theTeacher = [self.listOfTeachers firstObject];
     cell.studentNameLabel.text = student.firstName;
-    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld / %ld", [student.numberOfDisruptions integerValue], [theTeacher.limitForBadEmails integerValue]];
-    cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld / %ld", [student.numberOfPositives integerValue], [theTeacher.limitforGoodEmails integerValue]];
+    cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld / %@", [student.numberOfDisruptions integerValue], theTeacher.limitForBadEmails];
+    cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld / %@", [student.numberOfPositives integerValue], theTeacher.limitforGoodEmails];
     CGFloat numberOfSwipes = [student.numberOfDisruptions integerValue];
     cell.tag = indexPath.row;
     cell.layer.cornerRadius = 15;

@@ -53,6 +53,12 @@
 @property (strong, nonatomic) UITextField *activeField;
 
 
+@property (strong, nonatomic) IBOutlet UIButton *editClassButton;
+
+
+@property (strong, nonatomic) IBOutlet UIButton *deleteClassButton;
+
+
 
 
 
@@ -69,6 +75,7 @@
     // Do any additional setup after loading the view.
     
     self.classInfoTableView.delegate = self;
+    self.deleteClassButton.hidden = YES;
     
     [self fetchStudentAndParentsAndClasses];
     
@@ -153,14 +160,12 @@
 
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+#pragma mark editview, buttons, and textfields
+
+
+-(void)longTapGesture
 {
-    
-    self.student = self.currentInfoClass[indexPath.row];
-    
     [self buildEditViewButtonsAndTextFields];
-    
-    
 }
 
 
@@ -175,9 +180,9 @@
     [self.editView addGestureRecognizer:tapGesture];
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.editView.bounds.origin.x + 20, self.editView.bounds.origin.y + 10, 60, 30)];
-    closeButton.backgroundColor = [UIColor whiteColor];
-    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
-    [closeButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
+    closeButton.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
+    [closeButton setTitle:@"X" forState:UIControlStateNormal];
+    [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(removeTheView:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.editView addSubview:closeButton];
@@ -239,6 +244,8 @@
     [saveChangesButton setTitle:@"Save Changes" forState:UIControlStateNormal];
     [saveChangesButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
     [saveChangesButton addTarget:self action:@selector(saveChanges:) forControlEvents:UIControlEventTouchUpInside];
+    saveChangesButton.layer.cornerRadius = 12;
+    saveChangesButton.layer.masksToBounds = YES;
     
     [self.editView addSubview:saveChangesButton];
 }
@@ -328,12 +335,13 @@
     cell.studentLastNameLabel.text = student.lastName;
     cell.parentTitleLabel.text = parent.title;
     cell.parentEmailLabel.text = parent.emailAddress;
-    cell.studentClassLabel.text = [NSString stringWithFormat:@"%@", student.schoolClass.grade];
+    cell.studentClassLabel.text = student.schoolClass.section;
     cell.parentLastLabel.text = parent.lastName;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectedBackgroundView = [[UIView alloc] init];
+    cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+
     
 }
-
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -364,6 +372,72 @@
             
             [self.classInfoTableView reloadData];
     }
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+//  I PUT 'NO SELECTION' IN THE STORY BOARD AND INSTEAD OF DOING 'DIDSELECT' I WILL ADD A LONG TAPGESTURE TO THE CELL FOR EDITING PURPOSES
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    NSLog(@"Tapped");
+    
+    if (!tableView.editing) {
+            self.student = self.currentInfoClass[indexPath.row];
+            [self buildEditViewButtonsAndTextFields];
+//        ClassInfoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+    }
+}
+
+
+- (IBAction)deleteClass:(UIButton *)sender {
+ 
+    
+    NSArray *studentToBeDeleted = [self.classInfoTableView.indexPathsForSelectedRows mutableCopy];
+    
+    SchoolClass *aSchoolClass = ((Student*)self.currentInfoClass[0]).schoolClass;
+    NSMutableIndexSet *indicesToDelete = [NSMutableIndexSet indexSet];
+    for (NSIndexPath *studentIndex in studentToBeDeleted) {
+        Student *aStudent = self.currentInfoClass[studentIndex.row];
+        [indicesToDelete addIndex:studentIndex.row];
+        [self.managedObjectContext deleteObject:aStudent];
+    }
+    if (studentToBeDeleted.count == self.currentInfoClass.count) {
+        [self.managedObjectContext deleteObject:aSchoolClass];
+    }
+    [self.currentInfoClass removeObjectsAtIndexes:indicesToDelete];
+    
+    [self.classInfoTableView deleteRowsAtIndexPaths:studentToBeDeleted withRowAnimation:UITableViewRowAnimationLeft];
+    
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    [self.classInfoTableView reloadData];
+
+    
+}
+
+
+- (IBAction)editClass:(UIButton *)sender {
+    
+    if (!self.classInfoTableView.editing) {
+        [self.classInfoTableView setEditing:YES animated:YES];
+        [self.editClassButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        self.deleteClassButton.hidden = NO;
+    } else {
+        [self.classInfoTableView setEditing:NO animated:YES];
+        [self.editClassButton setTitle:@"Edit Class" forState:UIControlStateNormal];
+        self.deleteClassButton.hidden = YES;
+    }
+    
+
+    
+    
+
+    
 }
 
 

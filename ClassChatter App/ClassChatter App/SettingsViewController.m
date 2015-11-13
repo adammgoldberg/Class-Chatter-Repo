@@ -24,7 +24,9 @@
 
 @property (strong, nonatomic) UIView *informationView;
 
+@property (strong, nonatomic) IBOutlet UIButton *saveEmailButton;
 
+@property (strong, nonatomic) IBOutlet UIButton *showMoreButton;
 
 
 
@@ -49,6 +51,12 @@
     self.badEmailNumbers.delegate = self;
     self.goodEmailNumbers.delegate = self;
     self.principalEmailTextField.delegate = self;
+    
+    self.saveEmailButton.layer.cornerRadius = 10;
+    self.saveEmailButton.layer.masksToBounds = YES;
+    
+    self.showMoreButton.layer.cornerRadius = 10;
+    self.showMoreButton.layer.masksToBounds = YES;
     
     [self.badEmailNumbers selectRow:3 inComponent:0 animated:NO];
     [self.goodEmailNumbers selectRow:5 inComponent:0 animated:NO];
@@ -80,9 +88,9 @@
     
     [scrollView addSubview:informationLabel];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.informationView.bounds.origin.x + 20, self.informationView.bounds.origin.y + 10, 50, 20)];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.informationView.bounds.origin.x + 20, self.informationView.bounds.origin.y + 10, 20, 20)];
     closeButton.backgroundColor = [UIColor whiteColor];
-    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+    [closeButton setTitle:@"X" forState:UIControlStateNormal];
     [closeButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(removeInformation:) forControlEvents:UIControlEventTouchUpInside];
     
