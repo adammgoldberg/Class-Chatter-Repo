@@ -34,6 +34,10 @@
     nhvc.managedObjectContext = self.managedObjectContext;
     tvc.managedObjectContext = self.managedObjectContext;
     svc.managedObjectContext = self.managedObjectContext;
+    
+    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1]];
+
+     
         
     return YES;
 }

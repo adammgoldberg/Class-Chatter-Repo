@@ -52,8 +52,18 @@
     [self.tableViewHistory registerNib:[UINib nibWithNibName:@"CustomHistoryCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HistoryCell"];
     
 //    self.tableViewHistory.rowHeight = 82;
+
     
     [self makeSearchController];
+    
+    self.searchController.searchBar.barTintColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
+    
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1]};
+    
+    [self.searchController.searchBar setTintColor:[UIColor whiteColor]];
+    
+    
     
     [self fetchStudentAndBehaviour];
     

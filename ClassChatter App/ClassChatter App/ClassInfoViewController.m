@@ -87,7 +87,9 @@
     self.addStudent.layer.cornerRadius = 12;
     self.addStudent.layer.masksToBounds = YES;
     
-  
+    self.classInfoTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.classInfoTableView.separatorColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];
     
@@ -171,17 +173,18 @@
 
 -(void)buildEditViewButtonsAndTextFields
 {
-    self.editView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.view.bounds) + 20, CGRectGetMinY(self.view.bounds) + 20, CGRectGetWidth(self.view.bounds) - 40, CGRectGetHeight(self.view.bounds) - 40)];
-    self.editView.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
+    self.editView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMinY(self.view.bounds), CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
+    self.editView.backgroundColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
     [self.view addSubview:self.editView];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(getRidOfKeyboard:)];
     
     [self.editView addGestureRecognizer:tapGesture];
     
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.editView.bounds.origin.x + 20, self.editView.bounds.origin.y + 10, 60, 30)];
-    closeButton.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.editView.bounds.origin.x + 20, self.editView.bounds.origin.y + 20, 60, 30)];
+    closeButton.backgroundColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
     [closeButton setTitle:@"X" forState:UIControlStateNormal];
+    closeButton.titleLabel.font = [UIFont systemFontOfSize:20.0];
     [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(removeTheView:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -242,14 +245,23 @@
     UIButton *saveChangesButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.editView.bounds) - 70, self.editView.bounds.origin.y + 320, 140, 30)];
     saveChangesButton.backgroundColor = [UIColor whiteColor];
     [saveChangesButton setTitle:@"Save Changes" forState:UIControlStateNormal];
-    [saveChangesButton setTitleColor:[UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1] forState:UIControlStateNormal];
+    [saveChangesButton setTitleColor:[UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1] forState:UIControlStateNormal];
     [saveChangesButton addTarget:self action:@selector(saveChanges:) forControlEvents:UIControlEventTouchUpInside];
     saveChangesButton.layer.cornerRadius = 12;
     saveChangesButton.layer.masksToBounds = YES;
     
     [self.editView addSubview:saveChangesButton];
-}
+    
+    self.editView.alpha = 0;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.editView.alpha = 1;
+    }];
+    
 
+    
+    
+}
 
 
 -(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
@@ -281,6 +293,7 @@
 -(void)removeTheView:(UIButton*)button
 {
     [self.editView removeFromSuperview];
+
 }
 
 -(void)saveChanges:(UIButton*)button
@@ -337,8 +350,8 @@
     cell.parentEmailLabel.text = parent.emailAddress;
     cell.studentClassLabel.text = student.schoolClass.section;
     cell.parentLastLabel.text = parent.lastName;
-    cell.selectedBackgroundView = [[UIView alloc] init];
-    cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+//    cell.selectedBackgroundView = [[UIView alloc] init];
+//    cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
 
     
 }
@@ -379,7 +392,7 @@
     return UITableViewCellEditingStyleDelete;
 }
 
-//  I PUT 'NO SELECTION' IN THE STORY BOARD AND INSTEAD OF DOING 'DIDSELECT' I WILL ADD A LONG TAPGESTURE TO THE CELL FOR EDITING PURPOSES
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     NSLog(@"Tapped");
@@ -387,8 +400,8 @@
     if (!tableView.editing) {
             self.student = self.currentInfoClass[indexPath.row];
             [self buildEditViewButtonsAndTextFields];
-//        ClassInfoCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        cell.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+            [self.classInfoTableView deselectRowAtIndexPath:indexPath animated:YES];
+      
     }
 }
 
