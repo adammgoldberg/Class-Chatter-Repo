@@ -87,8 +87,8 @@
     self.addStudent.layer.cornerRadius = 12;
     self.addStudent.layer.masksToBounds = YES;
     
-    self.classInfoTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    self.classInfoTableView.separatorColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
+//    self.classInfoTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//    self.classInfoTableView.separatorColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDataModelChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:self.managedObjectContext];

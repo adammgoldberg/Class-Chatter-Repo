@@ -62,9 +62,9 @@
     if (self.listOfTeachers.count == 0) {
         Teacher *aTeacher = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher" inManagedObjectContext:self.managedObjectContext];
         
-        aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class <Selected Number> times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
+        aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class <Selected Number> times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack - The Teacher Friendly Email Service";
         
-        aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassChatter\nClassChatter - The Teacher Friendly Email Service";
+        aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack - The Teacher Friendly Email Service";
         
         aTeacher.limitForBadEmails = [NSString stringWithFormat:@"%@", @"3"];
         aTeacher.limitforGoodEmails = [NSString stringWithFormat:@"%@", @"5"];
