@@ -496,10 +496,10 @@
                                 <rect key="frame" x="0.0" y="43" width="600" height="69"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfN-cQ-xVM">
-                                        <rect key="frame" x="529" y="0.0" width="50" height="68"/>
+                                        <rect key="frame" x="499" y="0.0" width="80" height="68"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="2EI-Y1-g2I"/>
+                                            <constraint firstAttribute="width" constant="80" id="2EI-Y1-g2I"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Jlm-hc-wZq"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="68" id="Zd3-eF-pBa"/>
                                             <constraint firstAttribute="height" constant="68" id="aco-QK-U1D"/>
@@ -516,7 +516,7 @@
                                         </connections>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of times before sending an email for misbehaviour." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEf-Ab-Cmu">
-                                        <rect key="frame" x="8" y="8" width="509" height="21"/>
+                                        <rect key="frame" x="8" y="8" width="479" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -535,17 +535,17 @@
                                 <rect key="frame" x="0.0" y="126" width="600" height="69"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of times before sending an email for positive behaviour." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5q-KE-paj">
-                                        <rect key="frame" x="8" y="8" width="509" height="21"/>
+                                        <rect key="frame" x="8" y="8" width="479" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHu-HM-nz0">
-                                        <rect key="frame" x="529" y="0.0" width="50" height="68"/>
+                                        <rect key="frame" x="499" y="0.0" width="80" height="68"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="68" id="AE0-sa-fA1"/>
-                                            <constraint firstAttribute="width" constant="50" id="CfG-Ck-50e"/>
+                                            <constraint firstAttribute="width" constant="80" id="CfG-Ck-50e"/>
                                             <constraint firstAttribute="width" constant="54" id="EdM-aV-FBI"/>
                                             <constraint firstAttribute="width" constant="54" id="P67-vU-Gln"/>
                                             <constraint firstAttribute="height" constant="85" id="SFH-VM-s1w"/>
@@ -891,21 +891,65 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      +" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8W-Ue-B4p">
+                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="157"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="73" id="zef-9y-L45"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" contentMode="left" verticalHuggingPriority="251" text="      -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3re-IG-qYb">
+                                                    <rect key="frame" x="89" y="0.0" width="75" height="157"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="QSh-Av-fde"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.18431372549019609" green="0.73333333333333328" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="1ha-bF-jr2" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" constant="52" id="2cH-6G-unb"/>
+                                            <constraint firstItem="a8W-Ue-B4p" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" id="6Id-dl-0vg"/>
                                             <constraint firstItem="5UN-vl-Msh" firstAttribute="trailing" secondItem="m5p-vz-K0L" secondAttribute="trailingMargin" constant="-13" id="Byn-DS-Mpr"/>
                                             <constraint firstAttribute="bottom" secondItem="jkV-tV-A8s" secondAttribute="bottom" constant="21" id="Elp-sv-143"/>
                                             <constraint firstItem="jkV-tV-A8s" firstAttribute="leading" secondItem="m5p-vz-K0L" secondAttribute="leading" constant="23" id="IMX-j4-udt"/>
+                                            <constraint firstAttribute="bottom" secondItem="a8W-Ue-B4p" secondAttribute="bottom" id="JTh-iK-ita"/>
+                                            <constraint firstAttribute="bottom" secondItem="3re-IG-qYb" secondAttribute="bottom" id="TAN-sX-rnT"/>
                                             <constraint firstItem="1ha-bF-jr2" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" constant="43" id="Udn-Hs-RYN"/>
+                                            <constraint firstAttribute="trailing" secondItem="3re-IG-qYb" secondAttribute="trailing" id="V0A-b5-n6N"/>
+                                            <constraint firstAttribute="bottom" secondItem="3re-IG-qYb" secondAttribute="bottom" id="W3v-KF-7fX"/>
+                                            <constraint firstItem="3re-IG-qYb" firstAttribute="leading" secondItem="a8W-Ue-B4p" secondAttribute="trailing" constant="16" id="bTB-Pl-yZ0"/>
+                                            <constraint firstItem="3re-IG-qYb" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" id="elz-C5-gmD"/>
+                                            <constraint firstItem="3re-IG-qYb" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" id="gfG-ca-ab1"/>
                                             <constraint firstAttribute="trailing" secondItem="1ha-bF-jr2" secondAttribute="trailing" constant="51" id="jra-Lo-LnG"/>
+                                            <constraint firstItem="a8W-Ue-B4p" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" id="mis-JY-Iwb"/>
+                                            <constraint firstItem="3re-IG-qYb" firstAttribute="leading" secondItem="a8W-Ue-B4p" secondAttribute="trailing" constant="16" id="nwS-WV-k0u"/>
+                                            <constraint firstItem="a8W-Ue-B4p" firstAttribute="top" secondItem="m5p-vz-K0L" secondAttribute="top" id="oSP-FV-8Km"/>
+                                            <constraint firstAttribute="trailing" secondItem="3re-IG-qYb" secondAttribute="trailing" id="qqy-Ca-weF"/>
                                             <constraint firstAttribute="bottom" secondItem="1ha-bF-jr2" secondAttribute="bottom" constant="93" id="wMQ-Pe-piz"/>
+                                            <constraint firstAttribute="bottom" secondItem="a8W-Ue-B4p" secondAttribute="bottom" id="xbz-7s-poH"/>
                                             <constraint firstItem="5UN-vl-Msh" firstAttribute="bottom" secondItem="m5p-vz-K0L" secondAttribute="bottomMargin" constant="-14" id="z1X-ni-SOd"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="6Id-dl-0vg"/>
+                                                <exclude reference="JTh-iK-ita"/>
+                                                <exclude reference="mis-JY-Iwb"/>
+                                                <exclude reference="V0A-b5-n6N"/>
+                                                <exclude reference="W3v-KF-7fX"/>
+                                                <exclude reference="elz-C5-gmD"/>
+                                                <exclude reference="nwS-WV-k0u"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
+                                            <outlet property="badPressLabel" destination="3re-IG-qYb" id="2gv-Lx-kUU"/>
+                                            <outlet property="goodPressLabel" destination="a8W-Ue-B4p" id="dch-vj-7Xy"/>
                                             <outlet property="numberOfDisruptionsLabel" destination="5UN-vl-Msh" id="w4u-Ot-QeD"/>
                                             <outlet property="numberOfGoodsLabel" destination="jkV-tV-A8s" id="Zra-p9-mCO"/>
                                             <outlet property="studentNameLabel" destination="1ha-bF-jr2" id="Y6W-fK-PG8"/>

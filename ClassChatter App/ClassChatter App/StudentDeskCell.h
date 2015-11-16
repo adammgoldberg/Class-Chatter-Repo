@@ -17,5 +17,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *numberOfGoodsLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *badPressLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *goodPressLabel;
+
 
 @end

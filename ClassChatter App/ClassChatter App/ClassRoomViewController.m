@@ -219,7 +219,9 @@
     cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld / %@", [student.numberOfDisruptions integerValue], theTeacher.limitForBadEmails];
     cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld / %@", [student.numberOfPositives integerValue], theTeacher.limitforGoodEmails];
     CGFloat numberOfSwipes = [student.numberOfDisruptions integerValue];
-    cell.tag = indexPath.row;
+    cell.goodPressLabel.tag = indexPath.row;
+    cell.badPressLabel.tag = indexPath.row;
+//    cell.tag = indexPath.row;
     cell.layer.cornerRadius = 15;
     cell.layer.masksToBounds = YES;
         
@@ -232,20 +234,29 @@
     } else {
         cell.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
     }
-
-    UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(badSwipe:)];
-    [downSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
-    [cell addGestureRecognizer:downSwipe];
     
-    UISwipeGestureRecognizer *upSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goodSwipe:)];
-    [upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
-    [cell addGestureRecognizer:upSwipe];
+    UITapGestureRecognizer *badTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(badPress:)];
+    [cell.badPressLabel addGestureRecognizer:badTap];
+    
+    UITapGestureRecognizer *goodTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goodPress:)];
+    [cell.goodPressLabel addGestureRecognizer:goodTap];
+
+    
+    
+    
+//    UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(badSwipe:)];
+//    [downSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
+//    [cell addGestureRecognizer:downSwipe];
+//    
+//    UISwipeGestureRecognizer *upSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goodSwipe:)];
+//    [upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
+//    [cell addGestureRecognizer:upSwipe];
     
     
 }
 
 
--(void)badSwipe:(UISwipeGestureRecognizer*)swipe
+-(void)badPress:(UITapGestureRecognizer*)tap
 {
 
 //INSTEAD OF USING TAGS, I COULD USE THE LOCATION OF THE SWIPE
@@ -257,18 +268,18 @@
 //    UITableViewCell *swipedCell  = [tableView cellForRowAtIndexPath:swipedIndexPath];
     
     
-    NSLog(@"bad swipe");
+    NSLog(@"bad tap");
     Behaviour *misbehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Behaviour" inManagedObjectContext:self.managedObjectContext];
     misbehaviour.time = [NSDate date];
-    Student *theStudent = self.currentClass[swipe.view.tag];
+    Student *theStudent = self.currentClass[tap.view.tag];
     Parent *theParent = theStudent.parent;
     [theStudent addBehaviourObject:misbehaviour];
     NSError *error;
     [self.managedObjectContext save:&error];
     
-    NSInteger numberOfBadSwipes = [theStudent.numberOfDisruptions integerValue];
-    numberOfBadSwipes = numberOfBadSwipes + 1;
-    NSNumber *newNumber = [NSNumber numberWithInteger:numberOfBadSwipes];
+    NSInteger numberOfBadPresses = [theStudent.numberOfDisruptions integerValue];
+    numberOfBadPresses = numberOfBadPresses + 1;
+    NSNumber *newNumber = [NSNumber numberWithInteger:numberOfBadPresses];
     theStudent.numberOfDisruptions = newNumber;
     
     
@@ -279,7 +290,7 @@
     
     if (![theTeacher.limitForBadEmails isEqualToString:@"Off"]) {
         
-        if (numberOfBadSwipes == [theTeacher.limitForBadEmails integerValue]) {
+        if (numberOfBadPresses == [theTeacher.limitForBadEmails integerValue]) {
             if ([MFMailComposeViewController canSendMail]) {
                 
                 MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
@@ -319,21 +330,21 @@
 
 }
 
--(void)goodSwipe:(UISwipeGestureRecognizer*)swipe
+-(void)goodPress:(UITapGestureRecognizer*)tap
 {
-    NSLog(@"goodswipe");
+    NSLog(@"good tap");
     Behaviour *goodBehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Behaviour" inManagedObjectContext:self.managedObjectContext];
     goodBehaviour.time = [NSDate date];
     goodBehaviour.type = @"good";
-    Student *theStudent = self.currentClass[swipe.view.tag];
+    Student *theStudent = self.currentClass[tap.view.tag];
     Parent *theParent = theStudent.parent;
     [theStudent addBehaviourObject:goodBehaviour];
     NSError *error;
     [self.managedObjectContext save:&error];
     
-    NSInteger numberOfGoodSwipes = [theStudent.numberOfPositives integerValue];
-    numberOfGoodSwipes = numberOfGoodSwipes + 1;
-    NSNumber *goodNumber = [NSNumber numberWithInteger:numberOfGoodSwipes];
+    NSInteger numberOfGoodPresses = [theStudent.numberOfPositives integerValue];
+    numberOfGoodPresses = numberOfGoodPresses + 1;
+    NSNumber *goodNumber = [NSNumber numberWithInteger:numberOfGoodPresses];
     theStudent.numberOfPositives = goodNumber;
     
     
@@ -342,7 +353,7 @@
     Teacher *theTeacher = [self.listOfTeachers firstObject];
     if (![theTeacher.limitforGoodEmails isEqualToString:@"Off"]) {
 
-        if (numberOfGoodSwipes == [theTeacher.limitforGoodEmails integerValue]) {
+        if (numberOfGoodPresses == [theTeacher.limitforGoodEmails integerValue]) {
             if ([MFMailComposeViewController canSendMail]) {
                 
                 MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
