@@ -22,7 +22,40 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    UITabBarController *tabBarController = (UITabBarController*) self.window.rootViewController;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger numberOfOnboardingTours = [defaults integerForKey:@"numberOfOnboardingTours"];
+    
+    if (numberOfOnboardingTours == 1) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController *tabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
+        self.window.rootViewController = tabBarController;
+        ClassRoomViewController *crvc = (ClassRoomViewController*)tabBarController.viewControllers[0];
+        ClassInfoViewController *civc = (ClassInfoViewController*)tabBarController.viewControllers[1];
+        UINavigationController *navc = tabBarController.viewControllers[2];
+        HistoryViewController *nhvc = [navc.viewControllers firstObject];
+        TemplateViewController *tvc = (TemplateViewController*)tabBarController.viewControllers[3];
+        SettingsViewController *svc = (SettingsViewController*)tabBarController.viewControllers[4];
+        crvc.managedObjectContext = self.managedObjectContext;
+        civc.managedObjectContext = self.managedObjectContext;
+        nhvc.managedObjectContext = self.managedObjectContext;
+        tvc.managedObjectContext = self.managedObjectContext;
+        svc.managedObjectContext = self.managedObjectContext;
+    }
+
+    
+    
+        
+    return YES;
+}
+
+- (void)enterApplication {
+    
+    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1]];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UITabBarController *tabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
     ClassRoomViewController *crvc = (ClassRoomViewController*)tabBarController.viewControllers[0];
     ClassInfoViewController *civc = (ClassInfoViewController*)tabBarController.viewControllers[1];
     UINavigationController *navc = tabBarController.viewControllers[2];
@@ -34,13 +67,23 @@
     nhvc.managedObjectContext = self.managedObjectContext;
     tvc.managedObjectContext = self.managedObjectContext;
     svc.managedObjectContext = self.managedObjectContext;
-    
-    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1]];
 
-     
-        
-    return YES;
+    self.window.rootViewController = tabBarController;
+
+    int numberOfOnboardingTours = 0;
+    numberOfOnboardingTours = numberOfOnboardingTours + 1;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setInteger:numberOfOnboardingTours forKey:@"numberOfOnboardingTours"];
+    
+    [defaults synchronize];
+    
+    NSLog(@"Data saved");
+    
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

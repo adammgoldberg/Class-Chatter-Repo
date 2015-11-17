@@ -34,6 +34,8 @@
 		06C2191F1BDFF13E0006BA9E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2191E1BDFF13E0006BA9E /* HistoryViewController.m */; };
 		06C219221BDFF1620006BA9E /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219211BDFF1620006BA9E /* HistoryCell.m */; };
 		06C219251BE285E50006BA9E /* TemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C219241BE285E50006BA9E /* TemplateViewController.m */; };
+		06D99AA01BFBB96900434D49 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D99A9F1BFBB96900434D49 /* ViewController.m */; };
+		06D99AA21BFBBA1300434D49 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06D99AA11BFBBA1300434D49 /* Onboarding.storyboard */; };
 		06FD812D1BF1313A00ABE34A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD812C1BF1313A00ABE34A /* DetailViewController.m */; };
 		06FD814E1BF2697B00ABE34A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD814D1BF2697B00ABE34A /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
@@ -108,6 +110,9 @@
 		06C219211BDFF1620006BA9E /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		06C219231BE285E50006BA9E /* TemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateViewController.h; sourceTree = "<group>"; };
 		06C219241BE285E50006BA9E /* TemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateViewController.m; sourceTree = "<group>"; };
+		06D99A9E1BFBB96900434D49 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		06D99A9F1BFBB96900434D49 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		06D99AA11BFBBA1300434D49 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		06FD812B1BF1313A00ABE34A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		06FD812C1BF1313A00ABE34A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		06FD814C1BF2697B00ABE34A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -167,6 +172,7 @@
 				065DBCDB1BDE8DB100CCAF94 /* AppDelegate.h */,
 				065DBCDC1BDE8DB100CCAF94 /* AppDelegate.m */,
 				065DBCE11BDE8DB100CCAF94 /* Main.storyboard */,
+				06D99AA11BFBBA1300434D49 /* Onboarding.storyboard */,
 				06FD814C1BF2697B00ABE34A /* SettingsViewController.h */,
 				06FD814D1BF2697B00ABE34A /* SettingsViewController.m */,
 				06FD812B1BF1313A00ABE34A /* DetailViewController.h */,
@@ -185,6 +191,8 @@
 				065DBD301BDE9F4900CCAF94 /* ClassInfoCell.m */,
 				065DBD2C1BDE9BA800CCAF94 /* ClassInfoViewController.h */,
 				065DBD2D1BDE9BA800CCAF94 /* ClassInfoViewController.m */,
+				06D99A9E1BFBB96900434D49 /* ViewController.h */,
+				06D99A9F1BFBB96900434D49 /* ViewController.m */,
 				065DBD321BDEEF8700CCAF94 /* ModalViewController.h */,
 				065DBD331BDEEF8700CCAF94 /* ModalViewController.m */,
 				065DBCE71BDE8DB200CCAF94 /* Assets.xcassets */,
@@ -354,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				065DBCEB1BDE8DB200CCAF94 /* LaunchScreen.storyboard in Resources */,
+				06D99AA21BFBBA1300434D49 /* Onboarding.storyboard in Resources */,
 				06AB60D11BE3FB6100871639 /* CustomHistoryCell.xib in Resources */,
 				065DBCE81BDE8DB200CCAF94 /* Assets.xcassets in Resources */,
 				065DBCE31BDE8DB100CCAF94 /* Main.storyboard in Resources */,
@@ -399,6 +408,7 @@
 				060EE1BC1BF4265A0021C907 /* Teacher+CoreDataProperties.m in Sources */,
 				060EE1BD1BF4265A0021C907 /* Teacher.m in Sources */,
 				065DBD311BDE9F4900CCAF94 /* ClassInfoCell.m in Sources */,
+				06D99AA01BFBB96900434D49 /* ViewController.m in Sources */,
 				065DBD341BDEEF8700CCAF94 /* ModalViewController.m in Sources */,
 				065DBCDA1BDE8DB100CCAF94 /* main.m in Sources */,
 				06C2191F1BDFF13E0006BA9E /* HistoryViewController.m in Sources */,
