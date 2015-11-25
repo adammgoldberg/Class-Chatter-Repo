@@ -94,9 +94,19 @@
     float multiplier;
     if (self.informationView.bounds.size.height < 575) {
         multiplier = 2.3;
-    } else {
+    } else if (self.informationView.bounds.size.height > 575 && self.informationView.bounds.size.height < 650) {
         multiplier = 1.8;
     }
+    else {
+        multiplier = 1.4;
+    }
+    
+    
+//    iPhone 6: 1334h * 750w @2x (in points: 667h * 375w)
+//    iPhone 6+: 1920 * 1080 @3x (in points: 640h * 360w)
+//    nstead of 568.f like it should be on a 4-inch device.
+    
+    
     UILabel *informationLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.informationView.bounds.origin.x + 20, CGRectGetMaxY(closeButton.frame) + 10, self.informationView.bounds.size.width - 40, self.informationView.bounds.size.height * multiplier)];
     informationLabel.numberOfLines = 250;
     informationLabel.backgroundColor = [UIColor whiteColor];
