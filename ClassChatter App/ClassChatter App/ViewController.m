@@ -44,7 +44,7 @@
     
     self.scrollView.pagingEnabled = YES;
     self.pageControl = [[UIPageControl alloc] init]; //SET a property of UIPageControl
-    self.pageControl.frame = CGRectMake(100,self.view.frame.size.height-100,self.view.frame.size.width-200,100);
+    self.pageControl.frame = CGRectMake(100, self.view.frame.size.height-60, self.view.frame.size.width-200, 50);
     self.pageControl.numberOfPages = 5; //as we added 3 diff views
     self.pageControl.currentPage = 0;
 
@@ -87,27 +87,26 @@
 -(void)makeFirstScene
 {
     
-    UILabel *appTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 100, 30, 200, 30)];
+    UILabel *appTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 100, CGRectGetMinY(self.view.bounds) + 30, 200, 30)];
 //    appTitleLabel.backgroundColor = [UIColor whiteColor];
     appTitleLabel.textColor = [UIColor whiteColor];
-    appTitleLabel.font = [UIFont systemFontOfSize:25.0];
+    appTitleLabel.font = [UIFont systemFontOfSize:20.0];
     appTitleLabel.textAlignment = NSTextAlignmentCenter;
     appTitleLabel.text = @"ClassTrack";
     [self.scrollView.subviews[0] addSubview:appTitleLabel];
     
     UIImageView *appImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"classroom"]];
-    appImageView.frame = CGRectMake(CGRectGetMidX(self.view.bounds) - 120, 70, 240, 370);
+    appImageView.frame = CGRectMake(CGRectGetMaxX(self.view.bounds) *1/6, CGRectGetMinY(self.view.bounds) + 70, CGRectGetMaxX(self.view.bounds) * 2/3, CGRectGetMaxY(self.view.bounds) * 2/3);
     [self.scrollView.subviews[0] addSubview:appImageView];
     
-    UILabel *appDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 120, 440, 240, 160)];
+    UILabel *appDescriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 120, CGRectGetMaxY(appImageView.frame) + 10, 240, 80)];
     appDescriptionLabel.numberOfLines = 8;
 //    appDescriptionLabel.backgroundColor = [UIColor whiteColor];
     appDescriptionLabel.textColor = [UIColor whiteColor];
+    appDescriptionLabel.font = [UIFont systemFontOfSize:15.0];
     appDescriptionLabel.textAlignment = NSTextAlignmentLeft;
-    appDescriptionLabel.text = @"ClassTrack is designed to save teachers time and stress!\n\nClassTrack is a teacher-friendly email and classroom management tool!";
+    appDescriptionLabel.text = @"ClassTrack is a teacher-friendly email and classroom management app! It's designed to save teachers time and stress!";
     [self.scrollView.subviews[0] addSubview:appDescriptionLabel];
-    
-
     
 }
 
@@ -116,22 +115,22 @@
 -(void)makeSecondScene
 {
     
-    UILabel *firstDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 40, 300, 80)];
+    UILabel *firstDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 30, 300, 50)];
     firstDetailLabel.textColor = [UIColor whiteColor];
-    firstDetailLabel.font = [UIFont systemFontOfSize:22.0];
+    firstDetailLabel.font = [UIFont systemFontOfSize:20.0];
     firstDetailLabel.text = @"Quickly record your students' classroom behaviour";
     firstDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[1] addSubview:firstDetailLabel];
     
     UIImageView *firstDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"classroom2"]];
-    firstDetailImage.frame = CGRectMake(CGRectGetMidX(self.view.bounds) - 175, 120, 170, 280);
+    firstDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[1] addSubview:firstDetailImage];
     
     UIImageView *firstDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"email"]];
-    firstDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 5, 120, 170, 280);
+    firstDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[1] addSubview:firstDetailImage2];
     
-    UILabel *firstDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 420, 300, 150)];
+    UILabel *firstDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, CGRectGetMaxY(firstDetailImage.frame) + 10, 300, 150)];
     firstDetailDescription.numberOfLines = 8;
     firstDetailDescription.textColor = [UIColor whiteColor];
    firstDetailDescription.textAlignment = NSTextAlignmentLeft;
@@ -144,22 +143,22 @@
 
 -(void)makeThirdScene
 {
-    UILabel *secondDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 40, 300, 80)];
+    UILabel *secondDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 30, 300, 50)];
     secondDetailLabel.textColor = [UIColor whiteColor];
-    secondDetailLabel.font = [UIFont systemFontOfSize:22.0];
+    secondDetailLabel.font = [UIFont systemFontOfSize:20.0];
     secondDetailLabel.text = @"Easily add and edit students and classes";
     secondDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[2] addSubview:secondDetailLabel];
     
     UIImageView *secondDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"classlist"]];
-    secondDetailImage.frame = CGRectMake(CGRectGetMidX(self.view.bounds) - 175, 120, 170, 280);
+    secondDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[2] addSubview:secondDetailImage];
     
     UIImageView *secondDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"addstudents"]];
-    secondDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 5, 120, 170, 280);
+    secondDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[2] addSubview:secondDetailImage2];
     
-    UILabel *secondDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 410, 300, 150)];
+    UILabel *secondDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, CGRectGetMaxY(secondDetailImage.frame) + 10, 300, 150)];
     secondDetailDescription.numberOfLines = 8;
     secondDetailDescription.textColor = [UIColor whiteColor];
     secondDetailDescription.textAlignment = NSTextAlignmentLeft;
@@ -170,22 +169,22 @@
 
 -(void)makeFourthScene
 {
-    UILabel *thirdDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 40, 300, 80)];
+    UILabel *thirdDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 30, 300, 50)];
     thirdDetailLabel.textColor = [UIColor whiteColor];
-    thirdDetailLabel.font = [UIFont systemFontOfSize:22.0];
+    thirdDetailLabel.font = [UIFont systemFontOfSize:20.0];
     thirdDetailLabel.text = @"View and search student behaviour history";
     thirdDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[3] addSubview:thirdDetailLabel];
     
     UIImageView *thirdDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"history"]];
-    thirdDetailImage.frame = CGRectMake(CGRectGetMidX(self.view.bounds) - 175, 120, 170, 280);
+    thirdDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[3] addSubview:thirdDetailImage];
     
     UIImageView *thirdDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
-    thirdDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 5, 120, 170, 280);
+    thirdDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[3] addSubview:thirdDetailImage2];
     
-    UILabel *thirdDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 410, 300, 150)];
+    UILabel *thirdDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, CGRectGetMaxY(thirdDetailImage.frame) + 10, 300, 150)];
     thirdDetailDescription.numberOfLines = 8;
     thirdDetailDescription.textColor = [UIColor whiteColor];
     thirdDetailDescription.text = @"Anytime you press a student's desk, an event is recorded on the History page.\n\nClick on a specific event to add more details for future reference.";
@@ -195,26 +194,26 @@
 
 -(void)makeFifthScene
 {
-    UILabel *fourthDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 40, 300, 80)];
+    UILabel *fourthDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 30, 300, 50)];
     fourthDetailLabel.textColor = [UIColor whiteColor];
-    fourthDetailLabel.font = [UIFont systemFontOfSize:22.0];
+    fourthDetailLabel.font = [UIFont systemFontOfSize:20.0];
     fourthDetailLabel.text = @"Customize your templates and settings";
     fourthDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[4] addSubview:fourthDetailLabel];
     
     UIImageView *fourthDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"templates"]];
-    fourthDetailImage.frame = CGRectMake(CGRectGetMidX(self.view.bounds) - 175, 120, 170, 280);
+    fourthDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[4] addSubview:fourthDetailImage];
     
     UIImageView *fourthDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings"]];
-    fourthDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 5, 120, 170, 280);
+    fourthDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[4] addSubview:fourthDetailImage2];
     
-    UILabel *thirdDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, 410, 300, 150)];
-    thirdDetailDescription.numberOfLines = 8;
-    thirdDetailDescription.textColor = [UIColor whiteColor];
-    thirdDetailDescription.text = @"You can create and save a unique positive and negative email template.\n\nTeachers can customize the amount of behaviours before an email is sent.\n\nSwipe right to continue!";
-    [self.scrollView.subviews[4] addSubview:thirdDetailDescription];
+    UILabel *fourthDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, CGRectGetMaxY(fourthDetailImage.frame) + 10, 300, 150)];
+    fourthDetailDescription.numberOfLines = 8;
+    fourthDetailDescription.textColor = [UIColor whiteColor];
+    fourthDetailDescription.text = @"You can create and save a unique positive and negative email template.\n\nTeachers can customize the amount of behaviours before an email is sent.\n\nSwipe right to continue!";
+    [self.scrollView.subviews[4] addSubview:fourthDetailDescription];
     
     
 }

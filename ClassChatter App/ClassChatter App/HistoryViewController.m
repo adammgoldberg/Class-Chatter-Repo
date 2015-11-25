@@ -59,7 +59,10 @@
     self.searchController.searchBar.barTintColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
     
     
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
+    self.navigationController.navigationBar.translucent = NO;
     
     [self.searchController.searchBar setTintColor:[UIColor whiteColor]];
     

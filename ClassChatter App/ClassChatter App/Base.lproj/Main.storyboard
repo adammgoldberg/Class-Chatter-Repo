@@ -372,13 +372,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your email template below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iql-hG-Uhl">
-                                <rect key="frame" x="170" y="78" width="260" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <rect key="frame" x="183" y="70" width="234" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AMf-cE-TNh">
-                                <rect key="frame" x="15" y="211" width="570" height="216"/>
+                                <rect key="frame" x="15" y="174" width="570" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="314" id="9wr-ss-6Dk"/>
@@ -397,14 +397,14 @@
                                 </variation>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPf-0e-0ML">
-                                <rect key="frame" x="15" y="124" width="570" height="67"/>
+                                <rect key="frame" x="15" y="99" width="570" height="63"/>
                                 <string key="text">The following text will be emailed and automatically populated with student and parent specific information when it is being sent. DO NOT EDIT THE PLACEHOLDERS (i.e. &lt;Parent&gt;), unless you are sure you don't want this information in your email, and remember to ADD your name to the template for signing off.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNI-Zx-c0v">
-                                <rect key="frame" x="240" y="465" width="121" height="38"/>
+                                <rect key="frame" x="240" y="482" width="121" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kMj-vx-bDk"/>
@@ -439,7 +439,7 @@
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="centerX" secondItem="sPf-0e-0ML" secondAttribute="centerX" id="1HK-Nq-kfi"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="centerY" secondItem="pN5-bE-cZ6" secondAttribute="centerY" constant="19" id="6I2-Yt-0fr"/>
                             <constraint firstItem="sPf-0e-0ML" firstAttribute="centerX" secondItem="iql-hG-Uhl" secondAttribute="centerX" id="7zv-Lv-yRV"/>
-                            <constraint firstItem="AMf-cE-TNh" firstAttribute="top" secondItem="sPf-0e-0ML" secondAttribute="bottom" constant="20" id="CQc-b8-6pQ"/>
+                            <constraint firstItem="AMf-cE-TNh" firstAttribute="top" secondItem="sPf-0e-0ML" secondAttribute="bottom" constant="12" id="CQc-b8-6pQ"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="trailing" secondItem="sPf-0e-0ML" secondAttribute="trailing" id="JAW-zl-TwZ"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="top" secondItem="sPf-0e-0ML" secondAttribute="bottom" constant="20" id="PYE-Ki-rjk"/>
                             <constraint firstItem="iql-hG-Uhl" firstAttribute="centerX" secondItem="pN5-bE-cZ6" secondAttribute="centerX" id="PrR-vS-jJh"/>
@@ -447,11 +447,11 @@
                             <constraint firstItem="sPf-0e-0ML" firstAttribute="leading" secondItem="pN5-bE-cZ6" secondAttribute="leading" constant="15" id="SYx-AB-ovw"/>
                             <constraint firstItem="FZL-GH-c9i" firstAttribute="centerX" secondItem="pN5-bE-cZ6" secondAttribute="centerX" id="ZEi-Xb-7dL"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="leading" secondItem="sPf-0e-0ML" secondAttribute="leading" id="bkX-wd-EqB"/>
-                            <constraint firstItem="iql-hG-Uhl" firstAttribute="top" secondItem="a5D-u8-Hok" secondAttribute="bottom" constant="58" id="fwW-jX-sEz"/>
-                            <constraint firstItem="sPf-0e-0ML" firstAttribute="top" secondItem="iql-hG-Uhl" secondAttribute="bottom" constant="23" id="kyS-Yd-Hdp"/>
+                            <constraint firstItem="iql-hG-Uhl" firstAttribute="top" secondItem="a5D-u8-Hok" secondAttribute="bottom" constant="50" id="fwW-jX-sEz"/>
+                            <constraint firstItem="sPf-0e-0ML" firstAttribute="top" secondItem="iql-hG-Uhl" secondAttribute="bottom" constant="8" id="kyS-Yd-Hdp"/>
                             <constraint firstItem="FZL-GH-c9i" firstAttribute="top" secondItem="a5D-u8-Hok" secondAttribute="bottom" constant="8" id="lOO-OJ-xsr"/>
                             <constraint firstAttribute="trailing" secondItem="sPf-0e-0ML" secondAttribute="trailing" constant="15" id="ppE-p9-5W0"/>
-                            <constraint firstItem="oNI-Zx-c0v" firstAttribute="top" secondItem="AMf-cE-TNh" secondAttribute="bottom" constant="38" id="pzz-te-vON"/>
+                            <constraint firstItem="oNI-Zx-c0v" firstAttribute="top" secondItem="AMf-cE-TNh" secondAttribute="bottom" constant="18" id="pzz-te-vON"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

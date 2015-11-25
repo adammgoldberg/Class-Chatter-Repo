@@ -62,9 +62,9 @@
     if (self.listOfTeachers.count == 0) {
         Teacher *aTeacher = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher" inManagedObjectContext:self.managedObjectContext];
         
-        aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class <Selected Number> times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack - The Teacher Friendly Email Service";
+        aTeacher.emailTemplateBad = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> disrupted class <Selected Number> times today. It would be greatly appreciated if you could please remind <Student> the importance of participating positively in class and being respectful to the teacher and other students. Thank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack: The teacher-friendly email and classroom management app.";
         
-        aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack - The Teacher Friendly Email Service";
+        aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack: The teacher-friendly email and classroom management app.";
         
         aTeacher.limitForBadEmails = [NSString stringWithFormat:@"%@", @"3"];
         aTeacher.limitforGoodEmails = [NSString stringWithFormat:@"%@", @"5"];
@@ -218,18 +218,18 @@
     cell.studentNameLabel.text = student.firstName;
     cell.numberOfDisruptionsLabel.text = [NSString stringWithFormat:@"%ld / %@", [student.numberOfDisruptions integerValue], theTeacher.limitForBadEmails];
     cell.numberOfGoodsLabel.text = [NSString stringWithFormat:@"%ld / %@", [student.numberOfPositives integerValue], theTeacher.limitforGoodEmails];
-    CGFloat numberOfSwipes = [student.numberOfDisruptions integerValue];
+    CGFloat numberOfTaps = [student.numberOfDisruptions integerValue];
     cell.goodPressLabel.tag = indexPath.row;
     cell.badPressLabel.tag = indexPath.row;
 //    cell.tag = indexPath.row;
     cell.layer.cornerRadius = 15;
     cell.layer.masksToBounds = YES;
         
-    if ((numberOfSwipes > 0) && (numberOfSwipes <= (1.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
+    if ((numberOfTaps > 0) && (numberOfTaps <= (1.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
         cell.backgroundColor = [UIColor colorWithRed:214/255.0f green:214/255.0f blue:0/255.0f alpha:1];
-    } else if ((numberOfSwipes > (1.0/3.0 * [theTeacher.limitForBadEmails integerValue])) && (numberOfSwipes <= (2.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
+    } else if ((numberOfTaps > (1.0/3.0 * [theTeacher.limitForBadEmails integerValue])) && (numberOfTaps <= (2.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
         cell.backgroundColor = [UIColor orangeColor];
-    } else if (numberOfSwipes > (2.0/3.0 * [theTeacher.limitForBadEmails integerValue])) {
+    } else if (numberOfTaps > (2.0/3.0 * [theTeacher.limitForBadEmails integerValue])) {
         cell.backgroundColor = [UIColor redColor];
     } else {
         cell.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
