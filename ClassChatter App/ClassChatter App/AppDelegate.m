@@ -51,7 +51,7 @@
 
 - (void)enterApplication {
     
-    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1]];
+    [[UINavigationBar appearance] setTintColor: [UIColor whiteColor]];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     

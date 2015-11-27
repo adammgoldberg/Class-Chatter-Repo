@@ -47,7 +47,7 @@
 
 -(void)getRidOfKeyboard:(UITapGestureRecognizer*)tap
 {
-//    [self.behaviourDescriptionText resignFirstResponder];
+    [self.behaviourDescriptionText resignFirstResponder];
 }
 
 

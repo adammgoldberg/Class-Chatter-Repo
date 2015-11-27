@@ -296,7 +296,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-pd-YVM">
-                                <rect key="frame" x="255" y="378" width="90" height="38"/>
+                                <rect key="frame" x="255" y="332" width="90" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Save Note">
@@ -307,7 +307,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PJN-qD-Trp">
-                                <rect key="frame" x="0.0" y="141" width="600" height="164"/>
+                                <rect key="frame" x="0.0" y="141" width="600" height="141"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -324,9 +324,9 @@
                             <constraint firstItem="jCw-pd-YVM" firstAttribute="centerX" secondItem="PJN-qD-Trp" secondAttribute="centerX" id="BCv-rL-emA"/>
                             <constraint firstItem="PJN-qD-Trp" firstAttribute="leading" secondItem="JWh-Bh-0Kp" secondAttribute="leading" id="CB7-lw-q4c"/>
                             <constraint firstItem="PJN-qD-Trp" firstAttribute="top" secondItem="EN1-93-J7E" secondAttribute="bottom" constant="144" id="GnH-LZ-jCU"/>
-                            <constraint firstItem="Sd7-R7-oRS" firstAttribute="top" secondItem="jCw-pd-YVM" secondAttribute="bottom" constant="184" id="Kkq-rY-1t7"/>
+                            <constraint firstItem="Sd7-R7-oRS" firstAttribute="top" secondItem="jCw-pd-YVM" secondAttribute="bottom" constant="230" id="Kkq-rY-1t7"/>
                             <constraint firstItem="jCw-pd-YVM" firstAttribute="centerX" secondItem="PJN-qD-Trp" secondAttribute="centerX" id="Lg4-3a-zvs"/>
-                            <constraint firstItem="jCw-pd-YVM" firstAttribute="top" secondItem="PJN-qD-Trp" secondAttribute="bottom" constant="73" id="f9O-YE-PW6"/>
+                            <constraint firstItem="jCw-pd-YVM" firstAttribute="top" secondItem="PJN-qD-Trp" secondAttribute="bottom" constant="50" id="f9O-YE-PW6"/>
                             <constraint firstItem="jCw-pd-YVM" firstAttribute="centerX" secondItem="PJN-qD-Trp" secondAttribute="centerX" id="fII-5h-w7N"/>
                             <constraint firstItem="PJN-qD-Trp" firstAttribute="top" secondItem="EN1-93-J7E" secondAttribute="bottom" constant="113" id="j2C-lZ-0O6"/>
                             <constraint firstAttribute="trailing" secondItem="PJN-qD-Trp" secondAttribute="trailing" constant="52" id="kSR-nr-vB0"/>
