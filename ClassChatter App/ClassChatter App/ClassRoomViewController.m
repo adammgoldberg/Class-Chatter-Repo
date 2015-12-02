@@ -230,13 +230,17 @@
 //    cell.tag = indexPath.row;
     cell.layer.cornerRadius = 15;
     cell.layer.masksToBounds = YES;
-        
-    if ((numberOfTaps > 0) && (numberOfTaps <= (1.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
-        cell.backgroundColor = [UIColor colorWithRed:214/255.0f green:214/255.0f blue:0/255.0f alpha:1];
-    } else if ((numberOfTaps > (1.0/3.0 * [theTeacher.limitForBadEmails integerValue])) && (numberOfTaps <= (2.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
-        cell.backgroundColor = [UIColor orangeColor];
-    } else if (numberOfTaps > (2.0/3.0 * [theTeacher.limitForBadEmails integerValue])) {
-        cell.backgroundColor = [UIColor redColor];
+    
+    if (![theTeacher.limitForBadEmails isEqualToString:@"Off"]) {
+        if ((numberOfTaps > 0) && (numberOfTaps <= (1.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
+            cell.backgroundColor = [UIColor colorWithRed:214/255.0f green:214/255.0f blue:0/255.0f alpha:1];
+        } else if ((numberOfTaps > (1.0/3.0 * [theTeacher.limitForBadEmails integerValue])) && (numberOfTaps <= (2.0/3.0 * [theTeacher.limitForBadEmails integerValue]))) {
+            cell.backgroundColor = [UIColor orangeColor];
+        } else if (numberOfTaps > (2.0/3.0 * [theTeacher.limitForBadEmails integerValue])) {
+            cell.backgroundColor = [UIColor redColor];
+        } else {
+            cell.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
+        }
     } else {
         cell.backgroundColor = [UIColor colorWithRed:47/255.0f green:187/255.0f blue:48/255.0f alpha:1];
     }

@@ -95,7 +95,7 @@
     appTitleLabel.text = @"ClassTrack";
     [self.scrollView.subviews[0] addSubview:appTitleLabel];
     
-    UIImageView *appImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"classroom"]];
+    UIImageView *appImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"desks"]];
     appImageView.frame = CGRectMake(CGRectGetMaxX(self.view.bounds) *1/6, CGRectGetMinY(self.view.bounds) + 70, CGRectGetMaxX(self.view.bounds) * 2/3, CGRectGetMaxY(self.view.bounds) * 2/3);
     [self.scrollView.subviews[0] addSubview:appImageView];
     
@@ -122,11 +122,11 @@
     firstDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[1] addSubview:firstDetailLabel];
     
-    UIImageView *firstDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"classroom2"]];
+    UIImageView *firstDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"desks2"]];
     firstDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[1] addSubview:firstDetailImage];
     
-    UIImageView *firstDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"email"]];
+    UIImageView *firstDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mail"]];
     firstDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[1] addSubview:firstDetailImage2];
     
@@ -150,11 +150,11 @@
     secondDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[2] addSubview:secondDetailLabel];
     
-    UIImageView *secondDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"classlist"]];
+    UIImageView *secondDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list"]];
     secondDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[2] addSubview:secondDetailImage];
     
-    UIImageView *secondDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"addstudents"]];
+    UIImageView *secondDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"add"]];
     secondDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[2] addSubview:secondDetailImage2];
     
@@ -176,11 +176,11 @@
     thirdDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[3] addSubview:thirdDetailLabel];
     
-    UIImageView *thirdDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"history"]];
+    UIImageView *thirdDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hist"]];
     thirdDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[3] addSubview:thirdDetailImage];
     
-    UIImageView *thirdDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
+    UIImageView *thirdDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dets"]];
     thirdDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[3] addSubview:thirdDetailImage2];
     
@@ -201,11 +201,11 @@
     fourthDetailLabel.numberOfLines = 3;
     [self.scrollView.subviews[4] addSubview:fourthDetailLabel];
     
-    UIImageView *fourthDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"templates"]];
+    UIImageView *fourthDetailImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"temp"]];
     fourthDetailImage.frame = CGRectMake(CGRectGetMinX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[4] addSubview:fourthDetailImage];
     
-    UIImageView *fourthDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings"]];
+    UIImageView *fourthDetailImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"more"]];
     fourthDetailImage2.frame = CGRectMake(CGRectGetMidX(self.view.bounds) + 10, 90, CGRectGetMaxX(self.view.bounds) / 2 - 20, CGRectGetMaxY(self.view.bounds) / 2 - 20);
     [self.scrollView.subviews[4] addSubview:fourthDetailImage2];
     
