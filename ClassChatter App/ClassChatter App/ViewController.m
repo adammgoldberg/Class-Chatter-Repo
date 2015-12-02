@@ -70,7 +70,7 @@
     CGFloat pageWidth = self.scrollView.frame.size.width;
     int page = floor((self.scrollView.contentOffset.x - pageWidth / 2 ) / pageWidth) + 1; //this provide you the page number
     self.pageControl.currentPage = page;// this displays the white dot as current page
-    if (self.scrollView.contentOffset.x > (4.2 * self.scrollView.frame.size.width)) {
+    if (self.scrollView.contentOffset.x > (4.1 * self.scrollView.frame.size.width)) {
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [delegate enterApplication];
     }

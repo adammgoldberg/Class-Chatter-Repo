@@ -2,7 +2,7 @@
 //  Teacher+CoreDataProperties.h
 //  ClassChatter App
 //
-//  Created by Adam Goldberg on 2015-11-11.
+//  Created by Adam Goldberg on 2015-12-02.
 //  Copyright © 2015 Adam Goldberg. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *limitForBadEmails;
 @property (nullable, nonatomic, retain) NSString *limitforGoodEmails;
 @property (nullable, nonatomic, retain) NSString *principalEmail;
+@property (nullable, nonatomic, retain) NSString *emailTemplateHomework;
+@property (nullable, nonatomic, retain) NSString *emailTemplatePhonecall;
 @property (nullable, nonatomic, retain) NSSet<SchoolClass *> *schoolClasses;
 @property (nullable, nonatomic, retain) NSSet<Student *> *students;
 

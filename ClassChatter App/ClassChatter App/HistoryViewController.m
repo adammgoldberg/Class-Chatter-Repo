@@ -165,7 +165,18 @@
         if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
             cell.colourView.backgroundColor = [UIColor colorWithRed:36/255.0f green:213/255.0f blue:68/255.0f alpha:1];
         }
-    } else {
+    } else if ([behaviour.type  isEqual: @"phone"]) {
+        cell.colourView.backgroundColor = [UIColor colorWithRed:255/255.0f green:149/255.0f blue:57/255.0f alpha:1];
+        if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
+            cell.colourView.backgroundColor = [UIColor colorWithRed:255/255.0f green:115/255.0f blue:5/255.0f alpha:1];
+        }
+    } else if ([behaviour.type  isEqual: @"homework"]) {
+        cell.colourView.backgroundColor = [UIColor colorWithRed:253/255.0f green:255/255.0f blue:75/255.0f alpha:1];
+        if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
+            cell.colourView.backgroundColor = [UIColor colorWithRed:230/255.0f green:223/255.0f blue:30/255.0f alpha:1];
+        }
+    }
+    else {
         cell.colourView.backgroundColor = [UIColor colorWithRed:255/255.0f green:118/255.0f blue:103/255.0f alpha:1];
         if (behaviour.details != nil && ![behaviour.details isEqualToString:@""]) {
             cell.colourView.backgroundColor = [UIColor colorWithRed:255/255.0f green:25/255.0f blue:52/255.0f alpha:1];

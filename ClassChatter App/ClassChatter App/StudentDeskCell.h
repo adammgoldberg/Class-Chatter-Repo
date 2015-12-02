@@ -14,12 +14,15 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *studentNameLabel;
 
-
 @property (strong, nonatomic) IBOutlet UILabel *numberOfGoodsLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *badPressLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *goodPressLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *phoneCallLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *homeworkLabel;
 
 
 @end

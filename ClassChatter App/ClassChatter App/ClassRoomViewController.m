@@ -66,6 +66,10 @@
         
         aTeacher.emailTemplateGood = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did  extremely well in class today. <Student> was engaged, respectful, and contributed positively to the classroom environment. It is a pleasure to teach when students are so participatory! I hope all is well with you and the rest of your family. Have a great day!\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack: The teacher-friendly email and classroom management app.";
         
+        aTeacher.emailTemplateHomework = @"Dear <Title> <Parent>,\n\nI wanted to inform you that <Student> did not complete the homework that is due today.\n\nIt would be greatly appreciated if you could please remind <Student> to complete this homework tonight.\n\nThank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack: The teacher-friendly email and classroom management app.";
+
+        aTeacher.emailTemplatePhonecall = @"Dear <Title> <Parent>,\n\nI was wondering if it would be possible to discuss <Student>'s progress in class?\n\nPlease let me know what time is best to contact you and I will try calling you then.\n\nThank you for your time and help.\n\nSincerely,\nYOUR NAME HERE\n\n\nSent via ClassTrack\nClassTrack: The teacher-friendly email and classroom management app.";
+        
         aTeacher.limitForBadEmails = [NSString stringWithFormat:@"%@", @"3"];
         aTeacher.limitforGoodEmails = [NSString stringWithFormat:@"%@", @"5"];
         
@@ -221,6 +225,8 @@
     CGFloat numberOfTaps = [student.numberOfDisruptions integerValue];
     cell.goodPressLabel.tag = indexPath.row;
     cell.badPressLabel.tag = indexPath.row;
+    cell.homeworkLabel.tag = indexPath.row;
+    cell.phoneCallLabel.tag = indexPath.row;
 //    cell.tag = indexPath.row;
     cell.layer.cornerRadius = 15;
     cell.layer.masksToBounds = YES;
@@ -240,10 +246,13 @@
     
     UITapGestureRecognizer *goodTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goodPress:)];
     [cell.goodPressLabel addGestureRecognizer:goodTap];
+    
+    UITapGestureRecognizer *phoneCallTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phoneCallPress:)];
+    [cell.phoneCallLabel addGestureRecognizer:phoneCallTap];
+    
+    UITapGestureRecognizer *homeworkTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(homeworkPress:)];
+    [cell.homeworkLabel addGestureRecognizer:homeworkTap];
 
-    
-    
-    
 //    UISwipeGestureRecognizer *downSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(badSwipe:)];
 //    [downSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
 //    [cell addGestureRecognizer:downSwipe];
@@ -252,8 +261,103 @@
 //    [upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
 //    [cell addGestureRecognizer:upSwipe];
     
+}
+
+
+-(void)homeworkPress:(UITapGestureRecognizer*)tap
+{
+    NSLog(@"homework tap");
+    Behaviour *homeworkBehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Behaviour" inManagedObjectContext:self.managedObjectContext];
+    homeworkBehaviour.time = [NSDate date];
+    homeworkBehaviour.type = @"homework";
+    Student *theStudent = self.currentClass[tap.view.tag];
+    Parent *theParent = theStudent.parent;
+    [theStudent addBehaviourObject:homeworkBehaviour];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
+    
+    Teacher *theTeacher = [self.listOfTeachers firstObject];
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        [mailViewController setSubject:@"Incomplete homework"];
+        
+        NSString *theResultString = theTeacher.emailTemplateHomework;
+        theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+        theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+        theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
+        
+        [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+        
+        if (theTeacher.principalEmail != nil) {
+            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], [NSString stringWithFormat:@"%@", theTeacher.principalEmail]]];
+        } else
+            [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
+        
+        [self presentViewController:mailViewController animated:YES completion:nil];
+        
+        [self presentViewController:mailViewController animated:YES completion:nil];
+        
+    }
+    else {
+        NSLog(@"Device can't send emails");
+    }
+    
+    [self.managedObjectContext save:&error];
     
 }
+
+-(void)phoneCallPress:(UITapGestureRecognizer*)tap
+{
+    NSLog(@"phone call tap");
+    Behaviour *phoneCallBehaviour = [NSEntityDescription insertNewObjectForEntityForName:@"Behaviour" inManagedObjectContext:self.managedObjectContext];
+    phoneCallBehaviour.time = [NSDate date];
+    phoneCallBehaviour.type = @"phone";
+    Student *theStudent = self.currentClass[tap.view.tag];
+    Parent *theParent = theStudent.parent;
+    [theStudent addBehaviourObject:phoneCallBehaviour];
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    [self fetchStudentAndParentsAndBehaviourAndSchoolClasses];
+    
+    Teacher *theTeacher = [self.listOfTeachers firstObject];
+    
+            if ([MFMailComposeViewController canSendMail]) {
+                
+                MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+                mailViewController.mailComposeDelegate = self;
+                [mailViewController setSubject:@"Can we please speak over the phone?"];
+                
+                NSString *theResultString = theTeacher.emailTemplatePhonecall;
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Title>" withString:theParent.title];
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Parent>" withString:theParent.lastName];
+                theResultString = [theResultString stringByReplacingOccurrencesOfString:@"<Student>" withString:theStudent.firstName];
+                
+                [mailViewController setMessageBody:[NSString stringWithFormat:@"%@", theResultString] isHTML:NO];
+                
+                if (theTeacher.principalEmail != nil) {
+                    [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress], [NSString stringWithFormat:@"%@", theTeacher.principalEmail]]];
+                } else
+                    [mailViewController setToRecipients:@[[NSString stringWithFormat:@"%@", theParent.emailAddress]]];
+                
+                [self presentViewController:mailViewController animated:YES completion:nil];
+                
+                [self presentViewController:mailViewController animated:YES completion:nil];
+                
+            }
+            else {
+                NSLog(@"Device can't send emails");
+            }
+    
+    [self.managedObjectContext save:&error];
+ 
+}
+
 
 
 -(void)badPress:(UITapGestureRecognizer*)tap

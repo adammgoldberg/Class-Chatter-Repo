@@ -61,9 +61,13 @@
 {
     [super viewWillAppear:animated];
     if (self.templateSeg.selectedSegmentIndex == 0) {
-        self.emailTemplateText.text = self.teacher.emailTemplateBad;
-    } else {
+        self.emailTemplateText.text = self.teacher.emailTemplateHomework;
+    } else if (self.templateSeg.selectedSegmentIndex == 1) {
         self.emailTemplateText.text = self.teacher.emailTemplateGood;
+    } else if (self.templateSeg.selectedSegmentIndex == 2) {
+        self.emailTemplateText.text = self.teacher.emailTemplatePhonecall;
+    } else if (self.templateSeg.selectedSegmentIndex == 3) {
+        self.emailTemplateText.text = self.teacher.emailTemplateBad;
     }
     [self.emailTemplateText reloadInputViews];
 }
@@ -72,9 +76,13 @@
 - (IBAction)selectTemplate:(UISegmentedControl *)sender {
 
     if (self.templateSeg.selectedSegmentIndex == 0) {
-        self.emailTemplateText.text = self.teacher.emailTemplateBad;
-    } else {
+        self.emailTemplateText.text = self.teacher.emailTemplateHomework;
+    } else if (self.templateSeg.selectedSegmentIndex == 1) {
         self.emailTemplateText.text = self.teacher.emailTemplateGood;
+    } else if (self.templateSeg.selectedSegmentIndex == 2) {
+        self.emailTemplateText.text = self.teacher.emailTemplatePhonecall;
+    } else if (self.templateSeg.selectedSegmentIndex == 3) {
+        self.emailTemplateText.text = self.teacher.emailTemplateBad;
     }
     [self.emailTemplateText reloadInputViews];
 
@@ -99,10 +107,15 @@
 - (IBAction)saveTemplate:(UIButton *)sender
 {
     if (self.templateSeg.selectedSegmentIndex == 0) {
-        self.teacher.emailTemplateBad = self.emailTemplateText.text;
-    } else {
+        self.teacher.emailTemplateHomework = self.emailTemplateText.text;
+    } else if (self.templateSeg.selectedSegmentIndex == 1) {
         self.teacher.emailTemplateGood = self.emailTemplateText.text;
+    } else if (self.templateSeg.selectedSegmentIndex == 2) {
+        self.teacher.emailTemplatePhonecall = self.emailTemplateText.text;
+    } else if (self.templateSeg.selectedSegmentIndex == 3) {
+        self.teacher.emailTemplateBad = self.emailTemplateText.text;
     }
+    
     NSError *error;
     [self.managedObjectContext save:&error];
 }
