@@ -212,7 +212,7 @@
     UILabel *fourthDetailDescription = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 150, CGRectGetMaxY(fourthDetailImage.frame) + 10, 300, 150)];
     fourthDetailDescription.numberOfLines = 8;
     fourthDetailDescription.textColor = [UIColor whiteColor];
-    fourthDetailDescription.text = @"You can create and save a unique positive and negative email template.\n\nTeachers can customize the amount of behaviours before an email is sent.\n\nSwipe right to continue!";
+    fourthDetailDescription.text = @"You can create and save unique email templates.\n\nTeachers can customize the amount of behaviours before an email is sent.\n\nSwipe right to continue!";
     [self.scrollView.subviews[4] addSubview:fourthDetailDescription];
     
     

@@ -184,7 +184,7 @@
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(self.editView.bounds.origin.x + 20, self.editView.bounds.origin.y + 20, 60, 30)];
     closeButton.backgroundColor = [UIColor colorWithRed:96/255.0f green:174/255.0f blue:82/255.0f alpha:1];
     [closeButton setTitle:@"X" forState:UIControlStateNormal];
-    closeButton.titleLabel.font = [UIFont systemFontOfSize:20.0];
+    closeButton.titleLabel.font = [UIFont systemFontOfSize:28.0];
     [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(removeTheView:) forControlEvents:UIControlEventTouchUpInside];
     

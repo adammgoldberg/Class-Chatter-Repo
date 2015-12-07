@@ -423,12 +423,12 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FZL-GH-c9i">
-                                <rect key="frame" x="12" y="28" width="576" height="29"/>
+                                <rect key="frame" x="205" y="28" width="191" height="29"/>
                                 <segments>
-                                    <segment title="Homework"/>
-                                    <segment title="Goods News"/>
-                                    <segment title="Phone Call"/>
-                                    <segment title="Misbehaviour"/>
+                                    <segment title="HW  "/>
+                                    <segment title="Good"/>
+                                    <segment title="📞"/>
+                                    <segment title="Bad"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -438,13 +438,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.37647058820000001" green="0.68235294120000001" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="FZL-GH-c9i" firstAttribute="leading" secondItem="pN5-bE-cZ6" secondAttribute="leading" constant="12" id="1HJ-xV-XSR"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="centerX" secondItem="sPf-0e-0ML" secondAttribute="centerX" id="1HK-Nq-kfi"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="centerY" secondItem="pN5-bE-cZ6" secondAttribute="centerY" constant="19" id="6I2-Yt-0fr"/>
                             <constraint firstItem="sPf-0e-0ML" firstAttribute="centerX" secondItem="iql-hG-Uhl" secondAttribute="centerX" id="7zv-Lv-yRV"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="top" secondItem="sPf-0e-0ML" secondAttribute="bottom" constant="12" id="CQc-b8-6pQ"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="trailing" secondItem="sPf-0e-0ML" secondAttribute="trailing" id="JAW-zl-TwZ"/>
-                            <constraint firstAttribute="trailing" secondItem="FZL-GH-c9i" secondAttribute="trailing" constant="12" id="Koh-2A-kop"/>
+                            <constraint firstItem="FZL-GH-c9i" firstAttribute="centerX" secondItem="pN5-bE-cZ6" secondAttribute="centerX" id="Lqm-gi-WjR"/>
                             <constraint firstItem="AMf-cE-TNh" firstAttribute="top" secondItem="sPf-0e-0ML" secondAttribute="bottom" constant="20" id="PYE-Ki-rjk"/>
                             <constraint firstItem="iql-hG-Uhl" firstAttribute="centerX" secondItem="pN5-bE-cZ6" secondAttribute="centerX" id="PrR-vS-jJh"/>
                             <constraint firstItem="oNI-Zx-c0v" firstAttribute="centerX" secondItem="AMf-cE-TNh" secondAttribute="centerX" id="Rmj-Ts-uil"/>
